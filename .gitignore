@@ -3,3 +3,4 @@ kaomoji.log
 *.tmp
 __pycache__/
 model/
+.venv/

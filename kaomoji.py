@@ -2,19 +2,20 @@
 
 Ctrl+Alt+K (config.json) opens a search box at the mouse. Type a mood or a thing (shrug,
 happy cry, cat, tableflip), pick with 1-9, the arrows and Enter, or a click, and it's pasted
-into the window you were in. Esc closes it. Before she types a search, it suggests kaomoji
-from the words of the message she's in the middle of (see TypedLine), then the recent ones.
+into the window you were in. Esc closes it. Before you type a search, it suggests kaomoji
+for the message you're in the middle of (see TypedLine and suggest), then the recent ones.
 
 Files beside this script:
   kaomoji.txt   the list (format in its header), reread whenever it changes
   config.json   {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": true}; "mode": "type"
-                sends keystrokes instead of pasting; "suggest": false stops it watching her typing
+                sends keystrokes instead of pasting; "suggest": false stops it watching your typing
   usage.json    what was picked and when, for the ranking (local, not committed)
   kaomoji.log   errors, since pythonw has no console
   moods.txt     example messages per mood, which the suggestions learn moods from
   model/        the meaning model (see Semantic), downloaded on first run, not committed
 
-python kaomoji.py                 run (kaomoji.cmd runs it under pythonw, no console)
+python kaomoji.py                 run (kaomoji.cmd runs it under pythonw, no console;
+                                  install.cmd sets everything up)
 python kaomoji.py --search WORDS  print the ranking for WORDS and exit
 python kaomoji.py --suggest TEXT  print what the picker would suggest after typing TEXT
 python kaomoji.py --selftest      open the picker for a moment, paste nothing, exit
@@ -124,7 +125,7 @@ def search(entries, query, usage, jitter=None, semantic=None):
             continue
         score = sum(s for s, _ in parts)
         score += 10 if all(s for s, _ in parts) else 0  # matching every word beats any partial match
-        score += min(usage.get(e.text, (0, 0))[0], 20) * 0.1  # her favourites float up a little
+        score += min(usage.get(e.text, (0, 0))[0], 20) * 0.1  # your favourites float up a little
         score += 0.5 * jitter.get(e.text, 0)  # equal matches come in a new order each time
         scored.append((-score, min(line for s, line in parts if s), e))
     scored.sort(key=lambda s: s[:2])
@@ -138,7 +139,7 @@ def search(entries, query, usage, jitter=None, semantic=None):
 
 
 # Chat words -> the tags they mean. A word not listed here is matched against the tags as it is.
-# fuck and shit aren't here: she uses them as intensifiers ("fucking peak"), not as anger.
+# fuck and shit aren't here: in chat they're mostly intensifiers ("fucking peak"), not anger.
 SLANG = {
     "lol": "laugh", "lmao": "laugh", "lmfao": "laugh", "rofl": "laugh", "haha": "laugh",
     "hahaha": "laugh", "hah": "laugh", "xd": "laugh", "kek": "laugh", "lul": "laugh",
@@ -204,11 +205,11 @@ def load_moods(path=MOODS_PATH):
 
 
 def suggest(entries, text, usage, jitter=None, semantic=None, moods=None):
-    """Kaomoji for what she has typed so far, in two steps. First the mood: votes from her
+    """Kaomoji for what you have typed so far, in two steps. First the mood: votes from your
     words naming a group (slang mapped through SLANG, the last words counting most), from a
     question or an exclamation, and, once the model is loaded, from how close the message is
     in meaning to the examples in moods.txt. Then the kaomoji of the top moods, in a fresh
-    order each time, nudged by how well each description fits and what she picks.
+    order each time, nudged by how well each description fits and what you pick.
     Returns (entries, the moods it settled on)."""
     jitter = jitter or {}
     tokens = re.findall(r"[a-z]+|[?!]", text.lower())
@@ -272,38 +273,55 @@ def suggest(entries, text, usage, jitter=None, semantic=None, moods=None):
 
 class Semantic:
     """A small multilingual sentence-embedding model (paraphrase-multilingual-MiniLM-L12-v2,
-    int8 ONNX), run locally on the CPU: 116 MB in model/, ~15 ms per message, reads Czech too.
+    int8 ONNX), run locally on the CPU: 116 MB in model/, ~15 ms per message, reads 50+ languages.
     The whole app holds ~250 MB with it. Two things keep it there: sentencepiece instead of
     tokenizer.json (whose 250k-word vocabulary costs 250 MB in the tokenizers library), and
     onnxruntime with the graph optimiser and memory arena off. The descriptions are embedded
     once in the background; until then similarities() returns None."""
 
     REPO = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
-    FILES = ("sentencepiece.bpe.model", "onnx/model_quint8_avx2.onnx")
+    TOKENIZER = "sentencepiece.bpe.model"
+    # int8 for the CPU family first (the avx2 build runs on any x64 CPU, AVX2 or not); the
+    # full-size model (470 MB) only if that one won't load.
+    MODELS = {"arm64": ["onnx/model_qint8_arm64.onnx", "onnx/model.onnx"],
+              "x64": ["onnx/model_quint8_avx2.onnx", "onnx/model.onnx"]}
 
     def __init__(self):
         self.session, self.pieces, self.entries, self.matrix = None, None, None, None
         self.moods, self.example_moods, self.example_matrix = None, [], None
         self.lock = threading.Lock()
 
-    def load(self):
+    def fetch(self, name):
         import glob
+        found = glob.glob(os.path.join(MODEL_DIR, "models--*", "snapshots", "*", *name.split("/")))
+        if found:
+            return found[0]
+        os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")  # copies are fine here
+        from huggingface_hub import hf_hub_download  # first run: fetch it once
+        return hf_hub_download(self.REPO, name, cache_dir=MODEL_DIR)
+
+    def load(self):
+        import platform
         import onnxruntime as ort
         import sentencepiece
-        paths = []
-        for name in self.FILES:
-            found = glob.glob(os.path.join(MODEL_DIR, "models--*", "snapshots", "*", *name.split("/")))
-            if not found:  # first run: fetch it once
-                from huggingface_hub import hf_hub_download
-                found = [hf_hub_download(self.REPO, name, cache_dir=MODEL_DIR)]
-            paths.append(found[0])
-        self.pieces = sentencepiece.SentencePieceProcessor(model_file=paths[0])
+        self.pieces = sentencepiece.SentencePieceProcessor(model_file=self.fetch(self.TOKENIZER))
         opts = ort.SessionOptions()
         opts.enable_cpu_mem_arena = False
         opts.enable_mem_pattern = False
         opts.graph_optimization_level = ort.GraphOptimizationLevel.ORT_DISABLE_ALL
         opts.intra_op_num_threads = 2
-        self.session = ort.InferenceSession(paths[1], opts, providers=["CPUExecutionProvider"])
+        arm = platform.machine().lower() in ("arm64", "aarch64")
+        names = self.MODELS["arm64" if arm else "x64"]
+        for name in names:
+            try:
+                self.session = ort.InferenceSession(self.fetch(name), opts,
+                                                    providers=["CPUExecutionProvider"])
+                self.embed(["test"])
+                return
+            except Exception:
+                if name == names[-1]:
+                    raise
+                log.exception("%s didn't load; trying the next model", name)
 
     def token_ids(self, text):
         # XLM-R ids: <s>=0, </s>=2, <unk>=3, and every sentencepiece id shifted up by one
@@ -450,7 +468,7 @@ WH_KEYBOARD_LL, WM_KEYDOWN, WM_SYSKEYDOWN, LLKHF_INJECTED, LLKHF_ALTDOWN = 13, 0
 
 
 class TypedLine:
-    """The letters, ? and ! she has typed since her last Enter, so the picker can guess from them.
+    """The letters, ? and ! you have typed since your last Enter, so the picker can guess from them.
     Memory only: never saved or logged. Cleared on Enter, Tab, Esc, a window switch, and
     after 5 minutes without typing. Ctrl+A/V/X/Z clear it too, since the text changed unseen."""
 
@@ -508,14 +526,14 @@ kernel32.GetModuleHandleW.restype = wt.HMODULE
 
 def key_char(vk, scan, shift, window):
     """The character a key types in that window's layout, letters without accents (č -> c).
-    Neither call disturbs her typing: MapVirtualKeyEx never touches the dead-key state, and
+    Neither call disturbs your typing: MapVirtualKeyEx never touches the dead-key state, and
     ToUnicodeEx gets flag 4, which leaves the keyboard state alone (Windows 10 1607 and newer)."""
     import unicodedata
     layout = user32.GetKeyboardLayout(user32.GetWindowThreadProcessId(window, None) if window else 0)
     mapped = user32.MapVirtualKeyExW(vk, 2, layout)  # MAPVK_VK_TO_CHAR, the unshifted character
     if not mapped or mapped & 0x80000000:  # nothing, or a dead key
         return None
-    if shift and not 0x41 <= vk <= 0x5A:  # shifted punctuation: on her Czech layout ? is Shift+,
+    if shift and not 0x41 <= vk <= 0x5A:  # shifted punctuation, e.g. ? is Shift+, on a Czech layout
         state = (ctypes.c_ubyte * 256)()
         state[VK_SHIFT] = 0x80
         buf = ctypes.create_unicode_buffer(8)
@@ -771,7 +789,7 @@ class Picker:
         return "break"
 
     def number_key(self, event):
-        # By key code, not character: on her Czech layout the top row types ěščř, not digits.
+        # By key code, not character: on some layouts (Czech, French) the top row isn't digits.
         log.debug("key %r code %#x state %#x", event.char, event.keycode, event.state)
         if event.state & 0x4:  # Ctrl held
             return None
@@ -864,7 +882,7 @@ class Picker:
         press_ctrl_v()
         if saved[0] == "text":
             def restore():
-                if user32.GetClipboardSequenceNumber() == mark:  # she hasn't copied anything since
+                if user32.GetClipboardSequenceNumber() == mark:  # nothing new was copied since
                     clipboard_write(saved[1])
             self.root.after(600, restore)
 
@@ -917,7 +935,7 @@ def main():
     selftest = args[:1] == ["--selftest"]
 
     if not selftest:
-        kernel32.CreateMutexW(None, False, "Local\\hona-kaomoji-picker")
+        kernel32.CreateMutexW(None, False, "Local\\kaomoji-picker")
         if ctypes.get_last_error() == 183:  # ERROR_ALREADY_EXISTS
             show_error("The kaomoji picker is already running (look for it in the tray).")
             return
