@@ -1,0 +1,4 @@
+usage.json
+kaomoji.log
+*.tmp
+__pycache__/

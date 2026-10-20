@@ -1,0 +1,1098 @@
+# The kaomoji list. Edit freely; the app reloads it every time the picker opens.
+# A line "[name] tags..." starts a group: every kaomoji under it gets those tags.
+# A kaomoji line is the kaomoji, then optionally a TAB and extra tags for that one.
+# Lines starting with # are comments.
+
+[happy] happy smile glad joy cheerful content pleased
+(◕‿◕)
+(◕‿◕✿)	flower cute
+(＾▽＾)	grin
+(＾◡＾)
+(´｡• ᵕ •｡`)	soft cute
+(￣▽￣)	grin
+(*^‿^*)	blush
+(ᵔᴥᵔ)	bear cute
+(◠‿◠)
+(｡◕‿◕｡)	cute
+(✿◠‿◠)	flower
+(´▽`)
+(*´▽`*)	blush
+(⌒‿⌒)
+(⁀ᗢ⁀)
+٩(◕‿◕)۶	yay
+(｡•̀ᴗ-)✧	wink sparkle
+(ﾉ´ヮ`)ﾉ*: ･ﾟ	sparkle yay magic
+(´∀`)
+(*・ω・)	cute
+(・ω・)	cute neutral
+(｡･ω･｡)	cute
+(⌒▽⌒)☆	star
+ヽ(・∀・)ﾉ	yay
+(≧◡≦)	cute
+(o^▽^o)
+(✯◡✯)	starry
+(˶ᵔ ᵕ ᵔ˶)	soft cute blush
+(˶˃ ᵕ ˂˶)	soft cute excited
+(ᵕ—ᴗ—)	peaceful calm
+(◡‿◡✿)	flower calm
+
+[laugh] laugh lol lmao haha funny giggle
+(≧▽≦)
+(*≧▽≦)
+ヽ(≧▽≦)ﾉ
+(ﾉ≧∀≦)ﾉ
+(*≧∀≦*)
+(＾∀＾)
+(ノ∀`*)	giggle embarrassed
+(´∀｀*)
+(ﾟ∀ﾟ)
+(≧∇≦)ﾉ
+(*￣▽￣)b	thumbs
+(￣▽￣)ノ
+ｗ(ﾟДﾟ)ｗ	shock wtf
+(´ ∀ ` *)
+(＾ｖ＾)
+( ´ ▽ ` )ﾉ
+⸜(｡˃ ᵕ ˂ )⸝♡	cute heart
+
+[excited] excited yay hype woo celebrate cheer happy party
+＼(＾▽＾)／
+\(^o^)/
+ヽ(°〇°)ﾉ	shock
+٩(ˊᗜˋ*)و
+٩(๑❛ᴗ❛๑)۶
+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧	sparkle magic
+☆*:.｡.o(≧▽≦)o.｡.:*☆	star sparkle
+＼(≧▽≦)／
+(๑˃ᴗ˂)ﻭ	fist
+ヾ(≧▽≦*)o
+(ﾉ´▽｀)ﾉ♪	music
+o(≧▽≦)o
+ヽ(*⌒▽⌒*)ﾉ
+(☆▽☆)	starry eyes
+(★ω★)	starry eyes
+(✧ω✧)	sparkle eyes
+(ノ^o^)ノ
+٩(＾◡＾)۶
+ヽ(>∀<☆)ノ	star
+(/^▽^)/
+＼(★^∀^★)／	star
+\(★ω★)/	star
+(ﾉ>ω<)ﾉ :｡･:*:･ﾟ’★,｡･:*:･ﾟ’☆	sparkle star magic
+
+[love] love heart adore crush aww romance
+(♡°▽°♡)
+(´｡• ω •｡`) ♡
+(*♡∀♡)
+(♡ω♡ )
+(◍•ᴗ•◍)❤
+(｡♥‿♥｡)
+(灬º‿º灬)♡
+(´ ε ` )♡	kiss
+(ɔˆ ³(ˆ⌣ˆc)	kiss hug couple
+(っ˘з(˘⌣˘ )	kiss couple
+(づ￣ ³￣)づ	kiss hug
+(*˘︶˘*).｡.:*♡
+♡( ◡‿◡ )
+(´• ω •`) ♡
+(≧◡≦) ♡
+(˘∀˘)/(μ‿μ) ❤	couple
+(❤ω❤)
+(✿ ♥‿♥)	flower
+( ˘ ³˘)♥	kiss
+(°◡°♡)
+♡＾▽＾♡
+(ღ˘⌣˘ღ)
+(♥ω♥*)
+( ˶ˆ꒳ˆ˵ )♡	cute soft
+(⁄ ⁄•⁄ω⁄•⁄ ⁄)♡	blush shy
+(｡･ω･｡)ﾉ♡	wave give
+(っ´ω`)ﾉ♡	give
+♡〜٩( ˃▿˂ )۶〜♡	excited
+(*¯ ³¯*)♡	kiss
+
+[blush] blush shy embarrassed flustered uwu
+(⁄ ⁄•⁄ω⁄•⁄ ⁄)
+(〃▽〃)
+(*/ω＼)	hide
+(*/▽＼*)	hide
+(//ω//)
+(〃ω〃)
+(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)
+(*ﾉωﾉ)	hide
+(＃＞＜)
+(*^.^*)
+(〃・ω・〃)
+(o^ ^o)
+(//▽//)
+(*μ_μ)	hide
+(⁄ ⁄•⁄-⁄•⁄ ⁄)
+(///ˬ///✿)	flower
+(˶ˆ ˙ˆ˵)	soft
+(｡>﹏<｡)	nervous
+(*≧ω≦)
+(⸝⸝⸝•_•⸝⸝⸝)	awkward
+(⸝⸝⸝°_°⸝⸝⸝)	awkward shock
+(灬´ᴗ`灬)
+
+[uwu] uwu owo cute soft
+(・ω・)
+(˘ω˘)
+(´・ω・`)	sad
+(｡•́︿•̀｡)	sad
+(◕ᴗ◕✿)
+UwU
+OwO
+(＾ω＾)
+(*・ω・)ﾉ	wave
+(o´ω`o)
+(ᗒᗨᗕ)
+(´꒳`)
+(｡•ᴗ•｡)
+(◕ω◕✿)
+(=^･ω･^=)	cat
+(˶°ㅁ°)!!	shock
+(ㅅ´ ˘ `)	pray please
+(っ˘ω˘ς )	cozy
+(｡˘ᴗ˘｡)	calm
+
+[smug] smug wink cool sly heh proud
+(￣ー￣)
+(￣ω￣)
+( ͡° ͜ʖ ͡°)	lenny sus
+( ͡~ ͜ʖ ͡°)	lenny wink
+( ͠° ͟ʖ ͡°)	lenny suspicious
+(¬‿¬)
+(￣ε￣)
+(^_-)	wink
+(^_-)-☆	wink star
+(￣︶￣)
+(¬‿¬ )
+( ˘▽˘)っ♨	tea chill
+(⌐■_■)	sunglasses deal
+(•_•) ( •_•)>⌐■-■ (⌐■_■)	sunglasses deal
+(￣^￣)ゞ	salute
+(￢‿￢ )
+(ᓀ ᴗ ᓂ)
+(｀∀´)Ψ	devil evil
+(￣ヘ￣)	pout
+(￣∇￣)
+(ᵔ.ᵔ)
+( ˙꒳​˙ )	stare
+
+[wink] wink flirt tease
+(^_~)
+(・ω<)
+(｡•̀ᴗ-)✧	sparkle
+(^_-)≡☆	star
+(o^∀^o)ﾉ
+(＾ｰ^)ノ
+(◕‿-)✌	peace
+(>ω^)
+(ゝ∀･)
+
+[cute] cute adorable soft wholesome
+(◕ᴥ◕)
+ʕ•ᴥ•ʔ	bear
+(っ◔◡◔)っ	hug give
+(◍•ᴗ•◍)
+(｡◕‿‿◕｡)
+(´｡• ᵕ •｡`)
+(✿◕‿◕✿)	flower
+(ﾉ◕ヮ◕)ﾉ
+(ʃƪ˘ﻬ˘)	pray
+(•ө•)	bird
+( ´ ꒳ ` )
+(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ	flower sparkle
+꒰ᐢ. .ᐢ꒱	bunny
+(˵ •̀ ᴗ - ˵ ) ✧	wink sparkle
+
+[cat] cat kitty kitten meow nya neko
+(=^･ω･^=)
+(=^･ｪ･^=)
+(=①ω①=)
+(=^‥^=)
+( =ω= )
+(^・ω・^ )
+(=｀ω´=)	angry
+(=^･^=)
+ฅ^•ﻌ•^ฅ	paws
+ฅ(^・ω・^ฅ)	paws
+(^._.^)ﾉ	wave
+/ᐠ｡ꞈ｡ᐟ\
+/ᐠ - ˕ -マ	sleepy
+ฅ(•ㅅ•❀)ฅ	flower paws
+(ↀДↀ)✧	shock
+(=ＴェＴ=)	cry sad
+(=^ ◡ ^=)	happy
+(^˵◕ω◕˵^)
+/ᐠ｡▿｡ᐟ\*ᵖᵘʳʳ*	purr happy
+=^._.^= ∫	tail
+(=ಠᆽಠ=)	stare angry
+ଲ(ⓛ ω ⓛ)ଲ	paws
+:3	smug
+
+[dog] dog puppy woof doggo pup
+∪＾ェ＾∪
+∪･ω･∪
+∪￣-￣∪
+∪･ｪ･∪
+U^ｪ^U
+U・ᴥ・U
+V●ᴥ●V
+(❍ᴥ❍ʋ)
+(ᵔᴥᵔ)
+▼・ᴥ・▼
+૮ ˶ᵔ ᵕ ᵔ˶ ა	cute
+૮ ・ﻌ・ა	cute
+૮₍ ˃ ⤙ ˂ ₎ა	excited
+
+[bear] bear teddy
+ʕ•ᴥ•ʔ
+ʕ ᵔᴥᵔ ʔ	happy
+ʕ •̀ ω •́ ʔ	determined
+ʕ￫ᴥ￩ʔ
+ʕ ꈍᴥꈍʔ	sleepy
+ʕノ•ᴥ•ʔノ ︵ ┻━┻	tableflip angry
+ʕ •`ᴥ•´ʔ	angry
+ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ	cry sad
+ʕっ•ᴥ•ʔっ	hug give
+ʕ ˵• ₒ •˵ ʔ	shock
+(´(ｪ)｀)
+(￣(ｴ)￣)
+
+[bunny] bunny rabbit
+(｡･ｪ･｡)
+／(･ × ･)＼
+(\_/)
+꒰ᐢ. .ᐢ꒱
+૮ ˶ᵔ ᵕ ᵔ˶ ა
+(\(•ᴗ•)/)
+
+[animal] animal critter
+(・Θ・)	bird
+(・θ・)	bird chick
+( ･ิϖ･ิ)	bird
+(ﾟ<|＼	fish
+><(((('>	fish
+<コ:彡	squid octopus
+( ´(00)`)	pig
+(￣(oo)￣)	pig
+ᓚᘏᗢ	cat
+くコ:彡	squid
+/(•ㅅ•)\	bunny
+(°)#))<<	fish
+>°))))彡	fish
+(:3 」∠ )_	seal lying lazy
+ᘛ⁐̤ᕐᐷ	mouse rat
+ପ(๑•ᴗ•๑)ଓ	bird angel
+
+[sad] sad down depressed upset sigh
+(´・ω・`)
+(╥﹏╥)	cry
+(っ˘̩╭╮˘̩)っ
+(｡•́︿•̀｡)
+(◞‸◟)
+(︶︹︺)
+(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)	cry
+(•́︿•̀)
+(ㅠ﹏ㅠ)	cry
+(´；ω；`)	cry
+(｡ŏ﹏ŏ)
+(｡ﾉω＼｡)
+(っ- ‸ – ς)
+( ╥ω╥ )	cry
+(´-ω-`)	sigh
+(＿ ＿*) Z z z	tired
+(´Д`。)
+(ノ_<。)	cry
+(╯︵╰,)
+(︶︹︶)
+(._.)
+( ._.)
+(〒﹏〒)	cry
+.·°՞(っ-ᯅ-ς)՞°·.	cry
+(ó﹏ò｡)
+(◞‸ ◟ ；)
+( ˘︹˘ )
+(｡T ω T｡)	cry
+(ಥ﹏ಥ)	cry
+
+[cry] cry crying tears sob weep
+(╥﹏╥)
+(ಥ﹏ಥ)
+(ಥ_ಥ)
+(T_T)
+(ToT)
+(;´༎ຶД༎ຶ`)	sob
+(இ﹏இ`｡)
+(個_個)
+(T▽T)	happy tears
+(ノД`)・゜・。
+( ; ω ; )
+(´；ω；｀)
+(つ﹏<)･ﾟ｡
+(｡╯︵╰｡)
+(｡•́︿•̀｡)
+(´༎ຶོρ༎ຶོ`)	sob
+｡ﾟ(ﾟ´ω`ﾟ)ﾟ｡
+｡･ﾟﾟ*(>д<)*ﾟﾟ･｡
+(〒ω〒)
+(TдT)
+༼ ༎ຶ ෴ ༎ຶ༽	sob
+(╥ᆺ╥；)
+( ༎ຶ ۝ ༎ຶ )	sob
+
+[angry] angry mad rage furious pissed annoyed
+(╬ Ò﹏Ó)
+(｀Д´)
+(╯°□°)╯
+ヽ(`Д´)ﾉ
+(＃｀Д´)
+(ꐦ°᷄д°᷅)
+(｀へ´)	pout
+(＃`皿´)
+(ノ｀Д´)ノ
+(ﾉಥ益ಥ)ﾉ	rage
+(ಠ益ಠ)	rage
+(ง •̀_•́)ง	fight
+(╬ಠ益ಠ)	rage
+ヽ(ｏ`皿′ｏ)ﾉ
+(҂ `з´ )
+(ꐦ¬_¬)
+(눈_눈)	stare
+凸(￣ヘ￣)	fuck middle finger
+凸( •̀_•́ )凸	fuck middle finger
+(╯ರ ~ ರ)╯︵ ┻━┻	tableflip
+٩(╬ʘ益ʘ╬)۶	rage
+(◣_◢)
+(ू˃̣̣̣̣̣̣︿˂̣̣̣̣̣̣ ू)	cry
+(ᗒᗣᗕ)՞	frustrated
+(>_<)	frustrated
+(｀ε´)	pout
+
+[tableflip] tableflip flip table rage fuck
+(╯°□°)╯︵ ┻━┻
+(ノಠ益ಠ)ノ彡┻━┻
+┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻	double
+(ノ°Д°）ノ︵ ┻━┻
+(╯°Д°)╯︵/(.□ . \)	throw person
+┬─┬ノ( º _ ºノ)	unflip calm put back
+┬─┬ ノ( ゜-゜ノ)	unflip put back
+(ヘ･_･)ヘ┳━┳	unflip put back
+(╯‵□′)╯︵┻━┻
+‎(ﾉಥ益ಥ)ﾉ ┻━┻	cry
+(┛◉Д◉)┛彡┻━┻
+┻━┻ミ＼(≧ﾛ≦＼)
+
+[annoyed] annoyed unamused bored meh whatever unimpressed done
+(¬_¬)
+(￣～￣)
+(￣ε￣)
+(-_-)
+(¬､¬)
+(눈_눈)
+(￢_￢;)
+( ꒪Д꒪)
+(ㆆ_ㆆ)	stare
+(¬‿¬ )
+(ー_ー)
+(-_-;)
+(´-﹏-`；)
+(￣ヘ￣;)
+(；￣Д￣)
+(◔_◔)	eyeroll
+(¬_¬")
+(｡-_-｡)
+( ¬_¬)ﾉ
+(￢ ￢)
+
+[stare] stare look watching eyes sus suspicious
+(ಠ_ಠ)	disapproval
+(ಠ‿ಠ)
+(☉_☉)
+(⊙_⊙)	shock
+(•_•)
+( •_•)
+(ʘ_ʘ)
+(°_°)
+(・_・)
+(・_・ヾ	scratch confused
+(o_O)	confused
+(O_o)	confused
+(¬_¬ )
+(ఠ_ఠ)
+(ಠ_ಠ)>⌐■-■	sunglasses
+👁️👄👁️
+(°ロ°)
+(｡ŏ_ŏ)
+┬┴┬┴┤(･_├┬┴┬┴	peek hide
+|･ω･)	peek
+|д･)	peek
+(=ↀωↀ=)	cat
+
+[shrug] shrug idk dunno whatever oh well
+¯\_(ツ)_/¯
+┐(￣ヘ￣)┌
+┐(´∀｀)┌
+╮(￣～￣)╭
+ლ(¯ロ¯ლ)
+┐(‘～` )┌
+ヽ(ー_ー )ノ
+┐(︶▽︶)┌
+╮(︶︿︶)╭
+ヽ(´ー`)┌
+¯\_(⊙︿⊙)_/¯	confused
+╮(─▽─)╭
+┐(´д｀)┌
+¯\(°_o)/¯	confused
+¯\_( ͡° ͜ʖ ͡°)_/¯	lenny
+ㄟ( ▔, ▔ )ㄏ
+
+[confused] confused huh what wat puzzled thinking question
+(・・?)
+(?_?)
+(・_・ヾ
+(⊙_☉)
+(°ー°〃)
+(・∧‐)ゞ
+(゜-゜)
+(ーー;)
+( ◉ ‸ ◉ )?
+(o_O)
+(⊙_◎)
+(@_@)	dizzy
+(◎_◎;)
+(•ิ_•ิ)?
+(._.)?
+(・◇・)?
+(´･ᴗ･ ` )?
+(￢_￢)?
+( ˙▿˙ )?
+(⁰▿⁰)?
+
+[think] think thinking hmm ponder wonder
+(￢_￢)
+(ーー;)
+( ˘･з･)
+(・へ・)
+(￣～￣;)
+(´･_･`)
+(　ﾟ ヮﾟ)	idea
+(o´･_･)っ
+( ˙-˙ )
+( ・᷄ὢ・᷅ )
+(´-ι_-｀)
+φ(．．)	writing notes
+
+[surprised] surprised shock shocked wow omg gasp what
+(⊙_⊙)
+(°ロ°) !
+(ﾟДﾟ;)
+Σ(°△°|||)︴
+(☉ｏ☉)
+(O.O)
+(°o°)
+(ﾟοﾟ人))
+Σ(ﾟдﾟ)
+(⊙ω⊙)
+(＠_＠)
+w(°ｏ°)w
+(°ㅂ°╬)
+Σ(°ロ°)
+∑(O_O;)
+(ʘᗩʘ')
+(°□°)
+(￣□￣」)
+ヽ(°〇°)ﾉ
+(ﾉﾟ0ﾟ)ﾉ~
+⊙﹏⊙
+( ꒪ȏ꒪ )
+Σ(っ °Д °;)っ	scared
+
+[scared] scared fear afraid nervous anxious panic terrified
+(ﾉ´ｰ`)ﾉ
+(〃＞＿＜;〃)
+〜(＞＜)〜
+(ﾉ>_<)ﾉ
+(゜ロ゜)
+(((;°Д°)))	shaking
+(;;;*_*)
+(｡>﹏<｡)
+(°ㅂ°╬)
+(/ω＼)	hide
+(×_×;）
+(((＞＜)))	shaking
+ヽ(ﾟДﾟ)ﾉ	panic
+(ノ°益°)ノ
+(⊙﹏⊙)
+ヽ(｀Д´)ﾉ	panic
+(•ิ_•ิ)
+ε=ε=ε=┌(;￣▽￣)┘	run away
+(;ﾟДﾟ)
+(；ﾟ□ﾟ)
+⊂(◉‿◉)つ	unhinged
+
+[nervous] nervous sweat awkward oops yikes anxious
+(￣▽￣;)
+(^_^;)
+(；・∀・)
+(ーー;)
+(￣ω￣;)
+(*´ｰ`*;)
+(⌒_⌒;)
+(°_°;)
+(；^ω^）
+(・_・;)
+(ーー゛)
+(-_-;)・・・
+(◡‿◡;)
+(´∀｀;)
+(￣∀￣;)
+(⸝⸝⸝•_•⸝⸝⸝)
+(；一_一)
+(^▽^;)
+(・▽・;)
+(•﹏•;)
+
+[sorry] sorry apology bow forgive oops
+m(_ _)m
+(シ_ _)シ
+<(_ _)>
+(ノ_ _)ノ
+(._.)
+m(._.)m
+ｍ(＿＿；；)ｍ
+(シ. .)シ
+(ノ_<。)
+(｡•́︿•̀｡)
+<(＿　＿)>
+(人´∀`)	thanks please
+(*_ _)人	pray
+
+[please] please beg pretty please pray hope thanks
+(人◕ω◕)
+(ㅅ´ ˘ `)
+(人´∀`*)
+m(_ _)m
+(ʃƪ˘ﻬ˘)
+(｡•́︿•̀｡)
+(◕︿◕✿)
+(⁄ ⁄•⁄ω⁄•⁄ ⁄)
+(*´人`*)
+(っ- ‸ – ς)
+(ﾉ´з｀)ノ
+(🙏´ω`)
+
+[thanks] thanks thank you ty grateful appreciate
+(人´∀`)
+m(_ _)m
+(*^‿^*)
+(￣▽￣)ノ
+(*´∀｀)ﾉ
+(◍•ᴗ•◍)ゝ
+(｡･ω･｡)ﾉ♡
+(❁´◡`❁)
+(＾▽＾)ゞ
+(*ﾉ∀`*)
+
+[hug] hug cuddle hold squeeze comfort
+(っ´▽`)っ
+(つ≧▽≦)つ
+(づ｡◕‿‿◕｡)づ
+⊂(・▽・⊂)
+(っ˘ω˘ς )
+(つ✧ω✧)つ
+(づ ◕‿◕ )づ
+⊂(´• ω •`⊂)
+(っ◕‿◕)っ
+(⊃｡•́‿•̀｡)⊃
+(っಠ‿ಠ)っ	creepy
+ʕっ•ᴥ•ʔっ	bear
+(∩ᄑ_ᄑ)⊃━☆ﾟ*･｡*･:≡( ε:)	magic
+(づ￣ ³￣)づ	kiss
+⊂(◉‿◉)つ	creepy
+( ⊃・ω・)⊃
+(o´▽`o)ﾉ
+
+[wave] wave hello hi hey bye goodbye cya greetings
+(*・ω・)ﾉ
+(￣▽￣)ノ
+(°▽°)/
+( ´ ∀ ` )ﾉ
+(^-^*)/
+(＠´ー`)ﾉﾞ
+(´• ω •`)ﾉ
+( ° ∀ ° )ﾉﾞ
+ヾ(*'▽'*)
+＼(⌒▽⌒)
+ヾ(☆▽☆)
+( ´ ▽ ` )ﾉ
+(^０^)ノ
+~ヾ(・ω・)
+(・∀・)ノ
+ヾ(・ω・*)
+(*°ｰ°)ﾉ
+(・_・)ノ
+(o´ω`o)ﾉ
+( ´ ▽ ` )/
+(￣ω￣)/
+(^_^)/
+(ﾉ゜▽゜)ﾉ	bye
+(￣︿￣)ノ	bye sad
+
+[goodjob] good job thumbs up ok okay nice yes approve great
+(•̀ᴗ•́)و ̑̑
+(*￣▽￣)b
+(b ᵔ▽ᵔ)b
+(๑•̀ㅂ•́)و✧	determined
+d(￣▽￣)b
+(っ＾▽＾)っ
+(☞ﾟヮﾟ)☞	you point
+☜(ﾟヮﾟ☜)	point
+(•̀ω•́ )ゝ	salute
+( •̀ ω •́ )✧	determined
+(¬‿¬)b
+(￣^￣)ゞ	salute
+(°∀°)b
+(⌐■_■)b	cool
+( ˘ ³˘)b
+ヾ(＾∇＾)	yay
+d(^_^)b
+（ゝ。∂）	wink
+
+[yes] yes nod agree yep correct
+(￣ー￣)ｂ
+(ー_ー)ゞ
+( ˘ ᵕ˘)
+(・ω・)ノ
+(｀・ω・´)ゞ	salute
+(ﾟ∀ﾟ)ﾉ
+(　ﾟ∀ﾟ)ﾉ
+(^_^)ゞ
+(・ω・)b
+
+[no] no nope refuse deny nah stop
+(￣ヘ￣)
+(╯︵╰,)
+(ーー;)
+(×_×)
+( ´_ゝ`)
+(；一_一)
+(；¬_¬)
+(￢_￢)ﾉ
+(╥_╥)ノ
+(ノ`Д)ノ
+✋(￣ヘ￣)	stop
+(っ´ω`)ﾉ
+(ﾉ´ー`)ﾉ
+ヽ(￣д￣;)ノ
+(・_・)ノ⌒☆	bye
+
+[facepalm] facepalm ugh why disappointed cringe
+(－‸ლ)
+(ノ_<)
+(＿ ＿;)
+(ಠ_ಠ)
+(‐^▽^‐)
+(ლ ಠ益ಠ)ლ	why rage
+ლ(ಠ_ಠლ)	why
+ლ(╹◡╹ლ)
+(／。＼)
+(◞‸◟；)
+(；´Д`)
+(-_-)ゞ゛
+
+[disgust] disgust gross ew yuck eww
+(￣ ‘i ￣;)
+(；￣Д￣)
+(＞﹏＜)
+(◞‸◟)
+(；¬д¬)
+(ーー;)
+( ꒪Д꒪)ノ
+(￣ε(#￣)	punch
+(´-ι_-｀)
+(‘д‘⊂彡☆))Д´)	slap
+(￣□￣;)
+
+[tired] tired sleepy sleep exhausted zzz bed night yawn
+(－_－) zzZ
+(︶｡︶✽)
+( ˘ω˘ )ｽﾔｧ…
+(∪｡∪)｡｡｡zzZ
+(｡-ω-)zzz
+(￣o￣) zzZZzzZZ
+(ᴗ˳ᴗ)
+(¦3[▓▓]	bed
+[(－－)]..zzZ
+(︶ω︶)
+( ˘ ³˘)♥ zz
+(´ぅω･｀)	yawn
+(_ _*)Zzz
+(=_=)
+(×﹏×)
+(-.-)Zzz
+(˘ω˘)ｽﾔｧ
+(¦3ꇤ[▓▓]	bed
+_(:3 」∠)_	lying lazy dead
+(* ᴗ ᴗ)⁾⁾	nod sleepy
+
+[dead] dead ded rip dying died x_x kms done
+(×_×)
+(x_x)
+(✖╭╮✖)
+(×﹏×)
+_(:3 」∠)_
+(+_+)
+(˚Д˚)
+(╥﹏╥)
+(-‸ლ)
+(✖_✖)
+(︶︹︺)
+(×～×)
+⊙▂⊙	shock
+(ꈍ﹃ꈍ)
+_(¦3」∠)_
+(ﾟ∀ﾟ)ｹﾞﾗｹﾞﾗ	laugh dying
+
+[run] run running escape gotta go fast zoom
+ε=ε=ε=┌(;*´Д`)ﾉ
+ε===(っ≧ω≦)っ
+ヽ(￣д￣;)ノ=3=3=3
+ε=ε=┌( >_<)┘
+=͟͟͞͞(｀ﾟдﾟ´)	angry
+ε=ε=ε=(ﾉ*~▽~)ﾉ
+ε≡≡ヘ( ´Д`)ノ
+三└(┐卍 ^o^)卍	dance
+ε=ε=ε=ε=┌(;￣▽￣)┘
+ᕕ( ᐛ )ᕗ	happy walk
+┌(=_=)┘	walk
+
+[dance] dance dancing party groove vibe music sing
+ヾ(⌐■_■)ノ♪	cool
+♪┏(・o･)┛♪┗ ( ･o･) ┓♪
+└(＾＾)┐
+┌(＾＾)┘
+(~˘▾˘)~
+~(˘▾˘~)
+ヽ(⌐■_■)ノ♪♬	cool
+(ノ^_^)ノ
+〜(꒪꒳꒪)〜
+ヘ(￣ー￣ヘ)
+(〜￣▽￣)〜
+〜(￣▽￣〜)
+♪～(￣ε￣；)	whistle
+ヽ(o´∀`)ﾉ♪♬
+ᕕ(⌐■_■)ᕗ ♪♬	cool
+♪ヽ( ⌒o⌒)人(⌒-⌒ )v ♪	friends
+(ﾉ´▽｀)ﾉ♪
+ヽ(・∀・)ﾉ♪
+＼(ﾟｰﾟ＼)
+(／ﾟｰﾟ)／
+♬♫♪◖(●。●)◗♪♫♬	headphones
+
+[music] music song sing listen headphones
+ヾ(´〇`)ﾉ♪♪♪	sing
+♪(´ε｀ )	whistle
+(￣▽￣)/♫•*¨*•.¸¸♪
+♪～(´ε｀ )	whistle
+ヽ(o´∀`)ﾉ♪
+(　´ ▽ ` )ﾉ♪
+♬♫♪◖(●。●)◗♪♫♬
+♪♪\(^ω^\)	sing
+(*´▽`*)♪
+
+[flex] flex strong muscle power gym determined
+ᕦ(ò_óˇ)ᕤ
+ᕙ(⇀‸↼‶)ᕗ
+ᕦ(⩾﹏⩽)ᕥ
+(ง •̀_•́)ง	fight
+ᕙ( •̀ ᗜ •́ )ᕗ
+(•̀ᴗ•́)و	determined
+૮( ᵒ̌▱๋ᵒ̌ )ა	determined
+ᕦ( ͡° ͜ʖ ͡°)ᕤ	lenny
+ᕙ(`▿´)ᕗ
+(ᕑᗢᓫ∗)˒
+
+[fight] fight punch hit attack beat
+(ง'̀-'́)ง
+(ง •̀_•́)ง
+(ﾒ` ﾛ ´)︻デ═一	gun
+(ノ°益°)ノ
+(｀Д´)ノ⌒☆	throw
+(ﾉ｀Д´)ﾉ⌒◯
+(　-_･) ︻デ═一 ▸	gun sniper
+(っ•﹏•)っ ✴==≡눈	pew
+(ง ͠° ͟ل͜ ͡°)ง	lenny
+(*｀0´)θ☆(メ°皿°)ﾉ	punch
+(ﾒ ﾟ皿ﾟ)ﾒ
+(╬￣皿￣)=○＃(￣#)３￣)	punch
+(o¬‿¬o )...☆ﾐ(*x_x)	punch
+(;-_-)ノ⌒⚔	sword
+o(｀ω´ )o
+(°ㅂ°╬)
+
+[gun] gun shoot pew bang
+(⌐■_■)︻╦╤─	cool
+︻デ═一
+(▀̿Ĺ̯▀̿ ̿)
+̿ ̿̿'̿'\̵͇̿̿\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/'̿̿ ̿	lenny
+(ﾒ` ﾛ ´)︻デ═一
+(・_・)ノ︻デ═一
+(ﾟДﾟ)⊃︻╦╤─ - - -
+ʕ•ᴥ•ʔ︻デ═一	bear
+
+[magic] magic sparkle spell wizard witch star shiny
+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+(∩ᄑ_ᄑ)⊃━☆ﾟ.*･｡ﾟ
+(ノ˘_˘)ノ ζζζ
+(∩｀-´)⊃━☆ﾟ.*･｡ﾟ
+(っ・ω・)っ≡≡≡≡≡≡☆
+(*^▽^)/★*☆♪
+✧*｡٩(ˊᗜˋ*)و✧*｡
+(ﾉ´ヮ`)ﾉ*: ･ﾟ
+╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ	lenny
+(⊃｡•́‿•̀｡)⊃━✿✿✿✿✿✿	flower
+✧･ﾟ: *✧･ﾟ:*	sparkle line
+.｡.:*☆	sparkle line
+☆ﾟ.*･｡ﾟ	sparkle line
+｡ﾟ✶ฺ.ヽ(*´∀`*)ﾉ.✶ﾟ
+
+[give] give gift here present offer
+(っ´▽`)っ🎁
+(っ・ω・)っ🍪	cookie
+(っ˘ڡ˘ς)	yummy
+ヽ(・∀・)ﾉ✿	flower
+(｡･ω･｡)ﾉ♡	love
+(＾▽＾)っ✂
+(っ◔◡◔)っ ♥	love
+(っ＾▽＾)っ🍰	cake
+(づ｡◕‿‿◕｡)づ✿	flower
+(つ´∀`)つ☕	coffee tea
+
+[food] food eat eating hungry yummy delicious snack nom
+(っ˘ڡ˘ς)
+( ˘▽˘)っ♨	tea hot
+(￣～￣)	chew
+( ˘ ³˘)♨
+(*´ч`*)
+(○´ー`)ノ🍙	rice
+ʕ ᵔᴥᵔ ʔっ🍯	honey bear
+(っ´ω`)っ🍰	cake
+(￣﹃￣)	drool hungry
+(っ´▽`)っ🍕	pizza
+( ´ ▽ ` ).｡ｏ♡
+(*^ρ^*)	drool
+ლ(´ڡ`ლ)	yummy
+( ・ω・)o-{{[〃]}}	burger
+(っ˘ڡ˘ς)🍜	ramen noodles
+(っ´ω`)⊃━☆ﾟ.*･｡ﾟ🍪	cookie magic
+
+[drink] drink coffee tea cheers beer toast
+( ˘▽˘)っ♨	tea
+(っ˘▽˘)っ☕	coffee
+(＾▽＾)っ🍵	tea
+( ^_^)／□☆□＼(^_^ )	cheers
+(￣▽￣)/♨
+(*^_^)/□	cheers
+(っ・ω・)っ☕
+c(ˊᗜˋ*c)	cup
+(*´д`)～♨
+
+[cool] cool sunglasses deal chill
+(⌐■_■)
+(▀̿Ĺ̯▀̿ ̿)
+(•_•) ( •_•)>⌐■-■ (⌐■_■)
+ヾ(⌐■_■)ノ♪
+(⌐▀͡ ̯ʖ▀)
+( •_•)>⌐■-■
+(⌐■_■)ﾉ
+ᕕ(⌐■_■)ᕗ
+(⌐⊙_⊙)
+
+[crazy] crazy unhinged insane chaos feral manic
+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
+⊂(◉‿◉)つ
+(☉̃ₒ☉)
+ヽ(°〇°)ﾉ
+(⊙▂⊙✖ )
+(◕‿◕)🔪	knife
+(ﾟ∀ﾟ)
+(☉_☉)
+ᕕ( ᐛ )ᕗ
+(✿◠‿◠)🔪	knife flower
+( ͡°ᴥ ͡° ʋ)
+◉‿◉
+(ﾉ´ヮ`)ﾉ*: ･ﾟ
+ヽ༼ຈل͜ຈ༽ﾉ	riot raise
+༼ つ ◕_◕ ༽つ	give gimme
+(◉ω◉)
+╰(*°▽°*)╯	yay
+ヾ(｀ヘ´)ﾉﾞ
+
+[evil] evil devil villain mischief scheming plot muahaha
+(｀∀´)Ψ
+ψ(｀∇´)ψ
+(¬‿¬)
+(≖ᴗ≖๑)
+(￣ε￣＠)
+(ʘ‿ʘ)
+ψ(▼へ▼メ)～→
+(￣ー￣)ﾆﾔﾘ
+(°∀°)
+Ψ(｀▽´)Ψ
+(◣∀◢)ψ
+┌∩┐(◣_◢)┌∩┐	fuck
+( ¬‿¬)
+(ꈍᴗꈍ)ψ
+(｀▽´)ψ
+
+[hide] hide peek shy lurk lurking hiding
+|･ω･)
+|д･)
+┬┴┬┴┤･ω･)ﾉ
+|ω･)
+┬┴┬┴┤(･_├┬┴┬┴
+(/ω＼)
+|ʘ‿ʘ)╯
+|∀ﾟ)
+|ω°•)
+(つ﹏⊂)
+(＿ ＿*)
+|･ω･｀)
+(ノωヽ)
+|(￣3￣)|
+┬┴┬┴┤ω･)ﾉ	wave
+
+[write] writing write work study homework notes busy computer typing
+φ(．．)
+φ(゜▽゜*)♪
+_〆(。。)
+( ..)φ
+ヾ(＾∇＾)φ
+φ(◎◎ヘ)
+( ˘･з･)φ
+(ﾟ∀ﾟ)φ
+(　-_-)φ
+(￣^￣)φ
+[¬º-°]¬	robot
+_φ(°-°=)
+(⌐■_■)_φ
+
+[robot] robot bot ai machine
+[¬º-°]¬
+╚═( ˘ ᗜ ˘ )═╝
+[o_o]
+d[-_-]b	headphones
+ヽ[ಠ_ಠ]ノ
+(☞ ͡° ͜ʖ ͡°)☞	lenny point
+\[T]/	praise
+(⊙_⊙)ノ
+
+[point] point you this look over there
+(☞ﾟヮﾟ)☞
+☜(ﾟヮﾟ☜)
+(☞ ͡° ͜ʖ ͡°)☞	lenny
+(☞⌐■_■)☞	cool
+(σ^▽^)σ
+(☝ ՞ਊ ՞)☝
+(👉ﾟヮﾟ)👉
+☞(-‿-)☞
+(σ・∀・)σ
+
+[flower] flower nature bloom spring pretty
+(✿◠‿◠)
+(◕‿◕✿)
+ヽ(・∀・)ﾉ✿
+(✿ ♡‿♡)
+❀(*´▽`*)❀
+✿(◕‿◕)✿
+(*´▽`)ノ✿
+❀ ⊂(・ω・)⊃ ❀
+(　´ ▽ ` )ノ✿
+✿ڿڰۣ—
+
+[star] star sparkle night shine wish
+☆*:.｡.o(≧▽≦)o.｡.:*☆
+(☆▽☆)
+(★ω★)
+☆彡
+★~(◡‿◡✿)
+(ﾉ*ФωФ)ﾉ
+(⌒▽⌒)☆
+☆ﾐ(o*･ω･)ﾉ
+ﾟ✧(•̀ᴗ•́)✧ﾟ
+✩°｡⋆⸜(*˙꒳˙*  )
+
+[gimme] gimme want give me grabby greedy
+༼ つ ◕_◕ ༽つ
+(つ✧ω✧)つ
+(ﾉ*>∀<)ﾉ♡
+( ˘ ³˘)✧
+(っ ºДº)っ ︵ ⌨	keyboard throw
+(つ°ヮ°)つ
+(⊃｡•́‿•̀｡)⊃
+(っ◕‿◕)っ
+
+[sparkle] sparkle shiny glitter decoration divider
+✧･ﾟ: *✧･ﾟ:*
+*:･ﾟ✧*:･ﾟ✧
+.･ﾟﾟ･(／ω＼)･ﾟﾟ･.	hide shy
+☆ﾟ.*･｡ﾟ
+⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆	night moon
+˚₊‧꒰ა ☆ ໒꒱ ‧₊˚
+｡ﾟ･ (>﹏<) ･ﾟ｡	cry
+⸜(｡˃ ᵕ ˂ )⸝♡
+
+[friends] friends together us besties pals duo couple
+(*^ω^)人(^ω^*)
+ヽ(・∀・)人(・∀・)ﾉ
+(＾▽＾)人(＾▽＾)
+(｡･ω･｡)人(｡･ω･｡)
+♪ヽ( ⌒o⌒)人(⌒-⌒ )v ♪
+(つ≧▽≦)つ⊂(・▽・⊂)	hug
+( ´ ∀ ` )人( ´ ∀ ` )
+ヾ(・ω・)メ(・ω・)ノ
+(ɔˆ ³(ˆ⌣ˆc)	kiss
+
+[game] game gaming gamer controller play gg win
+(◕ᴗ◕✿)🎮
+( ⓛ ω ⓛ *)
+(￣▽￣)/🎮
+(⌐■_■)🎮	cool
+╰(▔∀▔)╯	win
+\(^ヮ^)/	win gg
+(ノಠ益ಠ)ノ彡┻━┻	rage lose
+(ノ°Д°）ノ︵ 🎮	rage throw controller
+(｀・ω・´)	determined
+(ง ͠° ͟ل͜ ͡°)ง	fight
+(ﾉ>ω<)ﾉ	win
+GG (￣ー￣)ｂ	gg
+
+[rain] rain weather cloud umbrella gloomy
+(￣ω￣;)☂
+ヽ(´ー｀)ﾉ☂
+(´-ω-`)☂
+｡ﾟﾟ･｡･ﾟﾟ｡ ﾟ。(っ´-ω-)っ☂	sad
+⛅(⌒▽⌒)	sun
+
+[blade] sword knife blade stab
+(◕‿◕)🔪
+(　-_-)ノ⚔
+(ﾒ ﾟ皿ﾟ)ﾒ ⚔
+(¬_¬)ﾉ🗡
+╰(◣﹏◢)╯	angry
+
+[lenny] lenny meme
+( ͡° ͜ʖ ͡°)
+( ͡~ ͜ʖ ͡°)
+( ͡ᵔ ͜ʖ ͡ᵔ )
+( ͡° ʖ̯ ͡°)	sad
+( ͡ಠ ʖ̯ ͡ಠ)	angry
+( ͡⚆ ͜ʖ ͡⚆)	crazy
+( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)	group
+ヽ( ͡° ͜ʖ ͡°)ﾉ	yay
+(つ ͡° ͜ʖ ͡°)つ	hug
+ᕦ( ͡° ͜ʖ ͡°)ᕤ	flex
+(☞ ͡° ͜ʖ ͡°)☞	point
