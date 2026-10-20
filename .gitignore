@@ -4,3 +4,4 @@ kaomoji.log
 __pycache__/
 model/
 .venv/
+config.json

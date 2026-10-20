@@ -16,17 +16,18 @@ Run `install.cmd` again any time to repair or update. After a `git pull`, quit f
 ## Using it
 
 - **Ctrl+Alt+K** opens it. The bottom line says which moods it read from your message (`for: confused, think`). With nothing typed, it shows your recent ones.
-- **Tray icon:** left-click picks one and copies it to the clipboard. Right-click to edit the list or quit.
+- **Tray icon:** left-click picks one and copies it to the clipboard. Right-click for **Start with Windows** (a checkbox you can flip any time), editing the list or the moods, and quitting.
 - **`kaomoji.cmd`** starts it again if you quit it.
 
 ## Making it yours
 
 - **`kaomoji.txt`**: the ~850 kaomoji, in groups, with tags and a short description each. The format is in its header. Changes apply the next time the picker opens.
 - **`moods.txt`**: example messages for each mood. The model works out the mood of your message by comparing it with these. If a message gets the wrong mood, add a line like it under the right one, in your own words and in any language.
-- **`config.json`**:
-  - `"hotkey"`: e.g. `"ctrl+shift+k"`, `"win+alt+k"`, `"ctrl+alt+f9"`. Quit and restart after changing it. On layouts with AltGr (Czech, German, Polish...), Ctrl+Alt is AltGr, so Ctrl+Alt+K blocks whatever AltGr+K types.
+- **`config.json`**, made on first run (quit and restart the picker after editing it):
+  - `"hotkey"`: e.g. `"ctrl+shift+k"`, `"win+alt+k"`, `"ctrl+alt+f9"`. On layouts with AltGr (Czech, German, Polish...), Ctrl+Alt is AltGr, so Ctrl+Alt+K blocks whatever AltGr+K types.
   - `"mode": "type"` types the kaomoji as keystrokes instead of pasting it.
   - `"suggest": false` turns the suggestions off (see Privacy).
+  - `"startup": true` starts it when you log in. The tray checkbox and `kaomoji.py --startup on|off` change it too; the shortcut in your Startup folder always follows this setting.
 
 ## How the suggestions work
 
@@ -45,5 +46,9 @@ Because it watches keys rather than reading the text box, it misses pasted text,
 
 - **Paste:** it saves your clipboard text, pastes with Ctrl+V, and puts the text back 0.6 s later (unless you copied something new meanwhile). If the clipboard holds an image or files, it types the kaomoji instead so they aren't lost.
 - **Programs running as administrator** don't accept pastes from it (Windows blocks that). Use the tray icon to copy one there.
-- **Files it makes:** `usage.json` (what you picked, for the ranking), `kaomoji.log` (errors), `model/` and `.venv/`. None of them are committed.
+- **Files it makes:** `config.json` (your settings), `usage.json` (what you picked, for the ranking), `kaomoji.log` (errors), `model/` and `.venv/`. None of them are committed, so `git pull` never touches your settings.
 - **Command line:** `python kaomoji.py --search happy cat` prints the search ranking, `--suggest omg im so tired lol` prints the suggestions, `--selftest` opens the picker for a second. Set `KAOMOJI_DEBUG=1` to log every show, key and paste to `kaomoji.log`.
+
+## License
+
+MIT, see `LICENSE`. Made by QBeelzebub with Claude.

@@ -7,8 +7,8 @@ for the message you're in the middle of (see TypedLine and suggest), then the re
 
 Files beside this script:
   kaomoji.txt   the list (format in its header), reread whenever it changes
-  config.json   {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": true}; "mode": "type"
-                sends keystrokes instead of pasting; "suggest": false stops it watching your typing
+  config.json   your settings, made on first run (keys in DEFAULTS, explained in README.md);
+                "startup" is kept in step with the shortcut in the Startup folder
   usage.json    what was picked and when, for the ranking (local, not committed)
   kaomoji.log   errors, since pythonw has no console
   moods.txt     example messages per mood, which the suggestions learn moods from
@@ -18,6 +18,7 @@ python kaomoji.py                 run (kaomoji.cmd runs it under pythonw, no con
                                   install.cmd sets everything up)
 python kaomoji.py --search WORDS  print the ranking for WORDS and exit
 python kaomoji.py --suggest TEXT  print what the picker would suggest after typing TEXT
+python kaomoji.py --startup on|off  start with Windows or not (also in the tray menu)
 python kaomoji.py --selftest      open the picker for a moment, paste nothing, exit
 """
 
@@ -41,7 +42,9 @@ USAGE_PATH = os.path.join(HERE, "usage.json")
 LOG_PATH = os.path.join(HERE, "kaomoji.log")
 MODEL_DIR = os.path.join(HERE, "model")
 MOODS_PATH = os.path.join(HERE, "moods.txt")
-DEFAULTS = {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": True}
+DEFAULTS = {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": True, "startup": False}
+STARTUP_LINK = os.path.join(os.environ.get("APPDATA", ""), "Microsoft", "Windows", "Start Menu",
+                            "Programs", "Startup", "Kaomoji picker.lnk")
 
 logging.basicConfig(filename=LOG_PATH, level=logging.DEBUG if os.environ.get("KAOMOJI_DEBUG") else logging.INFO, encoding="utf-8",
                     format="%(asctime)s %(levelname)s %(message)s")
@@ -889,7 +892,40 @@ class Picker:
 
 # ─── Tray icon and startup ──────────────────────────────────────────────────
 
-def make_tray(events):
+def load_config():
+    config = {**DEFAULTS, **load_json(CONFIG_PATH, {})}
+    if not os.path.exists(CONFIG_PATH):  # write the defaults out, so there's a file to edit
+        save_json(CONFIG_PATH, config)
+    return config
+
+
+def set_startup(config, enabled):
+    """Save "startup" in config.json and make or remove the Startup-folder shortcut to match."""
+    config["startup"] = bool(enabled)
+    save_json(CONFIG_PATH, {**load_json(CONFIG_PATH, {}), "startup": config["startup"]})
+    sync_startup(config)
+
+
+def sync_startup(config):
+    import subprocess
+    if not config.get("startup"):
+        if os.path.exists(STARTUP_LINK):
+            os.remove(STARTUP_LINK)
+        return
+    pythonw = os.path.join(os.path.dirname(sys.executable), "pythonw.exe")
+    if not os.path.exists(pythonw):
+        pythonw = sys.executable
+    script = os.path.join(HERE, "kaomoji.py")
+    # WScript.Shell is the only built-in way to write a .lnk; PowerShell reaches it without pywin32.
+    ps = ("$s = (New-Object -ComObject WScript.Shell).CreateShortcut($env:K_LINK); "
+          "$s.TargetPath = $env:K_PY; $s.Arguments = '\"' + $env:K_SCRIPT + '\"'; "
+          "$s.WorkingDirectory = $env:K_DIR; $s.Save()")
+    env = {**os.environ, "K_LINK": STARTUP_LINK, "K_PY": pythonw, "K_SCRIPT": script, "K_DIR": HERE}
+    subprocess.run(["powershell", "-NoProfile", "-Command", ps], env=env, check=True,
+                   creationflags=0x08000000)  # CREATE_NO_WINDOW
+
+
+def make_tray(events, config):
     import pystray
     from PIL import Image, ImageDraw, ImageFont
     img = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
@@ -905,8 +941,18 @@ def make_tray(events):
     menu = pystray.Menu(
         pystray.MenuItem("Pick one (copies it)", lambda: events.put(("show", (None, ""))), default=True),
         pystray.MenuItem("Edit the list", lambda: os.startfile(LIST_PATH)),
+        pystray.MenuItem("Edit the moods", lambda: os.startfile(MOODS_PATH)),
+        pystray.MenuItem("Start with Windows", lambda: events.put(("startup", not config["startup"])),
+                         checked=lambda item: config["startup"]),
         pystray.MenuItem("Quit", lambda: events.put(("quit", None))))
     return pystray.Icon("kaomoji", img, "Kaomoji picker", menu)
+
+
+def run_logged(fn, *args):
+    try:
+        fn(*args)
+    except Exception:
+        log.exception("%s failed", fn.__name__)
 
 
 def show_error(text):
@@ -916,6 +962,10 @@ def show_error(text):
 
 def main():
     args = sys.argv[1:]
+    if args[:1] == ["--startup"] and args[1:2] in (["on"], ["off"]):
+        set_startup(load_config(), args[1] == "on")
+        print("starts with Windows" if args[1] == "on" else "doesn't start with Windows")
+        return
     if args[:1] == ["--suggest"]:
         sys.stdout.reconfigure(encoding="utf-8")
         entries, moods, semantic = load_list(), load_moods(), Semantic()
@@ -940,7 +990,7 @@ def main():
             show_error("The kaomoji picker is already running (look for it in the tray).")
             return
 
-    config = {**DEFAULTS, **load_json(CONFIG_PATH, {})}
+    config = load_config()
     try:
         mods, vk = parse_hotkey(config["hotkey"])
     except ValueError as err:
@@ -969,8 +1019,10 @@ def main():
     picker = Picker(root, config, events)
     tray = None
     if not selftest:
-        tray = make_tray(events)
+        tray = make_tray(events, config)
         threading.Thread(target=tray.run, daemon=True).start()
+        # config.json may have been edited by hand, or the folder moved: the shortcut follows it.
+        threading.Thread(target=lambda: run_logged(sync_startup, config), daemon=True).start()
         log.info("running, hotkey %s", config["hotkey"])
 
     def poll():
@@ -979,6 +1031,11 @@ def main():
                 kind, arg = events.get_nowait()
                 if kind == "show":
                     picker.show(*arg)
+                elif kind == "startup":
+                    def toggle(enabled=arg):
+                        run_logged(set_startup, config, enabled)
+                        tray.update_menu()
+                    threading.Thread(target=toggle, daemon=True).start()
                 elif kind == "quit":
                     if tray:
                         tray.stop()

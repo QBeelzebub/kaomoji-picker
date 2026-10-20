@@ -1,5 +1,5 @@
 ﻿# Sets up the kaomoji picker on this PC: a Python environment in .venv, the packages, the
-# meaning model, optionally a Startup shortcut, and then starts it. Safe to run again to
+# meaning model, whether it starts with Windows, and then starts it. Safe to run again to
 # repair or update. Double-click install.cmd rather than running this directly; it gets
 # past PowerShell's script policy.
 #   -Startup / -NoStartup   answer the "start with Windows?" question up front
@@ -58,16 +58,11 @@ if (-not $Startup -and -not $NoStartup) {
     $answer = Read-Host "     Start the picker automatically when you log in? [Y/n]"
     $Startup = $answer -notmatch '^\s*n'
 }
-$link = Join-Path ([Environment]::GetFolderPath('Startup')) 'Kaomoji picker.lnk'
+& $venvPython kaomoji.py --startup $(if ($Startup) { 'on' } else { 'off' }) | Out-Null
 if ($Startup) {
-    $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut($link)
-    $shortcut.TargetPath = $venvPythonw
-    $shortcut.Arguments = "`"$(Join-Path $PSScriptRoot 'kaomoji.py')`""
-    $shortcut.WorkingDirectory = $PSScriptRoot
-    $shortcut.Save()
-    Write-Host "     Added $link (delete it to undo)"
+    Write-Host "     Yes. Change it any time from the tray icon's menu."
 } else {
-    Write-Host "     Skipped. Start it with kaomoji.cmd when you want it."
+    Write-Host "     No. Turn it on any time from the tray icon's menu."
 }
 
 $running = Get-CimInstance Win32_Process -Filter "Name='pythonw.exe' OR Name='python.exe'" |
