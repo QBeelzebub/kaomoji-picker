@@ -2,16 +2,19 @@
 
 Ctrl+Alt+K (config.json) opens a search box at the mouse. Type a mood or a thing (shrug,
 happy cry, cat, tableflip), pick with 1-9, the arrows and Enter, or a click, and it's pasted
-into the window you were in. Esc closes it. An empty search shows the recently used ones.
+into the window you were in. Esc closes it. Before she types a search, it suggests kaomoji
+from the words of the message she's in the middle of (see TypedLine), then the recent ones.
 
 Files beside this script:
   kaomoji.txt   the list (format in its header), reread whenever it changes
-  config.json   {"hotkey": "ctrl+alt+k", "mode": "paste"}; "type" sends keystrokes instead
+  config.json   {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": true}; "mode": "type"
+                sends keystrokes instead of pasting; "suggest": false stops it watching her typing
   usage.json    what was picked and when, for the ranking (local, not committed)
   kaomoji.log   errors, since pythonw has no console
 
 python kaomoji.py                 run (kaomoji.cmd runs it under pythonw, no console)
 python kaomoji.py --search WORDS  print the ranking for WORDS and exit
+python kaomoji.py --suggest TEXT  print what the picker would suggest after typing TEXT
 python kaomoji.py --selftest      open the picker for a moment, paste nothing, exit
 """
 
@@ -32,7 +35,7 @@ LIST_PATH = os.path.join(HERE, "kaomoji.txt")
 CONFIG_PATH = os.path.join(HERE, "config.json")
 USAGE_PATH = os.path.join(HERE, "usage.json")
 LOG_PATH = os.path.join(HERE, "kaomoji.log")
-DEFAULTS = {"hotkey": "ctrl+alt+k", "mode": "paste"}
+DEFAULTS = {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": True}
 
 logging.basicConfig(filename=LOG_PATH, level=logging.DEBUG if os.environ.get("KAOMOJI_DEBUG") else logging.INFO, encoding="utf-8",
                     format="%(asctime)s %(levelname)s %(message)s")
@@ -45,8 +48,8 @@ GROUP = re.compile(r"^\[([a-z0-9-]+)\]\s*(.*)$")
 
 
 class Entry:
-    def __init__(self, text, order):
-        self.text, self.order = text, order
+    def __init__(self, text, order, group):
+        self.text, self.order, self.group = text, order, group  # group: the first one it's listed under
         self.tags = {}  # tag -> (from an extra?, line), which breaks ties in the ranking
 
 
@@ -64,7 +67,7 @@ def load_list(path=LIST_PATH):
             text, _, extra = line.partition("\t")
             text = text.strip()
             if text not in by_text:  # the same kaomoji under two groups gets both groups' tags
-                by_text[text] = Entry(text, len(entries))
+                by_text[text] = Entry(text, len(entries), group[0] if group else "")
                 entries.append(by_text[text])
             # A group's own members beat members of other groups that carry the word as an extra.
             tags = by_text[text].tags
@@ -108,6 +111,80 @@ def search(entries, query, usage):
         scored.append((-score, min(line for s, line in parts if s), e))
     scored.sort(key=lambda s: s[:2])
     return [s[2] for s in scored]
+
+
+# Chat words -> the tags they mean. A word not listed here is matched against the tags as it is.
+# fuck and shit aren't here: she uses them as intensifiers ("fucking peak"), not as anger.
+SLANG = {
+    "lol": "laugh", "lmao": "laugh", "lmfao": "laugh", "rofl": "laugh", "haha": "laugh",
+    "hahaha": "laugh", "hah": "laugh", "xd": "laugh", "kek": "laugh", "lul": "laugh",
+    "funny": "laugh", "hilarious": "laugh",
+    "ty": "thanks", "thx": "thanks", "tysm": "thanks", "thank": "thanks",
+    "gn": "tired", "goodnight": "tired", "night": "tired", "eepy": "tired", "bed": "tired",
+    "nap": "tired", "exhausted": "tired",
+    "hi": "wave", "hii": "wave", "hey": "wave", "hello": "wave", "yo": "wave", "sup": "wave",
+    "bye": "wave", "cya": "wave", "gtg": "wave", "gm": "wave", "morning": "wave",
+    "omg": "surprised", "wtf": "surprised", "holy": "surprised", "whoa": "surprised", "woah": "surprised",
+    "ugh": "angry", "hate": "angry", "annoying": "annoyed", "pissed": "angry", "mad": "angry",
+    "furious": "angry", "bruh": "facepalm", "cringe": "facepalm", "why": "facepalm",
+    "sry": "sorry", "mb": "sorry", "oops": "sorry", "apologies": "sorry",
+    "ily": "love", "ilysm": "love", "luv": "love", "loved": "love", "miss": "love",
+    "aww": "cute", "adorable": "cute", "cutie": "cute",
+    "crying": "cry", "sob": "cry", "sobbing": "cry", "tears": "cry", "rip": "sad", "depressed": "sad",
+    "idk": "shrug", "dunno": "shrug", "whatever": "shrug", "maybe": "shrug",
+    "hmm": "think", "hm": "think", "wonder": "think", "thinking": "think",
+    "yay": "excited", "hype": "excited", "finally": "excited", "pog": "excited", "poggers": "excited",
+    "epic": "excited", "peak": "excited", "lets": "excited", "letsgo": "excited", "woo": "excited",
+    "ok": "goodjob", "okay": "goodjob", "nice": "goodjob", "gg": "goodjob", "great": "goodjob",
+    "good": "goodjob", "yes": "yes", "yep": "yes", "yeah": "yes", "ye": "yes",
+    "no": "no", "nope": "no", "nah": "no",
+    "hugs": "hug", "pls": "please", "plz": "please",
+    "hungry": "food", "pizza": "food", "eating": "food", "dinner": "food", "lunch": "food",
+    "kitty": "cat", "meow": "cat", "doggo": "dog", "puppy": "dog",
+    "ded": "dead", "dying": "dead", "kms": "dead", "died": "dead",
+    "scary": "scared", "afraid": "scared", "yikes": "nervous", "awkward": "nervous",
+    "gaming": "game", "playing": "game", "won": "game", "song": "music",
+    "hehe": "smug", "heh": "smug", "sus": "stare", "ew": "disgust", "eww": "disgust", "gross": "disgust",
+    "homework": "write", "study": "write", "studying": "write",
+    "work": "write", "working": "write", "coffee": "drink", "tea": "drink",
+}
+STOP = set("a an the i im me my you your u it its is are was be to of in on at and or but so "
+           "that this just like with for have has had do did not dont can will what "
+           "fuck fucking fucked shit shitty damn".split())
+
+
+def suggest(entries, text, usage):
+    """Rank kaomoji for what she has typed so far: the last words count most.
+    Returns (entries, the words that matched)."""
+    words = [w for w in re.findall(r"[a-z]+", text.lower()) if w not in STOP][-12:]
+    scores, both, hits = {}, {}, []  # both: how many more words beyond the first an entry matched
+    for distance, word in enumerate(reversed(words)):
+        weight = 1 / (1 + 0.3 * distance)
+        want = SLANG.get(word, word)
+        matched = False
+        for e in entries:
+            best = 0
+            for tag, (extra, _) in e.tags.items():
+                # whole tag, or the tag is the word's stem (sleeping -> sleep, laughing -> laugh)
+                if tag == want or (len(tag) >= 4 and want.startswith(tag)):
+                    best = max(best, 0.6 if extra else 1.0)
+            if best:
+                scores[e.text] = scores.get(e.text, 0) + best * weight
+                both[e.text] = both.get(e.text, -1) + 1
+                matched = True
+        if matched and word not in hits:
+            hits.append(word)
+    by_text = {e.text: e for e in entries}
+    ranked = sorted(scores, key=lambda t: (-(scores[t] + 0.5 * both[t]  # a sleepy cat for "cat sleeping"
+                                             + min(usage.get(t, (0, 0))[0], 20) * 0.05),
+                                           by_text[t].order))
+    # The first screen mixes moods: at most 4 from one group, so "hungry lol" isn't nine laughs.
+    first, rest, per_group = [], [], {}
+    for t in ranked:
+        e = by_text[t]
+        per_group[e.group] = per_group.get(e.group, 0) + 1
+        (first if per_group[e.group] <= 4 and len(first) < 9 else rest).append(e)
+    return first + rest, list(reversed(hits))
 
 
 def load_json(path, default):
@@ -192,16 +269,105 @@ def parse_hotkey(spec):
     return mods | MOD_NOREPEAT, vk
 
 
-def hotkey_loop(mods, vk, events, registered):
-    """Own thread: RegisterHotKey belongs to the thread that pumps its messages."""
+VK_BACK, VK_TAB, VK_RETURN, VK_ESCAPE, VK_SPACE = 0x08, 0x09, 0x0D, 0x1B, 0x20
+WH_KEYBOARD_LL, WM_KEYDOWN, WM_SYSKEYDOWN, LLKHF_INJECTED, LLKHF_ALTDOWN = 13, 0x100, 0x104, 0x10, 0x20
+
+
+class TypedLine:
+    """The letters she has typed since her last Enter, so the picker can guess from them.
+    Memory only: never saved or logged. Cleared on Enter, Tab, Esc, a window switch, and
+    after 5 minutes without typing. Ctrl+A/V/X/Z clear it too, since the text changed unseen."""
+
+    def __init__(self):
+        self.chars, self.window, self.last = [], None, 0.0
+
+    def key(self, vk, char, ctrl, alt, window, now):
+        if window != self.window or now - self.last > 300:
+            self.chars.clear()
+        self.window, self.last = window, now
+        if vk in (VK_RETURN, VK_TAB, VK_ESCAPE):
+            self.chars.clear()
+        elif ctrl or alt:  # shortcuts, and AltGr (Ctrl+Alt) characters
+            if ctrl and not alt and vk == VK_BACK:
+                text = "".join(self.chars).rstrip()
+                self.chars = list(text[:len(text) - len(text.split(" ")[-1])])
+            elif ctrl and not alt and vk in (0x41, 0x56, 0x58, 0x5A):
+                self.chars.clear()
+        elif vk == VK_BACK:
+            if self.chars:
+                self.chars.pop()
+        elif vk == VK_SPACE or (char and not char.isalpha()):
+            self.chars.append(" ")
+        elif char:
+            self.chars.append(char)
+        del self.chars[:-200]
+
+    def text(self):
+        return "".join(self.chars)
+
+
+class KBDLLHOOKSTRUCT(ctypes.Structure):
+    _fields_ = [("vkCode", wt.DWORD), ("scanCode", wt.DWORD), ("flags", wt.DWORD),
+                ("time", wt.DWORD), ("dwExtraInfo", ctypes.c_size_t)]
+
+
+HOOKPROC = ctypes.WINFUNCTYPE(ctypes.c_ssize_t, ctypes.c_int, wt.WPARAM, wt.LPARAM)
+user32.SetWindowsHookExW.argtypes = [ctypes.c_int, HOOKPROC, wt.HINSTANCE, wt.DWORD]
+user32.SetWindowsHookExW.restype = wt.HHOOK
+user32.CallNextHookEx.argtypes = [wt.HHOOK, ctypes.c_int, wt.WPARAM, wt.LPARAM]
+user32.CallNextHookEx.restype = ctypes.c_ssize_t
+user32.GetKeyboardLayout.argtypes = [wt.DWORD]
+user32.GetKeyboardLayout.restype = wt.HKL
+user32.MapVirtualKeyExW.argtypes = [wt.UINT, wt.UINT, wt.HKL]
+user32.MapVirtualKeyExW.restype = wt.UINT
+user32.GetAsyncKeyState.argtypes = [ctypes.c_int]
+user32.GetAsyncKeyState.restype = ctypes.c_short
+kernel32.GetModuleHandleW.argtypes = [wt.LPCWSTR]
+kernel32.GetModuleHandleW.restype = wt.HMODULE
+
+
+def key_char(vk, window):
+    """The plain letter a key types in that window's layout, without accents (č -> c).
+    MapVirtualKeyEx, unlike ToUnicode, leaves the dead-key state alone, so her typing is untouched."""
+    import unicodedata
+    layout = user32.GetKeyboardLayout(user32.GetWindowThreadProcessId(window, None) if window else 0)
+    mapped = user32.MapVirtualKeyExW(vk, 2, layout)  # MAPVK_VK_TO_CHAR
+    if not mapped or mapped & 0x80000000:  # nothing, or a dead key
+        return None
+    return unicodedata.normalize("NFD", chr(mapped & 0xFFFF).lower())[0]
+
+
+def hotkey_loop(mods, vk, events, registered, watch_typing):
+    """Own thread: the hotkey and the keyboard hook both belong to the thread that pumps
+    their messages, and sharing it means the typed line needs no lock."""
     registered["ok"] = bool(user32.RegisterHotKey(None, 1, mods, vk))
     registered["done"].set()
     if not registered["ok"]:
         return
+    typed = TypedLine()
+
+    def on_key(code, wparam, lparam):
+        if code == 0 and wparam in (WM_KEYDOWN, WM_SYSKEYDOWN):
+            kb = ctypes.cast(lparam, ctypes.POINTER(KBDLLHOOKSTRUCT)).contents
+            if not kb.flags & LLKHF_INJECTED:  # skip what this app types itself
+                try:
+                    window = user32.GetForegroundWindow()
+                    ctrl = bool(user32.GetAsyncKeyState(VK_CONTROL) & 0x8000)
+                    typed.key(kb.vkCode, key_char(kb.vkCode, window), ctrl,
+                              bool(kb.flags & LLKHF_ALTDOWN), window, time.monotonic())
+                except Exception:
+                    log.exception("keyboard hook")
+        return user32.CallNextHookEx(None, code, wparam, lparam)
+
+    hook_proc = HOOKPROC(on_key)  # kept referenced for as long as the loop runs
+    if watch_typing and not user32.SetWindowsHookExW(WH_KEYBOARD_LL, hook_proc,
+                                                     kernel32.GetModuleHandleW(None), 0):
+        log.error("couldn't watch typing (error %d); suggestions are off", ctypes.get_last_error())
     msg = wt.MSG()
     while user32.GetMessageW(ctypes.byref(msg), None, 0, 0) > 0:
         if msg.message == WM_HOTKEY:
-            events.put(("show", user32.GetForegroundWindow()))
+            window = user32.GetForegroundWindow()
+            events.put(("show", (window, typed.text() if typed.window == window else "")))
 
 
 class KEYBDINPUT(ctypes.Structure):
@@ -332,6 +498,7 @@ class Picker:
         self.entries, self.list_mtime = [], None
         self.usage = load_json(USAGE_PATH, {})
         self.results, self.target = [], None
+        self.suggested, self.hits = [], []
 
         top = self.top = tk.Toplevel(root, bg=EDGE, padx=1, pady=1)
         top.withdraw()
@@ -374,7 +541,11 @@ class Picker:
             log.exception("couldn't read the kaomoji list")
 
     def refresh(self):
-        self.results = search(self.entries, self.query.get(), self.usage)[:SHOWN]
+        results = search(self.entries, self.query.get(), self.usage)
+        if self.suggested and not self.query.get().strip():
+            seen = {e.text for e in self.suggested}
+            results = self.suggested + [e for e in results if e.text not in seen]
+        self.results = results[:SHOWN]
         self.list.delete(0, "end")
         for i, e in enumerate(self.results):
             self.list.insert("end", f" {i + 1}    {e.text}" if i < ROWS else f"       {e.text}")
@@ -384,7 +555,12 @@ class Picker:
         if not self.results:
             self.footer.config(text="Nothing matches. Try another word, or add it to kaomoji.txt")
         else:
-            what = "recent first" if not self.query.get().strip() else f"{len(self.results)} found"
+            if self.query.get().strip():
+                what = f"{len(self.results)} found"
+            elif self.suggested:  # the matched words only, never the typed text itself
+                what = "for: " + ", ".join(self.hits[-4:])
+            else:
+                what = "recent first"
             self.footer.config(text=f"{what}    1-9 or Enter to pick, Esc to close")
 
     # --- keys ---
@@ -420,9 +596,10 @@ class Picker:
 
     # --- showing and picking ---
 
-    def show(self, target):
+    def show(self, target, typed=""):
         self.target = target
         self.reload_if_changed()
+        self.suggested, self.hits = suggest(self.entries, typed, self.usage)
         self.query.set("")
         self.refresh()
         top = self.top
@@ -512,7 +689,7 @@ def make_tray(events):
         draw.ellipse((38, 22, 46, 30), fill="white")
         draw.arc((20, 28, 44, 48), 20, 160, fill="white", width=4)
     menu = pystray.Menu(
-        pystray.MenuItem("Pick one (copies it)", lambda: events.put(("show", None)), default=True),
+        pystray.MenuItem("Pick one (copies it)", lambda: events.put(("show", (None, ""))), default=True),
         pystray.MenuItem("Edit the list", lambda: os.startfile(LIST_PATH)),
         pystray.MenuItem("Quit", lambda: events.put(("quit", None))))
     return pystray.Icon("kaomoji", img, "Kaomoji picker", menu)
@@ -525,6 +702,13 @@ def show_error(text):
 
 def main():
     args = sys.argv[1:]
+    if args[:1] == ["--suggest"]:
+        sys.stdout.reconfigure(encoding="utf-8")
+        found, hits = suggest(load_list(), " ".join(args[1:]), load_json(USAGE_PATH, {}))
+        print("matched:", ", ".join(hits) or "nothing")
+        for e in found[:9]:
+            print(e.text)
+        return
     if args[:1] == ["--search"]:
         sys.stdout.reconfigure(encoding="utf-8")
         usage = load_json(USAGE_PATH, {})
@@ -552,7 +736,8 @@ def main():
         pass
     events = queue.Queue()
     registered = {"done": threading.Event()}
-    threading.Thread(target=hotkey_loop, args=(mods, vk, events, registered), daemon=True).start()
+    threading.Thread(target=hotkey_loop, args=(mods, vk, events, registered, config["suggest"] and not selftest),
+                     daemon=True).start()
     registered["done"].wait(5)
     if not registered.get("ok"):
         msg = f"{config['hotkey']} is already taken by another program. Pick another in {CONFIG_PATH}"
@@ -576,7 +761,7 @@ def main():
             while True:
                 kind, arg = events.get_nowait()
                 if kind == "show":
-                    picker.show(arg)
+                    picker.show(*arg)
                 elif kind == "quit":
                     if tray:
                         tray.stop()
