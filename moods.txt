@@ -1,0 +1,285 @@
+# Example messages for each mood. The picker works out the mood of the message you're typing by
+# comparing it with these by meaning, then suggests kaomoji tagged with that mood in kaomoji.txt.
+# Each [name] must be a group or tag there. Add lines in your own words to teach it; any
+# language works. A mood's score is how close your message is to its two closest examples.
+
+[happy]
+that's so nice
+i'm really happy today
+this made my day
+aww that's lovely
+good morning, feeling great
+
+[laugh]
+lol that's so funny
+lmao i'm dying
+hahaha no way
+xd stop it
+bro that's hilarious
+
+[excited]
+let's gooo
+yesss finally
+omg i can't wait
+this is amazing!!
+that was peak
+
+[love]
+i love you
+miss you so much
+you're the best, ily
+i love this so much
+my favourite person
+
+[blush]
+stop it you're making me blush
+omg thank you, that's so sweet
+you're embarrassing me
+i'm flustered now
+
+[cute]
+that's so cute
+look how adorable
+aww so small and precious
+
+[smug]
+heh, told you so
+i knew it
+not to brag but
+too easy
+
+[wink]
+just kidding
+wink wink
+you know what i mean
+
+[sad]
+i'm sad
+that's really sad
+it's been a bad day
+i feel so down
+that sucks, i'm sorry
+
+[cry]
+i'm crying
+this made me cry
+i can't stop crying
+it hurts so much
+
+[angry]
+i'm so mad
+this makes me furious
+i hate this so much
+are you kidding me
+ugh this is so annoying
+
+[tableflip]
+i give up, fuck this
+i'm done with this shit
+rage quit
+this game is so unfair
+
+[annoyed]
+whatever
+ugh, seriously
+not this again
+i'm so over this
+can you not
+
+[shrug]
+idk
+i don't know
+who knows
+it is what it is
+oh well
+no idea honestly
+maybe, idk
+
+[confused]
+what?
+wait what
+huh?
+i don't understand
+what do you mean?
+how does that work?
+why is it like that?
+wait how
+
+[think]
+hmm
+let me think
+i wonder how that works
+how does it do that?
+i'm not sure, maybe
+does it work that way?
+what if we tried
+
+[surprised]
+omg
+no way
+wait really??
+holy shit
+what the hell
+wow
+
+[scared]
+that's scary
+i'm scared
+nope nope nope
+that's terrifying
+
+[nervous]
+oops
+uh oh
+that's awkward
+i'm so nervous
+haha... yeah
+
+[sorry]
+sorry
+i'm so sorry
+my bad
+sorry for the late reply
+oops sorry
+
+[please]
+please
+pretty please
+can you help me?
+pls i need this
+
+[thanks]
+thank you
+thanks so much
+ty
+i appreciate it
+
+[hug]
+come here, hugs
+i need a hug
+sending hugs
+it's okay, i'm here
+
+[wave]
+hi
+hello!
+hey, what's up
+whats up
+sup
+bye!
+see you later
+good morning
+
+[goodjob]
+nice
+good job
+well done
+that's great, nice work
+proud of you
+
+[yes]
+yes
+yeah
+okay sure
+sounds good
+of course
+
+[no]
+no
+nope
+absolutely not
+nah
+
+[facepalm]
+bruh
+why would you do that
+i can't believe this
+cringe
+
+[disgust]
+ew
+gross
+that's disgusting
+yuck
+
+[tired]
+i'm so tired
+good night
+i need to sleep
+i'm going to bed
+gn
+i'm exhausted
+
+[dead]
+i'm dead
+kill me
+i can't anymore
+rip me
+
+[run]
+gotta go
+brb
+i'm out
+running late
+
+[dance]
+let's party
+dancing
+vibing
+
+[flex]
+i got this
+gym time
+i'm strong
+let's do this
+
+[fight]
+fight me
+1v1 me
+come at me
+
+[crazy]
+i'm losing my mind
+i'm going insane
+chaos
+
+[evil]
+i have a plan
+muahaha
+they'll never know
+
+[hide]
+i'm hiding
+don't look at me
+lurking
+
+[friends]
+best friends
+we're a team
+together
+
+[food]
+i'm hungry
+eating dinner
+food time
+gonna grab something to eat
+
+[drink]
+coffee time
+need coffee
+cheers
+
+[game]
+gaming
+gg
+playing a game
+i won
+
+[write]
+doing homework
+studying
+working on it
+
+[cool]
+deal with it
+i'm so cool

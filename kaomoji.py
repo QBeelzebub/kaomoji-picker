@@ -11,6 +11,7 @@ Files beside this script:
                 sends keystrokes instead of pasting; "suggest": false stops it watching her typing
   usage.json    what was picked and when, for the ranking (local, not committed)
   kaomoji.log   errors, since pythonw has no console
+  moods.txt     example messages per mood, which the suggestions learn moods from
   model/        the meaning model (see Semantic), downloaded on first run, not committed
 
 python kaomoji.py                 run (kaomoji.cmd runs it under pythonw, no console)
@@ -38,6 +39,7 @@ CONFIG_PATH = os.path.join(HERE, "config.json")
 USAGE_PATH = os.path.join(HERE, "usage.json")
 LOG_PATH = os.path.join(HERE, "kaomoji.log")
 MODEL_DIR = os.path.join(HERE, "model")
+MOODS_PATH = os.path.join(HERE, "moods.txt")
 DEFAULTS = {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": True}
 
 logging.basicConfig(filename=LOG_PATH, level=logging.DEBUG if os.environ.get("KAOMOJI_DEBUG") else logging.INFO, encoding="utf-8",
@@ -57,8 +59,14 @@ class Entry:
         self.tags = {}  # tag -> (from an extra?, line), which breaks ties in the ranking
 
 
+class KaomojiList(list):
+    """The entries, plus .groups: each group's name -> the tags on its header line."""
+    groups = {}
+
+
 def load_list(path=LIST_PATH):
-    entries, by_text, group = [], {}, []
+    entries, by_text, group = KaomojiList(), {}, []
+    entries.groups = {}
     with open(path, encoding="utf-8") as f:
         for n, line in enumerate(f):
             line = line.rstrip("\r\n")
@@ -67,6 +75,7 @@ def load_list(path=LIST_PATH):
             m = GROUP.match(line)
             if m:
                 group = [m.group(1)] + m.group(2).lower().split()
+                entries.groups.setdefault(group[0], set()).update(group)
                 continue
             text, extra, desc = (line.split("\t") + ["", ""])[:3]
             text = text.strip()
@@ -151,7 +160,7 @@ SLANG = {
     "yay": "excited", "hype": "excited", "finally": "excited", "pog": "excited", "poggers": "excited",
     "epic": "excited", "peak": "excited", "lets": "excited", "letsgo": "excited", "woo": "excited",
     "ok": "goodjob", "okay": "goodjob", "nice": "goodjob", "gg": "goodjob", "great": "goodjob",
-    "yes": "yes", "yep": "yes", "yeah": "yes", "ye": "yes",
+    "yes": "yes", "sure": "yes", "alright": "yes", "cool": "goodjob", "yep": "yes", "yeah": "yes", "ye": "yes",
     "no": "no", "nope": "no", "nah": "no",
     "hugs": "hug", "pls": "please", "plz": "please",
     "hungry": "food", "pizza": "food", "eating": "food", "dinner": "food", "lunch": "food",
@@ -163,59 +172,102 @@ SLANG = {
     "homework": "write", "study": "write", "studying": "write", "coffee": "drink", "tea": "drink",
 }
 STOP = set("a an the i im me my you your u it its is are was be to of in on at and or but so "
-           "that this just like with for have has had do did not dont can will what "
-           "good fuck fucking fucked shit shitty damn".split())
+           "that this just like with for have has had do did not dont can will what whats "
+           "good fuck fucking fucked shit shitty damn "
+           # everyday words that are also tags somewhere, and would vote for the wrong mood
+           "content down look eyes oh well up hold hit beat gotta go fast here over there want us "
+           "play win pretty hope deal power plot computer notes busy work bot ai machine spring "
+           "nature wish shine cloud weather table flip listen bang stop point give offer present".split())
 
 
-def suggest(entries, text, usage, jitter=None, semantic=None):
-    """Rank kaomoji for what she has typed so far. Two signals: tag matches on her words
-    (the last words count most, slang mapped through SLANG), and, once the model is loaded,
-    how close in meaning each kaomoji's description is to the message.
-    Returns (entries, the words that matched)."""
+QUESTION_WORDS = set("how what why when where who which does do did is are can could would should".split())
+SLOTS = {1: [9], 2: [5, 4], 3: [4, 3, 2]}  # the first screen, split between the top moods
+KEYWORD_VOTE, QUESTION_VOTE, EXCLAIM_VOTE = 0.3, 0.15, 0.05
+MOOD_FLOOR, MOOD_WEIGHT, KEEP = 0.3, 1.0, 0.7  # tuned by hand on --suggest examples
+
+
+def load_moods(path=MOODS_PATH):
+    """moods.txt: mood name -> example messages."""
+    moods, name = {}, None
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            m = GROUP.match(line)
+            if m:
+                name = m.group(1)
+                moods.setdefault(name, [])
+            elif name:
+                moods[name].append(line)
+    return moods
+
+
+def suggest(entries, text, usage, jitter=None, semantic=None, moods=None):
+    """Kaomoji for what she has typed so far, in two steps. First the mood: votes from her
+    words naming a group (slang mapped through SLANG, the last words counting most), from a
+    question or an exclamation, and, once the model is loaded, from how close the message is
+    in meaning to the examples in moods.txt. Then the kaomoji of the top moods, in a fresh
+    order each time, nudged by how well each description fits and what she picks.
+    Returns (entries, the moods it settled on)."""
     jitter = jitter or {}
-    words = [w for w in re.findall(r"[a-z]+", text.lower()) if w not in STOP][-12:]
-    scores, both, hits = {}, {}, []  # both: how many more words beyond the first an entry matched
+    tokens = re.findall(r"[a-z]+|[?!]", text.lower())
+    words = [w for w in tokens if w.isalpha() and w not in STOP][-12:]
+    if not tokens:
+        return [], []
+    vote = {}
+
+    def add(name, amount):
+        vote[name] = vote.get(name, 0) + amount
+
     for distance, word in enumerate(reversed(words)):
-        weight = 1 / (1 + 0.3 * distance)
         want = SLANG.get(word, word)
-        matched = False
-        for e in entries:
-            best = 0
-            for tag, (extra, _) in e.tags.items():
-                # whole tag, or the tag is the word's stem (sleeping -> sleep, laughing -> laugh)
-                if tag == want or (len(tag) >= 4 and want.startswith(tag)):
-                    best = max(best, 0.6 if extra else 1.0)
-            if best:
-                scores[e.text] = scores.get(e.text, 0) + best * weight
-                both[e.text] = both.get(e.text, -1) + 1
-                matched = True
-        if matched and word not in hits:
-            hits.append(word)
-    by_text = {e.text: e for e in entries}
-    total = {t: KEYWORD_WEIGHT * (scores[t] + 0.5 * both[t]) for t in scores}  # 0.5: a sleepy cat for "cat sleeping"
-    if words and semantic:
+        for name, tags in entries.groups.items():
+            # a whole tag, or the tag is the word's stem (sleeping -> sleep, laughing -> laugh)
+            if want in tags or any(len(t) >= 4 and want.startswith(t) for t in tags):
+                add(name, KEYWORD_VOTE / (1 + 0.3 * distance))
+    if "?" in tokens[-3:] or tokens[0] in QUESTION_WORDS:
+        add("confused", QUESTION_VOTE)
+        add("think", QUESTION_VOTE)
+    if "!" in tokens[-3:]:
+        add("excited", EXCLAIM_VOTE)
+        add("surprised", EXCLAIM_VOTE)
+    sims = None
+    if semantic:
         # The model doesn't know chat slang, so it gets the meanings spelled out too.
         meant = [SLANG[w] for w in words if w in SLANG]
-        sims = semantic.similarities(" ".join(text.split()[-30:] + meant), entries)
-        if sims is not None:
-            for e, sim in zip(entries, sims):
-                if sim > SIM_FLOOR or e.text in total:
-                    total[e.text] = total.get(e.text, 0) + SIM_WEIGHT * max(sim - SIM_FLOOR, 0)
-            if not hits and sims.max() > SIM_FLOOR + 0.1:
-                hits = ["your message"]
-    for t in total:
-        total[t] += min(usage.get(t, (0, 0))[0], 20) * 0.05 + 0.6 * jitter.get(t, 0)
-    ranked = sorted(total, key=lambda t: (-total[t], by_text[t].order))
-    # The first screen mixes moods: at most 4 from one group, so "hungry lol" isn't nine laughs.
-    first, rest, per_group = [], [], {}
-    for t in ranked:
-        e = by_text[t]
-        per_group[e.group] = per_group.get(e.group, 0) + 1
-        (first if per_group[e.group] <= 4 and len(first) < 9 else rest).append(e)
-    return first + rest, list(reversed(hits))
+        read = semantic.read(" ".join(text.split()[-30:] + meant), entries, moods)
+        if read:
+            sims, closeness = read
+            for name, score in closeness.items():
+                add(name, MOOD_WEIGHT * max(score - MOOD_FLOOR, 0))
 
+    ranked = sorted((m for m in vote if vote[m] > 0.02), key=lambda m: -vote[m])
+    if not ranked:
+        return [], []
+    top = [m for m in ranked if vote[m] >= KEEP * vote[ranked[0]]][:3]
+    index = {e.text: i for i, e in enumerate(entries)}
 
-KEYWORD_WEIGHT, SIM_WEIGHT, SIM_FLOOR = 1.0, 6.0, 0.25  # tuned by hand on --suggest examples
+    def members(mood):
+        def fit(e):
+            score = 0.6 if e.tags[mood][0] else 1.0  # a group's own members over borrowed ones
+            score += 0.6 * jitter.get(e.text, 0) + 0.05 * min(usage.get(e.text, (0, 0))[0], 10)
+            if sims is not None:
+                score += sims[index[e.text]]
+            return score
+        return sorted((e for e in entries if mood in e.tags), key=fit, reverse=True)
+
+    first, seen = [], set()
+    for mood, slots in zip(top, SLOTS[len(top)]):
+        for e in [e for e in members(mood) if e.text not in seen][:slots]:
+            first.append(e)
+            seen.add(e.text)
+    rest = {}
+    for mood in ranked[:6]:
+        for e in members(mood):
+            if e.text not in seen:
+                rest.setdefault(e.text, e)
+    return first + list(rest.values()), top
 
 
 class Semantic:
@@ -231,6 +283,7 @@ class Semantic:
 
     def __init__(self):
         self.session, self.pieces, self.entries, self.matrix = None, None, None, None
+        self.moods, self.example_moods, self.example_matrix = None, [], None
         self.lock = threading.Lock()
 
     def load(self):
@@ -267,20 +320,39 @@ class Semantic:
         v = (out * mask[..., None]).sum(1) / mask.sum(1, keepdims=True)  # mean pooling
         return v / np.linalg.norm(v, axis=1, keepdims=True)
 
-    def prepare(self, entries):
+    def embed_all(self, texts):
+        import numpy as np
+        return np.vstack([self.embed(texts[i:i + 32]) for i in range(0, len(texts), 32)])
+
+    def prepare(self, entries, moods=None):
         try:
-            import numpy as np
             with self.lock:
                 if self.session is None:
                     self.load()
-                texts = [e.desc or " ".join(t for t, (extra, _) in e.tags.items() if not extra)
-                         for e in entries]
-                matrix = np.vstack([self.embed(texts[i:i + 32]) for i in range(0, len(texts), 32)])
-            self.matrix = matrix
-            self.entries = entries  # set last: similarities() checks it
+                matrix = self.embed_all([e.desc or " ".join(t for t, (extra, _) in e.tags.items()
+                                                            if not extra) for e in entries])
+                examples = [(name, line) for name, lines in (moods or {}).items() for line in lines]
+                self.example_moods = [name for name, _ in examples]
+                self.example_matrix = self.embed_all([line for _, line in examples]) if examples else None
+            self.matrix, self.moods = matrix, moods
+            self.entries = entries  # set last: similarities() and read() check it
             log.info("meaning model ready")
         except Exception:
             log.exception("couldn't load the meaning model; suggestions use tags only")
+
+    def read(self, text, entries, moods):
+        """(similarity to each entry's description, closeness to each mood), or None if not
+        ready for these lists. A mood's closeness is the mean of its two closest examples."""
+        if self.entries is not entries or self.moods is not moods or not text.strip():
+            return None
+        with self.lock:
+            v = self.embed([text])[0]
+        per_mood = {}
+        if self.example_matrix is not None:
+            for name, sim in zip(self.example_moods, self.example_matrix @ v):
+                per_mood.setdefault(name, []).append(float(sim))
+        closeness = {name: sum(sorted(s)[-2:]) / min(len(s), 2) for name, s in per_mood.items()}
+        return self.matrix @ v, closeness
 
     def similarities(self, text, entries):
         """Cosine similarity of text to each entry, or None if not ready for this list."""
@@ -373,12 +445,12 @@ def parse_hotkey(spec):
     return mods | MOD_NOREPEAT, vk
 
 
-VK_BACK, VK_TAB, VK_RETURN, VK_ESCAPE, VK_SPACE = 0x08, 0x09, 0x0D, 0x1B, 0x20
+VK_BACK, VK_TAB, VK_RETURN, VK_ESCAPE, VK_SHIFT, VK_SPACE = 0x08, 0x09, 0x0D, 0x1B, 0x10, 0x20
 WH_KEYBOARD_LL, WM_KEYDOWN, WM_SYSKEYDOWN, LLKHF_INJECTED, LLKHF_ALTDOWN = 13, 0x100, 0x104, 0x10, 0x20
 
 
 class TypedLine:
-    """The letters she has typed since her last Enter, so the picker can guess from them.
+    """The letters, ? and ! she has typed since her last Enter, so the picker can guess from them.
     Memory only: never saved or logged. Cleared on Enter, Tab, Esc, a window switch, and
     after 5 minutes without typing. Ctrl+A/V/X/Z clear it too, since the text changed unseen."""
 
@@ -400,6 +472,8 @@ class TypedLine:
         elif vk == VK_BACK:
             if self.chars:
                 self.chars.pop()
+        elif char in ("?", "!"):  # kept: a question wants a questioning face
+            self.chars.append(f" {char} ")
         elif vk == VK_SPACE or (char and not char.isalpha()):
             self.chars.append(" ")
         elif char:
@@ -424,20 +498,30 @@ user32.GetKeyboardLayout.argtypes = [wt.DWORD]
 user32.GetKeyboardLayout.restype = wt.HKL
 user32.MapVirtualKeyExW.argtypes = [wt.UINT, wt.UINT, wt.HKL]
 user32.MapVirtualKeyExW.restype = wt.UINT
+user32.ToUnicodeEx.argtypes = [wt.UINT, wt.UINT, ctypes.POINTER(ctypes.c_ubyte), wt.LPWSTR,
+                               ctypes.c_int, wt.UINT, wt.HKL]
 user32.GetAsyncKeyState.argtypes = [ctypes.c_int]
 user32.GetAsyncKeyState.restype = ctypes.c_short
 kernel32.GetModuleHandleW.argtypes = [wt.LPCWSTR]
 kernel32.GetModuleHandleW.restype = wt.HMODULE
 
 
-def key_char(vk, window):
-    """The plain letter a key types in that window's layout, without accents (č -> c).
-    MapVirtualKeyEx, unlike ToUnicode, leaves the dead-key state alone, so her typing is untouched."""
+def key_char(vk, scan, shift, window):
+    """The character a key types in that window's layout, letters without accents (č -> c).
+    Neither call disturbs her typing: MapVirtualKeyEx never touches the dead-key state, and
+    ToUnicodeEx gets flag 4, which leaves the keyboard state alone (Windows 10 1607 and newer)."""
     import unicodedata
     layout = user32.GetKeyboardLayout(user32.GetWindowThreadProcessId(window, None) if window else 0)
-    mapped = user32.MapVirtualKeyExW(vk, 2, layout)  # MAPVK_VK_TO_CHAR
+    mapped = user32.MapVirtualKeyExW(vk, 2, layout)  # MAPVK_VK_TO_CHAR, the unshifted character
     if not mapped or mapped & 0x80000000:  # nothing, or a dead key
         return None
+    if shift and not 0x41 <= vk <= 0x5A:  # shifted punctuation: on her Czech layout ? is Shift+,
+        state = (ctypes.c_ubyte * 256)()
+        state[VK_SHIFT] = 0x80
+        buf = ctypes.create_unicode_buffer(8)
+        if user32.ToUnicodeEx(vk, scan, state, buf, 8, 4, layout) != 1:
+            return None
+        return buf.value
     return unicodedata.normalize("NFD", chr(mapped & 0xFFFF).lower())[0]
 
 
@@ -457,7 +541,8 @@ def hotkey_loop(mods, vk, events, registered, watch_typing):
                 try:
                     window = user32.GetForegroundWindow()
                     ctrl = bool(user32.GetAsyncKeyState(VK_CONTROL) & 0x8000)
-                    typed.key(kb.vkCode, key_char(kb.vkCode, window), ctrl,
+                    shift = bool(user32.GetAsyncKeyState(VK_SHIFT) & 0x8000)
+                    typed.key(kb.vkCode, key_char(kb.vkCode, kb.scanCode, shift, window), ctrl,
                               bool(kb.flags & LLKHF_ALTDOWN), window, time.monotonic())
                 except Exception:
                     log.exception("keyboard hook")
@@ -599,7 +684,7 @@ ROWS, SHOWN = 9, 300
 class Picker:
     def __init__(self, root, config, events):
         self.root, self.config, self.events = root, config, events
-        self.entries, self.list_mtime = [], None
+        self.entries, self.moods, self.list_mtime = [], {}, None
         self.usage = load_json(USAGE_PATH, {})
         self.results, self.target = [], None
         self.suggested, self.hits, self.jitter = [], [], {}
@@ -640,12 +725,13 @@ class Picker:
 
     def reload_if_changed(self):
         try:
-            mtime = os.path.getmtime(LIST_PATH)
+            mtime = (os.path.getmtime(LIST_PATH), os.path.getmtime(MOODS_PATH))
             if mtime != self.list_mtime:
-                self.entries, self.list_mtime = load_list(), mtime
-                threading.Thread(target=self.semantic.prepare, args=(self.entries,), daemon=True).start()
+                self.entries, self.moods, self.list_mtime = load_list(), load_moods(), mtime
+                threading.Thread(target=self.semantic.prepare, args=(self.entries, self.moods),
+                                 daemon=True).start()
         except (OSError, UnicodeDecodeError):
-            log.exception("couldn't read the kaomoji list")
+            log.exception("couldn't read the kaomoji list or the moods")
 
     def refresh(self):
         results = search(self.entries, self.query.get(), self.usage, self.jitter, self.semantic)
@@ -708,7 +794,8 @@ class Picker:
         self.reload_if_changed()
         rnd = random.Random()
         self.jitter = {e.text: rnd.random() for e in self.entries}
-        self.suggested, self.hits = suggest(self.entries, typed, self.usage, self.jitter, self.semantic)
+        self.suggested, self.hits = suggest(self.entries, typed, self.usage, self.jitter,
+                                            self.semantic, self.moods)
         self.query.set("")
         self.refresh()
         top = self.top
@@ -813,10 +900,11 @@ def main():
     args = sys.argv[1:]
     if args[:1] == ["--suggest"]:
         sys.stdout.reconfigure(encoding="utf-8")
-        entries, semantic = load_list(), Semantic()
-        semantic.prepare(entries)
-        found, hits = suggest(entries, " ".join(args[1:]), load_json(USAGE_PATH, {}), semantic=semantic)
-        print("matched:", ", ".join(hits) or "nothing")
+        entries, moods, semantic = load_list(), load_moods(), Semantic()
+        semantic.prepare(entries, moods)
+        found, hits = suggest(entries, " ".join(args[1:]), load_json(USAGE_PATH, {}),
+                              semantic=semantic, moods=moods)
+        print("moods:", ", ".join(hits) or "none")
         for e in found[:9]:
             print(e.text)
         return
