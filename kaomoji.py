@@ -11,6 +11,7 @@ Files beside this script:
                 sends keystrokes instead of pasting; "suggest": false stops it watching her typing
   usage.json    what was picked and when, for the ranking (local, not committed)
   kaomoji.log   errors, since pythonw has no console
+  model/        the meaning model (see Semantic), downloaded on first run, not committed
 
 python kaomoji.py                 run (kaomoji.cmd runs it under pythonw, no console)
 python kaomoji.py --search WORDS  print the ranking for WORDS and exit
@@ -24,6 +25,7 @@ import json
 import logging
 import os
 import queue
+import random
 import re
 import sys
 import threading
@@ -35,6 +37,7 @@ LIST_PATH = os.path.join(HERE, "kaomoji.txt")
 CONFIG_PATH = os.path.join(HERE, "config.json")
 USAGE_PATH = os.path.join(HERE, "usage.json")
 LOG_PATH = os.path.join(HERE, "kaomoji.log")
+MODEL_DIR = os.path.join(HERE, "model")
 DEFAULTS = {"hotkey": "ctrl+alt+k", "mode": "paste", "suggest": True}
 
 logging.basicConfig(filename=LOG_PATH, level=logging.DEBUG if os.environ.get("KAOMOJI_DEBUG") else logging.INFO, encoding="utf-8",
@@ -50,6 +53,7 @@ GROUP = re.compile(r"^\[([a-z0-9-]+)\]\s*(.*)$")
 class Entry:
     def __init__(self, text, order, group):
         self.text, self.order, self.group = text, order, group  # group: the first one it's listed under
+        self.desc = ""
         self.tags = {}  # tag -> (from an extra?, line), which breaks ties in the ranking
 
 
@@ -64,11 +68,13 @@ def load_list(path=LIST_PATH):
             if m:
                 group = [m.group(1)] + m.group(2).lower().split()
                 continue
-            text, _, extra = line.partition("\t")
+            text, extra, desc = (line.split("\t") + ["", ""])[:3]
             text = text.strip()
             if text not in by_text:  # the same kaomoji under two groups gets both groups' tags
                 by_text[text] = Entry(text, len(entries), group[0] if group else "")
                 entries.append(by_text[text])
+            if desc.strip() and not by_text[text].desc:
+                by_text[text].desc = desc.strip()
             # A group's own members beat members of other groups that carry the word as an extra.
             tags = by_text[text].tags
             for tag, rank in [(t, (0, n)) for t in group] + [(t, (1, n)) for t in extra.lower().split()]:
@@ -93,7 +99,9 @@ def word_score(word, tags):
     return best
 
 
-def search(entries, query, usage):
+def search(entries, query, usage, jitter=None, semantic=None):
+    """Tag matches first; then, if a semantic model is ready, whatever means the same thing."""
+    jitter = jitter or {}
     words = query.lower().split()
     if not words:
         recent = sorted((e for e in entries if e.text in usage),
@@ -108,9 +116,16 @@ def search(entries, query, usage):
         score = sum(s for s, _ in parts)
         score += 10 if all(s for s, _ in parts) else 0  # matching every word beats any partial match
         score += min(usage.get(e.text, (0, 0))[0], 20) * 0.1  # her favourites float up a little
+        score += 0.5 * jitter.get(e.text, 0)  # equal matches come in a new order each time
         scored.append((-score, min(line for s, line in parts if s), e))
     scored.sort(key=lambda s: s[:2])
-    return [s[2] for s in scored]
+    results = [s[2] for s in scored]
+    sims = semantic.similarities(query, entries) if semantic else None
+    if sims is not None:
+        seen = {e.text for e in results}
+        results += [entries[i] for i in sims.argsort()[::-1][:40]
+                    if sims[i] > 0.3 and entries[i].text not in seen]
+    return results
 
 
 # Chat words -> the tags they mean. A word not listed here is matched against the tags as it is.
@@ -136,7 +151,7 @@ SLANG = {
     "yay": "excited", "hype": "excited", "finally": "excited", "pog": "excited", "poggers": "excited",
     "epic": "excited", "peak": "excited", "lets": "excited", "letsgo": "excited", "woo": "excited",
     "ok": "goodjob", "okay": "goodjob", "nice": "goodjob", "gg": "goodjob", "great": "goodjob",
-    "good": "goodjob", "yes": "yes", "yep": "yes", "yeah": "yes", "ye": "yes",
+    "yes": "yes", "yep": "yes", "yeah": "yes", "ye": "yes",
     "no": "no", "nope": "no", "nah": "no",
     "hugs": "hug", "pls": "please", "plz": "please",
     "hungry": "food", "pizza": "food", "eating": "food", "dinner": "food", "lunch": "food",
@@ -145,17 +160,19 @@ SLANG = {
     "scary": "scared", "afraid": "scared", "yikes": "nervous", "awkward": "nervous",
     "gaming": "game", "playing": "game", "won": "game", "song": "music",
     "hehe": "smug", "heh": "smug", "sus": "stare", "ew": "disgust", "eww": "disgust", "gross": "disgust",
-    "homework": "write", "study": "write", "studying": "write",
-    "work": "write", "working": "write", "coffee": "drink", "tea": "drink",
+    "homework": "write", "study": "write", "studying": "write", "coffee": "drink", "tea": "drink",
 }
 STOP = set("a an the i im me my you your u it its is are was be to of in on at and or but so "
            "that this just like with for have has had do did not dont can will what "
-           "fuck fucking fucked shit shitty damn".split())
+           "good fuck fucking fucked shit shitty damn".split())
 
 
-def suggest(entries, text, usage):
-    """Rank kaomoji for what she has typed so far: the last words count most.
+def suggest(entries, text, usage, jitter=None, semantic=None):
+    """Rank kaomoji for what she has typed so far. Two signals: tag matches on her words
+    (the last words count most, slang mapped through SLANG), and, once the model is loaded,
+    how close in meaning each kaomoji's description is to the message.
     Returns (entries, the words that matched)."""
+    jitter = jitter or {}
     words = [w for w in re.findall(r"[a-z]+", text.lower()) if w not in STOP][-12:]
     scores, both, hits = {}, {}, []  # both: how many more words beyond the first an entry matched
     for distance, word in enumerate(reversed(words)):
@@ -175,9 +192,20 @@ def suggest(entries, text, usage):
         if matched and word not in hits:
             hits.append(word)
     by_text = {e.text: e for e in entries}
-    ranked = sorted(scores, key=lambda t: (-(scores[t] + 0.5 * both[t]  # a sleepy cat for "cat sleeping"
-                                             + min(usage.get(t, (0, 0))[0], 20) * 0.05),
-                                           by_text[t].order))
+    total = {t: KEYWORD_WEIGHT * (scores[t] + 0.5 * both[t]) for t in scores}  # 0.5: a sleepy cat for "cat sleeping"
+    if words and semantic:
+        # The model doesn't know chat slang, so it gets the meanings spelled out too.
+        meant = [SLANG[w] for w in words if w in SLANG]
+        sims = semantic.similarities(" ".join(text.split()[-30:] + meant), entries)
+        if sims is not None:
+            for e, sim in zip(entries, sims):
+                if sim > SIM_FLOOR or e.text in total:
+                    total[e.text] = total.get(e.text, 0) + SIM_WEIGHT * max(sim - SIM_FLOOR, 0)
+            if not hits and sims.max() > SIM_FLOOR + 0.1:
+                hits = ["your message"]
+    for t in total:
+        total[t] += min(usage.get(t, (0, 0))[0], 20) * 0.05 + 0.6 * jitter.get(t, 0)
+    ranked = sorted(total, key=lambda t: (-total[t], by_text[t].order))
     # The first screen mixes moods: at most 4 from one group, so "hungry lol" isn't nine laughs.
     first, rest, per_group = [], [], {}
     for t in ranked:
@@ -185,6 +213,82 @@ def suggest(entries, text, usage):
         per_group[e.group] = per_group.get(e.group, 0) + 1
         (first if per_group[e.group] <= 4 and len(first) < 9 else rest).append(e)
     return first + rest, list(reversed(hits))
+
+
+KEYWORD_WEIGHT, SIM_WEIGHT, SIM_FLOOR = 1.0, 6.0, 0.25  # tuned by hand on --suggest examples
+
+
+class Semantic:
+    """A small multilingual sentence-embedding model (paraphrase-multilingual-MiniLM-L12-v2,
+    int8 ONNX), run locally on the CPU: 116 MB in model/, ~15 ms per message, reads Czech too.
+    The whole app holds ~250 MB with it. Two things keep it there: sentencepiece instead of
+    tokenizer.json (whose 250k-word vocabulary costs 250 MB in the tokenizers library), and
+    onnxruntime with the graph optimiser and memory arena off. The descriptions are embedded
+    once in the background; until then similarities() returns None."""
+
+    REPO = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+    FILES = ("sentencepiece.bpe.model", "onnx/model_quint8_avx2.onnx")
+
+    def __init__(self):
+        self.session, self.pieces, self.entries, self.matrix = None, None, None, None
+        self.lock = threading.Lock()
+
+    def load(self):
+        import glob
+        import onnxruntime as ort
+        import sentencepiece
+        paths = []
+        for name in self.FILES:
+            found = glob.glob(os.path.join(MODEL_DIR, "models--*", "snapshots", "*", *name.split("/")))
+            if not found:  # first run: fetch it once
+                from huggingface_hub import hf_hub_download
+                found = [hf_hub_download(self.REPO, name, cache_dir=MODEL_DIR)]
+            paths.append(found[0])
+        self.pieces = sentencepiece.SentencePieceProcessor(model_file=paths[0])
+        opts = ort.SessionOptions()
+        opts.enable_cpu_mem_arena = False
+        opts.enable_mem_pattern = False
+        opts.graph_optimization_level = ort.GraphOptimizationLevel.ORT_DISABLE_ALL
+        opts.intra_op_num_threads = 2
+        self.session = ort.InferenceSession(paths[1], opts, providers=["CPUExecutionProvider"])
+
+    def token_ids(self, text):
+        # XLM-R ids: <s>=0, </s>=2, <unk>=3, and every sentencepiece id shifted up by one
+        return [0] + [i + 1 if i else 3 for i in self.pieces.encode(text)][:126] + [2]
+
+    def embed(self, texts):
+        import numpy as np
+        rows = [self.token_ids(t) for t in texts]
+        width = max(len(r) for r in rows)
+        ids = np.array([r + [1] * (width - len(r)) for r in rows], dtype=np.int64)  # 1 = <pad>
+        mask = np.array([[1] * len(r) + [0] * (width - len(r)) for r in rows], dtype=np.int64)
+        out = self.session.run(None, {"input_ids": ids, "attention_mask": mask,
+                                      "token_type_ids": np.zeros_like(ids)})[0]
+        v = (out * mask[..., None]).sum(1) / mask.sum(1, keepdims=True)  # mean pooling
+        return v / np.linalg.norm(v, axis=1, keepdims=True)
+
+    def prepare(self, entries):
+        try:
+            import numpy as np
+            with self.lock:
+                if self.session is None:
+                    self.load()
+                texts = [e.desc or " ".join(t for t, (extra, _) in e.tags.items() if not extra)
+                         for e in entries]
+                matrix = np.vstack([self.embed(texts[i:i + 32]) for i in range(0, len(texts), 32)])
+            self.matrix = matrix
+            self.entries = entries  # set last: similarities() checks it
+            log.info("meaning model ready")
+        except Exception:
+            log.exception("couldn't load the meaning model; suggestions use tags only")
+
+    def similarities(self, text, entries):
+        """Cosine similarity of text to each entry, or None if not ready for this list."""
+        if self.entries is not entries or not text.strip():
+            return None
+        with self.lock:
+            v = self.embed([text])[0]
+        return self.matrix @ v
 
 
 def load_json(path, default):
@@ -498,7 +602,8 @@ class Picker:
         self.entries, self.list_mtime = [], None
         self.usage = load_json(USAGE_PATH, {})
         self.results, self.target = [], None
-        self.suggested, self.hits = [], []
+        self.suggested, self.hits, self.jitter = [], [], {}
+        self.semantic = Semantic()
 
         top = self.top = tk.Toplevel(root, bg=EDGE, padx=1, pady=1)
         top.withdraw()
@@ -529,6 +634,7 @@ class Picker:
             self.field.bind(seq, fn)
         self.list.bind("<ButtonRelease-1>", lambda e: self.pick_index(self.list.nearest(e.y)))
         top.bind("<FocusOut>", lambda e: root.after(150, self.hide_if_unfocused))
+        self.reload_if_changed()  # loads the meaning model now, not on the first hotkey
 
     # --- data ---
 
@@ -537,11 +643,12 @@ class Picker:
             mtime = os.path.getmtime(LIST_PATH)
             if mtime != self.list_mtime:
                 self.entries, self.list_mtime = load_list(), mtime
+                threading.Thread(target=self.semantic.prepare, args=(self.entries,), daemon=True).start()
         except (OSError, UnicodeDecodeError):
             log.exception("couldn't read the kaomoji list")
 
     def refresh(self):
-        results = search(self.entries, self.query.get(), self.usage)
+        results = search(self.entries, self.query.get(), self.usage, self.jitter, self.semantic)
         if self.suggested and not self.query.get().strip():
             seen = {e.text for e in self.suggested}
             results = self.suggested + [e for e in results if e.text not in seen]
@@ -599,7 +706,9 @@ class Picker:
     def show(self, target, typed=""):
         self.target = target
         self.reload_if_changed()
-        self.suggested, self.hits = suggest(self.entries, typed, self.usage)
+        rnd = random.Random()
+        self.jitter = {e.text: rnd.random() for e in self.entries}
+        self.suggested, self.hits = suggest(self.entries, typed, self.usage, self.jitter, self.semantic)
         self.query.set("")
         self.refresh()
         top = self.top
@@ -704,7 +813,9 @@ def main():
     args = sys.argv[1:]
     if args[:1] == ["--suggest"]:
         sys.stdout.reconfigure(encoding="utf-8")
-        found, hits = suggest(load_list(), " ".join(args[1:]), load_json(USAGE_PATH, {}))
+        entries, semantic = load_list(), Semantic()
+        semantic.prepare(entries)
+        found, hits = suggest(entries, " ".join(args[1:]), load_json(USAGE_PATH, {}), semantic=semantic)
         print("matched:", ", ".join(hits) or "nothing")
         for e in found[:9]:
             print(e.text)

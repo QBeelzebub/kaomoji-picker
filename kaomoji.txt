@@ -1,1098 +1,1100 @@
 # The kaomoji list. Edit freely; the app reloads it every time the picker opens.
 # A line "[name] tags..." starts a group: every kaomoji under it gets those tags.
-# A kaomoji line is the kaomoji, then optionally a TAB and extra tags for that one.
+# A kaomoji line is the kaomoji, then optionally a TAB and extra tags for that one, then
+# optionally a TAB and a short description: what it shows and when you'd send it. The
+# suggestions match your message against the descriptions by meaning, so a good one helps.
 # Lines starting with # are comments.
 
 [happy] happy smile glad joy cheerful content pleased
-(◕‿◕)
-(◕‿◕✿)	flower cute
-(＾▽＾)	grin
-(＾◡＾)
-(´｡• ᵕ •｡`)	soft cute
-(￣▽￣)	grin
-(*^‿^*)	blush
-(ᵔᴥᵔ)	bear cute
-(◠‿◠)
-(｡◕‿◕｡)	cute
-(✿◠‿◠)	flower
-(´▽`)
-(*´▽`*)	blush
-(⌒‿⌒)
-(⁀ᗢ⁀)
-٩(◕‿◕)۶	yay
-(｡•̀ᴗ-)✧	wink sparkle
-(ﾉ´ヮ`)ﾉ*: ･ﾟ	sparkle yay magic
-(´∀`)
-(*・ω・)	cute
-(・ω・)	cute neutral
-(｡･ω･｡)	cute
-(⌒▽⌒)☆	star
-ヽ(・∀・)ﾉ	yay
-(≧◡≦)	cute
-(o^▽^o)
-(✯◡✯)	starry
-(˶ᵔ ᵕ ᵔ˶)	soft cute blush
-(˶˃ ᵕ ˂˶)	soft cute excited
-(ᵕ—ᴗ—)	peaceful calm
-(◡‿◡✿)	flower calm
+(◕‿◕)		simple warm smile, content and friendly
+(◕‿◕✿)	flower cute	sweet smile with a flower, wholesome and cute
+(＾▽＾)	grin	big open grin, cheerful and upbeat
+(＾◡＾)		gentle closed-eye smile, pleased
+(´｡• ᵕ •｡`)	soft cute	soft shy smile, tender and sweet
+(￣▽￣)	grin	satisfied grin, pleased with how things went
+(*^‿^*)	blush	blushing happy smile, flattered
+(ᵔᴥᵔ)	bear cute	happy little bear face, cheerful
+(◠‿◠)		calm peaceful smile, at ease
+(｡◕‿◕｡)	cute	wide-eyed cute smile, delighted
+(✿◠‿◠)	flower	smiling with a flower, sweet and lighthearted
+(´▽`)		relaxed happy face, glad
+(*´▽`*)	blush	warm blushing smile, cozy and happy
+(⌒‿⌒)		beaming closed-eye smile, very happy
+(⁀ᗢ⁀)		smug content smile, quietly pleased
+٩(◕‿◕)۶	yay	arms up with a smile, yay, celebrating
+(｡•̀ᴗ-)✧	wink sparkle	winking with a sparkle, playful confidence
+(ﾉ´ヮ`)ﾉ*: ･ﾟ	sparkle yay magic	throwing sparkles happily, delighted
+(´∀`)		cheerful laughing smile, glad
+(*・ω・)	cute	curious cute face, interested
+(・ω・)	cute neutral	neutral cute face, just listening, hmm okay
+(｡･ω･｡)	cute	small cute face, innocent
+(⌒▽⌒)☆	star	beaming with a star, happy and proud
+ヽ(・∀・)ﾉ	yay	arms raised happily, hooray
+(≧◡≦)	cute	scrunched happy smile, adorable joy
+(o^▽^o)		bright happy face, enthusiastic
+(✯◡✯)	starry	starry-eyed smile, amazed and happy
+(˶ᵔ ᵕ ᵔ˶)	soft cute blush	soft blushing smile, warm fuzzy feeling
+(˶˃ ᵕ ˂˶)	soft cute excited	squealing happily, excited and cute
+(ᵕ—ᴗ—)	peaceful calm	peaceful content face, relaxed, at peace
+(◡‿◡✿)	flower calm	calm smile with a flower, serene
 
 [laugh] laugh lol lmao haha funny giggle
-(≧▽≦)
-(*≧▽≦)
-ヽ(≧▽≦)ﾉ
-(ﾉ≧∀≦)ﾉ
-(*≧∀≦*)
-(＾∀＾)
-(ノ∀`*)	giggle embarrassed
-(´∀｀*)
-(ﾟ∀ﾟ)
-(≧∇≦)ﾉ
-(*￣▽￣)b	thumbs
-(￣▽￣)ノ
-ｗ(ﾟДﾟ)ｗ	shock wtf
-(´ ∀ ` *)
-(＾ｖ＾)
-( ´ ▽ ` )ﾉ
-⸜(｡˃ ᵕ ˂ )⸝♡	cute heart
+(≧▽≦)		laughing hard, eyes squeezed shut
+(*≧▽≦)		cracking up laughing
+ヽ(≧▽≦)ﾉ		laughing with arms up, hilarious
+(ﾉ≧∀≦)ﾉ		laughing and throwing hands up, that's so funny
+(*≧∀≦*)		giggling uncontrollably
+(＾∀＾)		big laugh, amused
+(ノ∀`*)	giggle embarrassed	giggling while covering face, embarrassed laugh
+(´∀｀*)		chuckling, amused
+(ﾟ∀ﾟ)		surprised laugh, wow haha
+(≧∇≦)ﾉ		laughing and waving it off
+(*￣▽￣)b	thumbs	smug laugh with a thumbs up, good one
+(￣▽￣)ノ		grinning and waving, heh hi
+ｗ(ﾟДﾟ)ｗ	shock wtf	shocked laughing, what the hell lmao
+(´ ∀ ` *)		soft chuckle, that's funny
+(＾ｖ＾)		cheeky grin, amused
+( ´ ▽ ` )ﾉ		laughing and waving, haha bye
+⸜(｡˃ ᵕ ˂ )⸝♡	cute heart	happy laugh with a heart, delighted
 
 [excited] excited yay hype woo celebrate cheer happy party
-＼(＾▽＾)／
-\(^o^)/
-ヽ(°〇°)ﾉ	shock
-٩(ˊᗜˋ*)و
-٩(๑❛ᴗ❛๑)۶
-(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧	sparkle magic
-☆*:.｡.o(≧▽≦)o.｡.:*☆	star sparkle
-＼(≧▽≦)／
-(๑˃ᴗ˂)ﻭ	fist
-ヾ(≧▽≦*)o
-(ﾉ´▽｀)ﾉ♪	music
-o(≧▽≦)o
-ヽ(*⌒▽⌒*)ﾉ
-(☆▽☆)	starry eyes
-(★ω★)	starry eyes
-(✧ω✧)	sparkle eyes
-(ノ^o^)ノ
-٩(＾◡＾)۶
-ヽ(>∀<☆)ノ	star
-(/^▽^)/
-＼(★^∀^★)／	star
-\(★ω★)/	star
-(ﾉ>ω<)ﾉ :｡･:*:･ﾟ’★,｡･:*:･ﾟ’☆	sparkle star magic
+＼(＾▽＾)／		arms up cheering, yay
+\(^o^)/		cheering with joy, hooray
+ヽ(°〇°)ﾉ	shock	shocked excitement, whoa no way
+٩(ˊᗜˋ*)و		pumped up with fists, let's go
+٩(๑❛ᴗ❛๑)۶		celebrating with fists up, yes
+(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧	sparkle magic	throwing sparkles, magical excitement
+☆*:.｡.o(≧▽≦)o.｡.:*☆	star sparkle	bursting with stars, super excited
+＼(≧▽≦)／		cheering loudly, so happy
+(๑˃ᴗ˂)ﻭ	fist	fist pump, yes we did it
+ヾ(≧▽≦*)o		jumping with excitement
+(ﾉ´▽｀)ﾉ♪	music	excited and singing, happy tune
+o(≧▽≦)o		thrilled, can't wait
+ヽ(*⌒▽⌒*)ﾉ		joyful cheering, wonderful news
+(☆▽☆)	starry eyes	starry eyes, amazed and impressed
+(★ω★)	starry eyes	star-struck, wow amazing
+(✧ω✧)	sparkle eyes	sparkling eyes, fascinated, so cool
+(ノ^o^)ノ		arms up excited, yay
+٩(＾◡＾)۶		happy fists up, celebrating
+ヽ(>∀<☆)ノ	star	excited squeal with a star
+(/^▽^)/		excited with arms up, finally
+＼(★^∀^★)／	star	starry cheer, this is amazing
+\(★ω★)/	star	starry-eyed cheering, hype
+(ﾉ>ω<)ﾉ :｡･:*:･ﾟ’★,｡･:*:･ﾟ’☆	sparkle star magic	celebrating with fireworks of sparkles, best day ever
 
 [love] love heart adore crush aww romance
-(♡°▽°♡)
-(´｡• ω •｡`) ♡
-(*♡∀♡)
-(♡ω♡ )
-(◍•ᴗ•◍)❤
-(｡♥‿♥｡)
-(灬º‿º灬)♡
-(´ ε ` )♡	kiss
-(ɔˆ ³(ˆ⌣ˆc)	kiss hug couple
-(っ˘з(˘⌣˘ )	kiss couple
-(づ￣ ³￣)づ	kiss hug
-(*˘︶˘*).｡.:*♡
-♡( ◡‿◡ )
-(´• ω •`) ♡
-(≧◡≦) ♡
-(˘∀˘)/(μ‿μ) ❤	couple
-(❤ω❤)
-(✿ ♥‿♥)	flower
-( ˘ ³˘)♥	kiss
-(°◡°♡)
-♡＾▽＾♡
-(ღ˘⌣˘ღ)
-(♥ω♥*)
-( ˶ˆ꒳ˆ˵ )♡	cute soft
-(⁄ ⁄•⁄ω⁄•⁄ ⁄)♡	blush shy
-(｡･ω･｡)ﾉ♡	wave give
-(っ´ω`)ﾉ♡	give
-♡〜٩( ˃▿˂ )۶〜♡	excited
-(*¯ ³¯*)♡	kiss
+(♡°▽°♡)		heart eyes, totally in love
+(´｡• ω •｡`) ♡		soft shy love, adoring
+(*♡∀♡)		heart eyes grin, crush
+(♡ω♡ )		lovestruck heart eyes
+(◍•ᴗ•◍)❤		cute smile with a heart, love you
+(｡♥‿♥｡)		heart eyes, lovestruck and dreamy
+(灬º‿º灬)♡		blushing in love
+(´ ε ` )♡	kiss	blowing a kiss
+(ɔˆ ³(ˆ⌣ˆc)	kiss hug couple	two people kissing, couple in love
+(っ˘з(˘⌣˘ )	kiss couple	kissing someone on the cheek, couple
+(づ￣ ³￣)づ	kiss hug	going in for a kiss and a hug
+(*˘︶˘*).｡.:*♡		dreamy love with sparkles and a heart
+♡( ◡‿◡ )		content love, warm heart
+(´• ω •`) ♡		gentle love, heart, care
+(≧◡≦) ♡		happy love, heart, adore you
+(˘∀˘)/(μ‿μ) ❤	couple	couple in love, together
+(❤ω❤)		heart eyes, infatuated
+(✿ ♥‿♥)	flower	in love with flowers, romantic
+( ˘ ³˘)♥	kiss	kissy face with a heart
+(°◡°♡)		sweet love, heart
+♡＾▽＾♡		happy hearts all around
+(ღ˘⌣˘ღ)		dreamy romantic love
+(♥ω♥*)		lovestruck, heart eyes
+( ˶ˆ꒳ˆ˵ )♡	cute soft	soft cozy love, affectionate
+(⁄ ⁄•⁄ω⁄•⁄ ⁄)♡	blush shy	extremely flustered and blushing, with love
+(｡･ω･｡)ﾉ♡	wave give	waving and sending love
+(っ´ω`)ﾉ♡	give	giving someone love, here's a heart
+♡〜٩( ˃▿˂ )۶〜♡	excited	excited love, hearts everywhere
+(*¯ ³¯*)♡	kiss	kiss with a heart, mwah
 
 [blush] blush shy embarrassed flustered uwu
-(⁄ ⁄•⁄ω⁄•⁄ ⁄)
-(〃▽〃)
-(*/ω＼)	hide
-(*/▽＼*)	hide
-(//ω//)
-(〃ω〃)
-(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)
-(*ﾉωﾉ)	hide
-(＃＞＜)
-(*^.^*)
-(〃・ω・〃)
-(o^ ^o)
-(//▽//)
-(*μ_μ)	hide
-(⁄ ⁄•⁄-⁄•⁄ ⁄)
-(///ˬ///✿)	flower
-(˶ˆ ˙ˆ˵)	soft
-(｡>﹏<｡)	nervous
-(*≧ω≦)
-(⸝⸝⸝•_•⸝⸝⸝)	awkward
-(⸝⸝⸝°_°⸝⸝⸝)	awkward shock
-(灬´ᴗ`灬)
+(⁄ ⁄•⁄ω⁄•⁄ ⁄)		extremely flustered and blushing, embarrassed
+(〃▽〃)		blushing happily, flattered
+(*/ω＼)	hide	hiding face, too embarrassed
+(*/▽＼*)	hide	covering face in embarrassment, stop it
+(//ω//)		blushing hard, flustered
+(〃ω〃)		blushing shyly
+(⁄ ⁄>⁄ ▽ ⁄<⁄ ⁄)		flustered and squirming, embarrassed
+(*ﾉωﾉ)	hide	hiding behind hands, shy
+(＃＞＜)		embarrassed and frustrated, ugh so embarrassing
+(*^.^*)		blushing smile, sweet
+(〃・ω・〃)		shy blushing face
+(o^ ^o)		shy little smile
+(//▽//)		blushing very hard, flustered
+(*μ_μ)	hide	hiding face in hands, embarrassed
+(⁄ ⁄•⁄-⁄•⁄ ⁄)		awkward embarrassed blush
+(///ˬ///✿)	flower	shy blush with a flower
+(˶ˆ ˙ˆ˵)	soft	soft shy smile, bashful
+(｡>﹏<｡)	nervous	squeezing eyes shut, nervous and embarrassed
+(*≧ω≦)		embarrassed squeal
+(⸝⸝⸝•_•⸝⸝⸝)	awkward	awkwardly blushing, uh
+(⸝⸝⸝°_°⸝⸝⸝)	awkward shock	shocked and flustered, blushing
+(灬´ᴗ`灬)		blushing gentle smile
 
 [uwu] uwu owo cute soft
 (・ω・)
-(˘ω˘)
-(´・ω・`)	sad
-(｡•́︿•̀｡)	sad
-(◕ᴗ◕✿)
-UwU
-OwO
-(＾ω＾)
-(*・ω・)ﾉ	wave
-(o´ω`o)
-(ᗒᗨᗕ)
-(´꒳`)
-(｡•ᴗ•｡)
-(◕ω◕✿)
-(=^･ω･^=)	cat
-(˶°ㅁ°)!!	shock
-(ㅅ´ ˘ `)	pray please
-(っ˘ω˘ς )	cozy
-(｡˘ᴗ˘｡)	calm
+(˘ω˘)		content, peaceful, happy sigh
+(´・ω・`)	sad	sad puppy face, disappointed, aww
+(｡•́︿•̀｡)	sad	pouting sadly, about to cry
+(◕ᴗ◕✿)		sweet innocent smile with a flower
+UwU		uwu, cute and soft
+OwO		owo, curious, what's this
+(＾ω＾)		happy cute face
+(*・ω・)ﾉ	wave	cute wave, hi
+(o´ω`o)		soft happy face, cozy
+(ᗒᗨᗕ)		overwhelmed happy squee
+(´꒳`)		soft cute face, hmm
+(｡•ᴗ•｡)		small polite smile
+(◕ω◕✿)		cute smile with a flower
+(=^･ω･^=)	cat	cute cat face
+(˶°ㅁ°)!!	shock	gasp, shocked
+(ㅅ´ ˘ `)	pray please	pleading with hands together, please
+(っ˘ω˘ς )	cozy	cozy and snug, comfy
+(｡˘ᴗ˘｡)	calm	calm, relaxed, content
 
 [smug] smug wink cool sly heh proud
-(￣ー￣)
-(￣ω￣)
-( ͡° ͜ʖ ͡°)	lenny sus
-( ͡~ ͜ʖ ͡°)	lenny wink
-( ͠° ͟ʖ ͡°)	lenny suspicious
-(¬‿¬)
-(￣ε￣)
-(^_-)	wink
-(^_-)-☆	wink star
-(￣︶￣)
-(¬‿¬ )
-( ˘▽˘)っ♨	tea chill
-(⌐■_■)	sunglasses deal
-(•_•) ( •_•)>⌐■-■ (⌐■_■)	sunglasses deal
-(￣^￣)ゞ	salute
-(￢‿￢ )
-(ᓀ ᴗ ᓂ)
-(｀∀´)Ψ	devil evil
-(￣ヘ￣)	pout
-(￣∇￣)
-(ᵔ.ᵔ)
-( ˙꒳​˙ )	stare
+(￣ー￣)		smug knowing look
+(￣ω￣)		smug satisfied face
+( ͡° ͜ʖ ͡°)	lenny sus	lenny face, suggestive, sus
+( ͡~ ͜ʖ ͡°)	lenny wink	winking lenny face, cheeky innuendo
+( ͠° ͟ʖ ͡°)	lenny suspicious	suspicious lenny face, hmm sus
+(¬‿¬)		sly smirk, I know what you did
+(￣ε￣)		smug pout, whatever
+(^_-)	wink	wink, just kidding
+(^_-)-☆	wink star	wink with a star, playful
+(￣︶￣)		satisfied smug face
+(¬‿¬ )		sly sideways smirk
+( ˘▽˘)っ♨	tea chill	chilling with a hot drink, relaxed
+(⌐■_■)	sunglasses deal	cool with sunglasses, deal with it
+(•_•) ( •_•)>⌐■-■ (⌐■_■)	sunglasses deal	putting on sunglasses, deal with it
+(￣^￣)ゞ	salute	proud salute, smug
+(￢‿￢ )		sly smirk
+(ᓀ ᴗ ᓂ)		smug relaxed face
+(｀∀´)Ψ	devil evil	evil grin, mischievous
+(￣ヘ￣)	pout	pouting, hmph
+(￣∇￣)		smug grin
+(ᵔ.ᵔ)		small smug face
+( ˙꒳​˙ )	stare	blank stare, unimpressed
 
 [wink] wink flirt tease
-(^_~)
-(・ω<)
+(^_~)		playful wink
+(・ω<)		cute wink
 (｡•̀ᴗ-)✧	sparkle
-(^_-)≡☆	star
-(o^∀^o)ﾉ
-(＾ｰ^)ノ
-(◕‿-)✌	peace
-(>ω^)
-(ゝ∀･)
+(^_-)≡☆	star	wink with a shooting star
+(o^∀^o)ﾉ		cheerful wink and wave
+(＾ｰ^)ノ		winking wave
+(◕‿-)✌	peace	wink with a peace sign
+(>ω^)		playful cute wink
+(ゝ∀･)		cheeky wink
 
 [cute] cute adorable soft wholesome
-(◕ᴥ◕)
-ʕ•ᴥ•ʔ	bear
-(っ◔◡◔)っ	hug give
-(◍•ᴗ•◍)
-(｡◕‿‿◕｡)
+(◕ᴥ◕)		cute puppy-like face
+ʕ•ᴥ•ʔ	bear	cute little bear
+(っ◔◡◔)っ	hug give	offering a hug, cute
+(◍•ᴗ•◍)		cute round face, innocent
+(｡◕‿‿◕｡)		big cute smile
 (´｡• ᵕ •｡`)
-(✿◕‿◕✿)	flower
-(ﾉ◕ヮ◕)ﾉ
-(ʃƪ˘ﻬ˘)	pray
-(•ө•)	bird
-( ´ ꒳ ` )
-(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ	flower sparkle
-꒰ᐢ. .ᐢ꒱	bunny
-(˵ •̀ ᴗ - ˵ ) ✧	wink sparkle
+(✿◕‿◕✿)	flower	adorable smile with flowers
+(ﾉ◕ヮ◕)ﾉ		cute arms-up cheer
+(ʃƪ˘ﻬ˘)	pray	praying hopefully, cute
+(•ө•)	bird	small bird, cute
+( ´ ꒳ ` )		soft cute face
+(*ᴗ͈ˬᴗ͈)ꕤ*.ﾟ	flower sparkle	gentle sweet face with flowers, wholesome
+꒰ᐢ. .ᐢ꒱	bunny	cute little bunny face
+(˵ •̀ ᴗ - ˵ ) ✧	wink sparkle	confident wink with a sparkle
 
 [cat] cat kitty kitten meow nya neko
 (=^･ω･^=)
-(=^･ｪ･^=)
-(=①ω①=)
-(=^‥^=)
-( =ω= )
-(^・ω・^ )
-(=｀ω´=)	angry
-(=^･^=)
-ฅ^•ﻌ•^ฅ	paws
-ฅ(^・ω・^ฅ)	paws
-(^._.^)ﾉ	wave
-/ᐠ｡ꞈ｡ᐟ\
-/ᐠ - ˕ -マ	sleepy sleep tired
-ฅ(•ㅅ•❀)ฅ	flower paws
-(ↀДↀ)✧	shock
-(=ＴェＴ=)	cry sad
-(=^ ◡ ^=)	happy
-(^˵◕ω◕˵^)
-/ᐠ｡▿｡ᐟ\*ᵖᵘʳʳ*	purr happy
-=^._.^= ∫	tail
-(=ಠᆽಠ=)	stare angry
-ଲ(ⓛ ω ⓛ)ଲ	paws
-:3	smug
+(=^･ｪ･^=)		cat face
+(=①ω①=)		wide-eyed cat, staring
+(=^‥^=)		small cat face
+( =ω= )		content cat, eyes closed
+(^・ω・^ )		curious cat
+(=｀ω´=)	angry	angry grumpy cat
+(=^･^=)		tiny cat face
+ฅ^•ﻌ•^ฅ	paws	cat paws up, nya
+ฅ(^・ω・^ฅ)	paws	cat with paws up, playful
+(^._.^)ﾉ	wave	cat waving, hello
+/ᐠ｡ꞈ｡ᐟ\		cat sitting, curious
+/ᐠ - ˕ -マ	sleepy sleep tired	sleepy cat, eyes closed, napping
+ฅ(•ㅅ•❀)ฅ	flower paws	cute cat paws with a flower
+(ↀДↀ)✧	shock	shocked cat, wide eyes
+(=ＴェＴ=)	cry sad	crying cat, sad
+(=^ ◡ ^=)	happy	happy smiling cat
+(^˵◕ω◕˵^)		cute cat with big eyes
+/ᐠ｡▿｡ᐟ\*ᵖᵘʳʳ*	purr happy	happy cat purring
+=^._.^= ∫	tail	cat with a tail, sitting
+(=ಠᆽಠ=)	stare angry	grumpy cat glaring, disapproving
+ଲ(ⓛ ω ⓛ)ଲ	paws	cat paws, pouncing
+:3	smug	:3 cute smug face
 
 [dog] dog puppy woof doggo pup
-∪＾ェ＾∪
-∪･ω･∪
-∪￣-￣∪
-∪･ｪ･∪
-U^ｪ^U
-U・ᴥ・U
-V●ᴥ●V
-(❍ᴥ❍ʋ)
+∪＾ェ＾∪		happy dog
+∪･ω･∪		cute dog face
+∪￣-￣∪		unimpressed dog
+∪･ｪ･∪		puppy face
+U^ｪ^U		happy puppy
+U・ᴥ・U		cute dog
+V●ᴥ●V		dog face
+(❍ᴥ❍ʋ)		dog with big eyes
 (ᵔᴥᵔ)
-▼・ᴥ・▼
-૮ ˶ᵔ ᵕ ᵔ˶ ა	cute
-૮ ・ﻌ・ა	cute
-૮₍ ˃ ⤙ ˂ ₎ა	excited
+▼・ᴥ・▼		dog face with floppy ears
+૮ ˶ᵔ ᵕ ᵔ˶ ა	cute	soft cute puppy, happy
+૮ ・ﻌ・ა	cute	cute dog, curious
+૮₍ ˃ ⤙ ˂ ₎ა	excited	excited puppy, happy
 
 [bear] bear teddy
 ʕ•ᴥ•ʔ
-ʕ ᵔᴥᵔ ʔ	happy
-ʕ •̀ ω •́ ʔ	determined
-ʕ￫ᴥ￩ʔ
-ʕ ꈍᴥꈍʔ	sleepy sleep tired
-ʕノ•ᴥ•ʔノ ︵ ┻━┻	tableflip angry
-ʕ •`ᴥ•´ʔ	angry
-ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ	cry sad
-ʕっ•ᴥ•ʔっ	hug give
-ʕ ˵• ₒ •˵ ʔ	shock
-(´(ｪ)｀)
-(￣(ｴ)￣)
+ʕ ᵔᴥᵔ ʔ	happy	happy bear
+ʕ •̀ ω •́ ʔ	determined	determined bear, I'll do it
+ʕ￫ᴥ￩ʔ		sleepy squinting bear
+ʕ ꈍᴥꈍʔ	sleepy sleep tired	sleepy bear, tired
+ʕノ•ᴥ•ʔノ ︵ ┻━┻	tableflip angry	angry bear flipping a table
+ʕ •`ᴥ•´ʔ	angry	grumpy bear, angry
+ʕ ´•̥̥̥ ᴥ•̥̥̥`ʔ	cry sad	crying bear, sad
+ʕっ•ᴥ•ʔっ	hug give	bear offering a hug
+ʕ ˵• ₒ •˵ ʔ	shock	shocked bear, gasp
+(´(ｪ)｀)		bear face
+(￣(ｴ)￣)		content bear face
 
 [bunny] bunny rabbit
-(｡･ｪ･｡)
-／(･ × ･)＼
-(\_/)
+(｡･ｪ･｡)		bunny face
+／(･ × ･)＼		bunny with floppy ears
+(\_/)		bunny ears
 ꒰ᐢ. .ᐢ꒱
 ૮ ˶ᵔ ᵕ ᵔ˶ ა
-(\(•ᴗ•)/)
+(\(•ᴗ•)/)		happy bunny
 
 [animal] animal critter
-(・Θ・)	bird
-(・θ・)	bird chick
-( ･ิϖ･ิ)	bird
-(ﾟ<|＼	fish
-><(((('>	fish
-<コ:彡	squid octopus
-( ´(00)`)	pig
-(￣(oo)￣)	pig
-ᓚᘏᗢ	cat
-くコ:彡	squid
-/(•ㅅ•)\	bunny
-(°)#))<<	fish
->°))))彡	fish
-(:3 」∠ )_	seal lying lazy
-ᘛ⁐̤ᕐᐷ	mouse rat
-ପ(๑•ᴗ•๑)ଓ	bird angel
+(・Θ・)	bird	bird
+(・θ・)	bird chick	baby chick
+( ･ิϖ･ิ)	bird	little bird
+(ﾟ<|＼	fish	fish
+><(((('>	fish	fish swimming
+<コ:彡	squid octopus	squid
+( ´(00)`)	pig	pig
+(￣(oo)￣)	pig	pig face
+ᓚᘏᗢ	cat	cat walking
+くコ:彡	squid	squid swimming
+/(•ㅅ•)\	bunny	bunny
+(°)#))<<	fish	fish skeleton
+>°))))彡	fish	fish swimming fast
+(:3 」∠ )_	seal lying lazy	lying flat on the floor, lazy, can't be bothered
+ᘛ⁐̤ᕐᐷ	mouse rat	little mouse
+ପ(๑•ᴗ•๑)ଓ	bird angel	angel bird, flying happily
 
 [sad] sad down depressed upset sigh
 (´・ω・`)
-(╥﹏╥)	cry
-(っ˘̩╭╮˘̩)っ
+(╥﹏╥)	cry	crying sadly, so sad
+(っ˘̩╭╮˘̩)っ		sad, depressed, down
 (｡•́︿•̀｡)
-(◞‸◟)
-(︶︹︺)
-(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)	cry
-(•́︿•̀)
-(ㅠ﹏ㅠ)	cry
-(´；ω；`)	cry
-(｡ŏ﹏ŏ)
-(｡ﾉω＼｡)
-(っ- ‸ – ς)
-( ╥ω╥ )	cry
-(´-ω-`)	sigh
-(＿ ＿*) Z z z	tired
-(´Д`。)
-(ノ_<。)	cry
-(╯︵╰,)
-(︶︹︶)
-(._.)
-( ._.)
-(〒﹏〒)	cry
-.·°՞(っ-ᯅ-ς)՞°·.	cry
-(ó﹏ò｡)
-(◞‸ ◟ ；)
-( ˘︹˘ )
-(｡T ω T｡)	cry
-(ಥ﹏ಥ)	cry
+(◞‸◟)		disappointed and sad, dejected
+(︶︹︺)		sulking, unhappy
+(´°̥̥̥̥̥̥̥̥ω°̥̥̥̥̥̥̥̥｀)	cry	eyes full of tears, about to cry
+(•́︿•̀)		sad frown
+(ㅠ﹏ㅠ)	cry	crying, tears streaming
+(´；ω；`)	cry	teary eyes, sad
+(｡ŏ﹏ŏ)		worried and sad
+(｡ﾉω＼｡)		crying behind hands
+(っ- ‸ – ς)		sad sigh, feeling down
+( ╥ω╥ )	cry	crying softly
+(´-ω-`)	sigh	sigh, tired and disappointed
+(＿ ＿*) Z z z	tired	collapsed, exhausted, sad
+(´Д`。)		sighing in despair
+(ノ_<。)	cry	tearing up, it hurts
+(╯︵╰,)		sad, heartbroken
+(︶︹︶)		sulking, gloomy
+(._.)		quiet, sad, small
+( ._.)		looking away sadly
+(〒﹏〒)	cry	sobbing, very sad
+.·°՞(っ-ᯅ-ς)՞°·.	cry	crying with tears flying, devastated
+(ó﹏ò｡)		pouting sadly
+(◞‸ ◟ ；)		nervous and sad, sweating
+( ˘︹˘ )		sad sigh
+(｡T ω T｡)	cry	crying, tears
+(ಥ﹏ಥ)	cry	crying hard, so sad
 
 [cry] cry crying tears sob weep
 (╥﹏╥)
 (ಥ﹏ಥ)
-(ಥ_ಥ)
-(T_T)
-(ToT)
-(;´༎ຶД༎ຶ`)	sob
-(இ﹏இ`｡)
-(個_個)
-(T▽T)	happy tears
-(ノД`)・゜・。
-( ; ω ; )
-(´；ω；｀)
-(つ﹏<)･ﾟ｡
-(｡╯︵╰｡)
+(ಥ_ಥ)		crying silently, tears
+(T_T)		crying, T_T
+(ToT)		crying loudly
+(;´༎ຶД༎ຶ`)	sob	sobbing uncontrollably
+(இ﹏இ`｡)		crying with tears
+(個_個)		crying a river
+(T▽T)	happy tears	crying tears of joy, relieved
+(ノД`)・゜・。		crying, waaah
+( ; ω ; )		teary eyes
+(´；ω；｀)		crying, sad
+(つ﹏<)･ﾟ｡		crying, rubbing eyes
+(｡╯︵╰｡)		crying, sad and hurt
 (｡•́︿•̀｡)
-(´༎ຶོρ༎ຶོ`)	sob
-｡ﾟ(ﾟ´ω`ﾟ)ﾟ｡
-｡･ﾟﾟ*(>д<)*ﾟﾟ･｡
-(〒ω〒)
-(TдT)
-༼ ༎ຶ ෴ ༎ຶ༽	sob
-(╥ᆺ╥；)
-( ༎ຶ ۝ ༎ຶ )	sob
+(´༎ຶོρ༎ຶོ`)	sob	ugly sobbing
+｡ﾟ(ﾟ´ω`ﾟ)ﾟ｡		crying, tears flying
+｡･ﾟﾟ*(>д<)*ﾟﾟ･｡		crying hard, wailing
+(〒ω〒)		crying, tears pouring
+(TдT)		crying, so frustrated
+༼ ༎ຶ ෴ ༎ຶ༽	sob	sobbing dramatically
+(╥ᆺ╥；)		crying, sad
+( ༎ຶ ۝ ༎ຶ )	sob	sobbing dramatically, devastated
 
 [angry] angry mad rage furious pissed annoyed
-(╬ Ò﹏Ó)
-(｀Д´)
-(╯°□°)╯
-ヽ(`Д´)ﾉ
-(＃｀Д´)
-(ꐦ°᷄д°᷅)
-(｀へ´)	pout
-(＃`皿´)
-(ノ｀Д´)ノ
-(ﾉಥ益ಥ)ﾉ	rage
-(ಠ益ಠ)	rage
-(ง •̀_•́)ง	fight
-(╬ಠ益ಠ)	rage
-ヽ(ｏ`皿′ｏ)ﾉ
-(҂ `з´ )
-(ꐦ¬_¬)
-(눈_눈)	stare
-凸(￣ヘ￣)	fuck middle finger
-凸( •̀_•́ )凸	fuck middle finger
-(╯ರ ~ ರ)╯︵ ┻━┻	tableflip
-٩(╬ʘ益ʘ╬)۶	rage
-(◣_◢)
-(ू˃̣̣̣̣̣̣︿˂̣̣̣̣̣̣ ू)	cry
-(ᗒᗣᗕ)՞	frustrated
-(>_<)	frustrated
-(｀ε´)	pout
+(╬ Ò﹏Ó)		furious, enraged
+(｀Д´)		angry yelling
+(╯°□°)╯		angry, about to throw something
+ヽ(`Д´)ﾉ		angry shouting, arms up
+(＃｀Д´)		angry, fuming
+(ꐦ°᷄д°᷅)		irritated and annoyed, about to snap
+(｀へ´)	pout	sulking angrily, hmph
+(＃`皿´)		gritting teeth in anger
+(ノ｀Д´)ノ		angry, throwing hands up, done with this
+(ﾉಥ益ಥ)ﾉ	rage	crying with rage, so frustrated
+(ಠ益ಠ)	rage	seething rage, glaring
+(ง •̀_•́)ง	fight	ready to fight, come at me
+(╬ಠ益ಠ)	rage	boiling rage, glaring
+ヽ(ｏ`皿′ｏ)ﾉ		furious tantrum
+(҂ `з´ )		grumbling, pissed off
+(ꐦ¬_¬)		irritated side-eye
+(눈_눈)	stare	glaring, judging you
+凸(￣ヘ￣)	fuck middle finger	middle finger, fuck you
+凸( •̀_•́ )凸	fuck middle finger	double middle finger, fuck off
+(╯ರ ~ ರ)╯︵ ┻━┻	tableflip	raging and flipping a table
+٩(╬ʘ益ʘ╬)۶	rage	explosive rage, losing it
+(◣_◢)		evil angry glare
+(ू˃̣̣̣̣̣̣︿˂̣̣̣̣̣̣ ू)	cry	crying angrily, so upset
+(ᗒᗣᗕ)՞	frustrated	frustrated groan, ugh
+(>_<)	frustrated	frustrated, eyes squeezed, argh
+(｀ε´)	pout	pouting, annoyed
 
 [tableflip] tableflip flip table rage fuck
-(╯°□°)╯︵ ┻━┻
-(ノಠ益ಠ)ノ彡┻━┻
-┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻	double
-(ノ°Д°）ノ︵ ┻━┻
-(╯°Д°)╯︵/(.□ . \)	throw person
-┬─┬ノ( º _ ºノ)	unflip calm put back
-┬─┬ ノ( ゜-゜ノ)	unflip put back
-(ヘ･_･)ヘ┳━┳	unflip put back
-(╯‵□′)╯︵┻━┻
-‎(ﾉಥ益ಥ)ﾉ ┻━┻	cry
-(┛◉Д◉)┛彡┻━┻
-┻━┻ミ＼(≧ﾛ≦＼)
+(╯°□°)╯︵ ┻━┻		flipping a table in rage
+(ノಠ益ಠ)ノ彡┻━┻		rage quitting, flipping the table
+┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻	double	flipping two tables, double rage
+(ノ°Д°）ノ︵ ┻━┻		shocked and flipping a table
+(╯°Д°)╯︵/(.□ . \)	throw person	throwing a person in rage
+┬─┬ノ( º _ ºノ)	unflip calm put back	calmly putting the table back, calm down
+┬─┬ ノ( ゜-゜ノ)	unflip put back	putting the table back, let's be calm
+(ヘ･_･)ヘ┳━┳	unflip put back	carrying the table back, fixing things
+(╯‵□′)╯︵┻━┻		angry table flip
+‎(ﾉಥ益ಥ)ﾉ ┻━┻	cry	crying while flipping a table, frustrated tears
+(┛◉Д◉)┛彡┻━┻		wild-eyed table flip
+┻━┻ミ＼(≧ﾛ≦＼)		screaming and flipping a table
 
 [annoyed] annoyed unamused bored meh whatever unimpressed done
-(¬_¬)
-(￣～￣)
+(¬_¬)		unamused side-eye
+(￣～￣)		bored, chewing, meh
 (￣ε￣)
-(-_-)
-(¬､¬)
+(-_-)		flat unimpressed face, done
+(¬､¬)		annoyed side-eye
 (눈_눈)
-(￢_￢;)
-( ꒪Д꒪)
-(ㆆ_ㆆ)	stare
+(￢_￢;)		awkwardly annoyed
+( ꒪Д꒪)		disgusted annoyance
+(ㆆ_ㆆ)	stare	blank irritated stare
 (¬‿¬ )
-(ー_ー)
-(-_-;)
-(´-﹏-`；)
-(￣ヘ￣;)
-(；￣Д￣)
-(◔_◔)	eyeroll
-(¬_¬")
-(｡-_-｡)
-( ¬_¬)ﾉ
-(￢ ￢)
+(ー_ー)		tired unimpressed face, ugh
+(-_-;)		annoyed sweat, really
+(´-﹏-`；)		frustrated sigh
+(￣ヘ￣;)		sulking and annoyed
+(；￣Д￣)		disgruntled, seriously
+(◔_◔)	eyeroll	eye roll, whatever
+(¬_¬")		side-eye, sure
+(｡-_-｡)		tired and over it
+( ¬_¬)ﾉ		waving it off, whatever
+(￢ ￢)		unamused, deadpan
 
 [stare] stare look watching eyes sus suspicious
-(ಠ_ಠ)	disapproval
-(ಠ‿ಠ)
-(☉_☉)
-(⊙_⊙)	shock
-(•_•)
-( •_•)
-(ʘ_ʘ)
-(°_°)
-(・_・)
-(・_・ヾ	scratch confused
-(o_O)	confused
-(O_o)	confused
-(¬_¬ )
-(ఠ_ఠ)
-(ಠ_ಠ)>⌐■-■	sunglasses
-👁️👄👁️
-(°ロ°)
-(｡ŏ_ŏ)
-┬┴┬┴┤(･_├┬┴┬┴	peek hide
-|･ω･)	peek
-|д･)	peek
-(=ↀωↀ=)	cat
+(ಠ_ಠ)	disapproval	look of disapproval
+(ಠ‿ಠ)		creepy disapproving smile
+(☉_☉)		wide-eyed stare, what
+(⊙_⊙)	shock	shocked stare
+(•_•)		blank stare, speechless
+( •_•)		side-glance
+(ʘ_ʘ)		intense stare
+(°_°)		blank stare
+(・_・)		staring blankly
+(・_・ヾ	scratch confused	confused head scratch
+(o_O)	confused	confused, what
+(O_o)	confused	confused, huh
+(¬_¬ )		suspicious side-eye
+(ఠ_ఠ)		suspicious glare
+(ಠ_ಠ)>⌐■-■	sunglasses	disapproval then sunglasses, deal with it
+👁️👄👁️		weird stare, cursed
+(°ロ°)		stunned stare
+(｡ŏ_ŏ)		unsure stare
+┬┴┬┴┤(･_├┬┴┬┴	peek hide	peeking from behind a wall, lurking
+|･ω･)	peek	peeking around the corner
+|д･)	peek	peeking, lurking
+(=ↀωↀ=)	cat	cat staring wide-eyed
 
 [shrug] shrug idk dunno whatever oh well
-¯\_(ツ)_/¯
-┐(￣ヘ￣)┌
-┐(´∀｀)┌
-╮(￣～￣)╭
-ლ(¯ロ¯ლ)
-┐(‘～` )┌
-ヽ(ー_ー )ノ
-┐(︶▽︶)┌
-╮(︶︿︶)╭
-ヽ(´ー`)┌
-¯\_(⊙︿⊙)_/¯	confused
-╮(─▽─)╭
-┐(´д｀)┌
-¯\(°_o)/¯	confused
-¯\_( ͡° ͜ʖ ͡°)_/¯	lenny
-ㄟ( ▔, ▔ )ㄏ
+¯\_(ツ)_/¯		shrug, I don't know, whatever
+┐(￣ヘ￣)┌		shrug, who knows
+┐(´∀｀)┌		shrug, oh well
+╮(￣～￣)╭		shrug, whatever, meh
+ლ(¯ロ¯ლ)		shrug, no idea
+┐(‘～` )┌		casual shrug
+ヽ(ー_ー )ノ		shrug, not my problem
+┐(︶▽︶)┌		smiling shrug, it is what it is
+╮(︶︿︶)╭		sad shrug, oh well
+ヽ(´ー`)┌		shrug, can't help it
+¯\_(⊙︿⊙)_/¯	confused	confused shrug, no clue
+╮(─▽─)╭		content shrug, whatever works
+┐(´д｀)┌		tired shrug, ugh whatever
+¯\(°_o)/¯	confused	confused shrug, huh
+¯\_( ͡° ͜ʖ ͡°)_/¯	lenny	lenny shrug, heh who knows
+ㄟ( ▔, ▔ )ㄏ		shrug, how should I know
 
 [confused] confused huh what wat puzzled thinking question
-(・・?)
-(?_?)
+(・・?)		confused, huh what
+(?_?)		confused, what is happening
 (・_・ヾ
-(⊙_☉)
-(°ー°〃)
-(・∧‐)ゞ
-(゜-゜)
-(ーー;)
-( ◉ ‸ ◉ )?
+(⊙_☉)		puzzled, eyes uneven
+(°ー°〃)		confused, sweating
+(・∧‐)ゞ		confused and unsure
+(゜-゜)		blank confused face
+(ーー;)		confused awkward sweat
+( ◉ ‸ ◉ )?		extremely confused
 (o_O)
-(⊙_◎)
-(@_@)	dizzy
-(◎_◎;)
-(•ิ_•ิ)?
-(._.)?
-(・◇・)?
-(´･ᴗ･ ` )?
-(￢_￢)?
-( ˙▿˙ )?
-(⁰▿⁰)?
+(⊙_◎)		baffled, cross-eyed
+(@_@)	dizzy	dizzy and confused
+(◎_◎;)		very confused, sweating
+(•ิ_•ิ)?		unsure, what
+(._.)?		quietly confused
+(・◇・)?		confused, question
+(´･ᴗ･ ` )?		confused but cute
+(￢_￢)?		skeptical, really
+( ˙▿˙ )?		puzzled, hmm what
+(⁰▿⁰)?		surprised confused, huh
 
 [think] think thinking hmm ponder wonder
-(￢_￢)
+(￢_￢)		pondering skeptically, hmm
 (ーー;)
-( ˘･з･)
-(・へ・)
-(￣～￣;)
-(´･_･`)
-(　ﾟ ヮﾟ)	idea
-(o´･_･)っ
-( ˙-˙ )
-( ・᷄ὢ・᷅ )
-(´-ι_-｀)
-φ(．．)	writing notes
+( ˘･з･)		thinking, pouting lips
+(・へ・)		thinking hard, hmm
+(￣～￣;)		pondering, unsure
+(´･_･`)		thinking quietly
+(　ﾟ ヮﾟ)	idea	had an idea, aha
+(o´･_･)っ		thinking it over
+( ˙-˙ )		thinking, blank
+( ・᷄ὢ・᷅ )		deep in thought, hmm
+(´-ι_-｀)		thinking, skeptical
+φ(．．)	writing notes	taking notes, writing
 
 [surprised] surprised shock shocked wow omg gasp what
 (⊙_⊙)
-(°ロ°) !
-(ﾟДﾟ;)
-Σ(°△°|||)︴
-(☉ｏ☉)
-(O.O)
-(°o°)
-(ﾟοﾟ人))
-Σ(ﾟдﾟ)
-(⊙ω⊙)
-(＠_＠)
-w(°ｏ°)w
-(°ㅂ°╬)
-Σ(°ロ°)
-∑(O_O;)
-(ʘᗩʘ')
-(°□°)
-(￣□￣」)
+(°ロ°) !		shocked, what!
+(ﾟДﾟ;)		shocked and sweating
+Σ(°△°|||)︴		horrified shock, oh no
+(☉ｏ☉)		eyes wide open, surprised
+(O.O)		wide-eyed surprise
+(°o°)		surprised, oh
+(ﾟοﾟ人))		surprised, gasp
+Σ(ﾟдﾟ)		shocked, what the
+(⊙ω⊙)		wide-eyed surprise, whoa
+(＠_＠)		dizzy shock
+w(°ｏ°)w		amazed, wow
+(°ㅂ°╬)		shocked and angry
+Σ(°ロ°)		shocked, no way
+∑(O_O;)		alarmed shock
+(ʘᗩʘ')		jaw dropped, shocked
+(°□°)		stunned, speechless
+(￣□￣」)		shocked, mouth open
 ヽ(°〇°)ﾉ
-(ﾉﾟ0ﾟ)ﾉ~
-⊙﹏⊙
-( ꒪ȏ꒪ )
-Σ(っ °Д °;)っ	scared
+(ﾉﾟ0ﾟ)ﾉ~		shocked jump
+⊙﹏⊙		worried surprise
+( ꒪ȏ꒪ )		surprised, uh oh
+Σ(っ °Д °;)っ	scared	startled and scared, jumping back
 
 [scared] scared fear afraid nervous anxious panic terrified
-(ﾉ´ｰ`)ﾉ
-(〃＞＿＜;〃)
-〜(＞＜)〜
-(ﾉ>_<)ﾉ
-(゜ロ゜)
-(((;°Д°)))	shaking
-(;;;*_*)
+(ﾉ´ｰ`)ﾉ		running away nervously
+(〃＞＿＜;〃)		scared, squeezing eyes shut
+〜(＞＜)〜		panicked wiggling
+(ﾉ>_<)ﾉ		scared, fleeing
+(゜ロ゜)		terrified, staring
+(((;°Д°)))	shaking	shaking in fear
+(;;;*_*)		frightened, sweating
 (｡>﹏<｡)
 (°ㅂ°╬)
-(/ω＼)	hide
-(×_×;）
-(((＞＜)))	shaking
-ヽ(ﾟДﾟ)ﾉ	panic
-(ノ°益°)ノ
-(⊙﹏⊙)
-ヽ(｀Д´)ﾉ	panic
-(•ิ_•ิ)
-ε=ε=ε=┌(;￣▽￣)┘	run away
-(;ﾟДﾟ)
-(；ﾟ□ﾟ)
-⊂(◉‿◉)つ	unhinged
+(/ω＼)	hide	hiding face in fear
+(×_×;）		scared, dizzy
+(((＞＜)))	shaking	trembling in fear
+ヽ(ﾟДﾟ)ﾉ	panic	panicking, running around
+(ノ°益°)ノ		terrified, screaming
+(⊙﹏⊙)		anxious, frightened
+ヽ(｀Д´)ﾉ	panic	panicked shouting
+(•ิ_•ิ)		nervous, uneasy
+ε=ε=ε=┌(;￣▽￣)┘	run away	running away scared, I'm out
+(;ﾟДﾟ)		shocked fear
+(；ﾟ□ﾟ)		horrified
+⊂(◉‿◉)つ	unhinged	creepy wide smile, unhinged
 
 [nervous] nervous sweat awkward oops yikes anxious
-(￣▽￣;)
-(^_^;)
-(；・∀・)
+(￣▽￣;)		nervous laugh, awkward
+(^_^;)		awkward smile, sweat drop
+(；・∀・)		nervous grin
 (ーー;)
-(￣ω￣;)
-(*´ｰ`*;)
-(⌒_⌒;)
-(°_°;)
-(；^ω^）
-(・_・;)
-(ーー゛)
-(-_-;)・・・
-(◡‿◡;)
-(´∀｀;)
-(￣∀￣;)
+(￣ω￣;)		awkward, uh
+(*´ｰ`*;)		sheepish smile
+(⌒_⌒;)		awkward polite smile
+(°_°;)		nervous sweat, um
+(；^ω^）		nervous laugh, haha oops
+(・_・;)		awkward stare, sweating
+(ーー゛)		nervous, uneasy
+(-_-;)・・・		awkward silence
+(◡‿◡;)		nervous smile
+(´∀｀;)		awkward laugh
+(￣∀￣;)		nervous grin, oops
 (⸝⸝⸝•_•⸝⸝⸝)
-(；一_一)
-(^▽^;)
-(・▽・;)
-(•﹏•;)
+(；一_一)		uneasy, sweating
+(^▽^;)		nervous laugh, embarrassed
+(・▽・;)		awkward smile
+(•﹏•;)		nervous, anxious
 
 [sorry] sorry apology bow forgive oops
-m(_ _)m
-(シ_ _)シ
-<(_ _)>
-(ノ_ _)ノ
+m(_ _)m		deep bow, I'm sorry
+(シ_ _)シ		bowing in apology
+<(_ _)>		formal bow, apologies
+(ノ_ _)ノ		bowing deeply, forgive me
 (._.)
-m(._.)m
-ｍ(＿＿；；)ｍ
-(シ. .)シ
+m(._.)m		bowing, sorry
+ｍ(＿＿；；)ｍ		bowing with sweat, very sorry
+(シ. .)シ		bowing apologetically
 (ノ_<。)
 (｡•́︿•̀｡)
-<(＿　＿)>
-(人´∀`)	thanks please
-(*_ _)人	pray
+<(＿　＿)>		deep formal bow
+(人´∀`)	thanks please	hands together, thank you or please
+(*_ _)人	pray	bowing with hands together, pray
 
 [please] please beg pretty please pray hope thanks
-(人◕ω◕)
+(人◕ω◕)		pleading hands together, please
 (ㅅ´ ˘ `)
-(人´∀`*)
+(人´∀`*)		asking nicely, please
 m(_ _)m
 (ʃƪ˘ﻬ˘)
 (｡•́︿•̀｡)
-(◕︿◕✿)
+(◕︿◕✿)		sad pleading face, please
 (⁄ ⁄•⁄ω⁄•⁄ ⁄)
-(*´人`*)
+(*´人`*)		hands together hoping, please
 (っ- ‸ – ς)
-(ﾉ´з｀)ノ
-(🙏´ω`)
+(ﾉ´з｀)ノ		begging, pretty please
+(🙏´ω`)		praying, please please
 
 [thanks] thanks thank you ty grateful appreciate
 (人´∀`)
 m(_ _)m
 (*^‿^*)
 (￣▽￣)ノ
-(*´∀｀)ﾉ
-(◍•ᴗ•◍)ゝ
+(*´∀｀)ﾉ		waving thanks
+(◍•ᴗ•◍)ゝ		salute of thanks
 (｡･ω･｡)ﾉ♡
-(❁´◡`❁)
-(＾▽＾)ゞ
-(*ﾉ∀`*)
+(❁´◡`❁)		grateful smile, thank you
+(＾▽＾)ゞ		salute, thanks
+(*ﾉ∀`*)		giggling thanks
 
 [hug] hug cuddle hold squeeze comfort
-(っ´▽`)っ
-(つ≧▽≦)つ
-(づ｡◕‿‿◕｡)づ
-⊂(・▽・⊂)
+(っ´▽`)っ		hug, come here
+(つ≧▽≦)つ		big excited hug
+(づ｡◕‿‿◕｡)づ		warm hug
+⊂(・▽・⊂)		reaching for a hug
 (っ˘ω˘ς )
-(つ✧ω✧)つ
-(づ ◕‿◕ )づ
-⊂(´• ω •`⊂)
-(っ◕‿◕)っ
-(⊃｡•́‿•̀｡)⊃
-(っಠ‿ಠ)っ	creepy
+(つ✧ω✧)つ		sparkly-eyed hug
+(づ ◕‿◕ )づ		gentle hug
+⊂(´• ω •`⊂)		soft comforting hug
+(っ◕‿◕)っ		cute hug
+(⊃｡•́‿•̀｡)⊃		hug with care, it's okay
+(っಠ‿ಠ)っ	creepy	creepy hug
 ʕっ•ᴥ•ʔっ	bear
-(∩ᄑ_ᄑ)⊃━☆ﾟ*･｡*･:≡( ε:)	magic
+(∩ᄑ_ᄑ)⊃━☆ﾟ*･｡*･:≡( ε:)	magic	magic hug spell
 (づ￣ ³￣)づ	kiss
 ⊂(◉‿◉)つ	creepy
-( ⊃・ω・)⊃
-(o´▽`o)ﾉ
+( ⊃・ω・)⊃		reaching out to hug
+(o´▽`o)ﾉ		happy wave hug
 
 [wave] wave hello hi hey bye goodbye cya greetings
 (*・ω・)ﾉ
 (￣▽￣)ノ
-(°▽°)/
-( ´ ∀ ` )ﾉ
-(^-^*)/
-(＠´ー`)ﾉﾞ
-(´• ω •`)ﾉ
-( ° ∀ ° )ﾉﾞ
-ヾ(*'▽'*)
-＼(⌒▽⌒)
-ヾ(☆▽☆)
+(°▽°)/		hey there wave
+( ´ ∀ ` )ﾉ		friendly wave, hi
+(^-^*)/		cheerful wave
+(＠´ー`)ﾉﾞ		casual wave, yo
+(´• ω •`)ﾉ		soft wave, hi
+( ° ∀ ° )ﾉﾞ		waving excitedly
+ヾ(*'▽'*)		excited wave
+＼(⌒▽⌒)		waving hello
+ヾ(☆▽☆)		starry wave
 ( ´ ▽ ` )ﾉ
-(^０^)ノ
-~ヾ(・ω・)
-(・∀・)ノ
-ヾ(・ω・*)
-(*°ｰ°)ﾉ
-(・_・)ノ
-(o´ω`o)ﾉ
-( ´ ▽ ` )/
-(￣ω￣)/
-(^_^)/
-(ﾉ゜▽゜)ﾉ	bye
-(￣︿￣)ノ	bye sad
+(^０^)ノ		waving, hello!
+~ヾ(・ω・)		waving bye
+(・∀・)ノ		waving hi
+ヾ(・ω・*)		cute wave
+(*°ｰ°)ﾉ		casual wave
+(・_・)ノ		blank wave, hey
+(o´ω`o)ﾉ		soft wave
+( ´ ▽ ` )/		cheerful wave hello
+(￣ω￣)/		lazy wave
+(^_^)/		simple wave, hi
+(ﾉ゜▽゜)ﾉ	bye	happy wave goodbye
+(￣︿￣)ノ	bye sad	sad wave goodbye
 
 [goodjob] good job thumbs up ok okay nice yes approve great
-(•̀ᴗ•́)و ̑̑
+(•̀ᴗ•́)و ̑̑		determined, you got this
 (*￣▽￣)b
-(b ᵔ▽ᵔ)b
-(๑•̀ㅂ•́)و✧	determined
-d(￣▽￣)b
-(っ＾▽＾)っ
-(☞ﾟヮﾟ)☞	you point
-☜(ﾟヮﾟ☜)	point
-(•̀ω•́ )ゝ	salute
-( •̀ ω •́ )✧	determined
-(¬‿¬)b
+(b ᵔ▽ᵔ)b		double thumbs up, great
+(๑•̀ㅂ•́)و✧	determined	determined and ready, let's do this
+d(￣▽￣)b		thumbs up, nice
+(っ＾▽＾)っ		good job, here you go
+(☞ﾟヮﾟ)☞	you point	pointing at you, you're awesome
+☜(ﾟヮﾟ☜)	point	pointing, you
+(•̀ω•́ )ゝ	salute	salute, roger that
+( •̀ ω •́ )✧	determined	determined, I'll do my best
+(¬‿¬)b		smug thumbs up
 (￣^￣)ゞ	salute
-(°∀°)b
-(⌐■_■)b	cool
-( ˘ ³˘)b
-ヾ(＾∇＾)	yay
-d(^_^)b
-（ゝ。∂）	wink
+(°∀°)b		approving thumbs up
+(⌐■_■)b	cool	cool thumbs up
+( ˘ ³˘)b		proud thumbs up
+ヾ(＾∇＾)	yay	happy approval
+d(^_^)b		two thumbs up
+（ゝ。∂）	wink	wink, nice one
 
 [yes] yes nod agree yep correct
-(￣ー￣)ｂ
-(ー_ー)ゞ
-( ˘ ᵕ˘)
-(・ω・)ノ
-(｀・ω・´)ゞ	salute
-(ﾟ∀ﾟ)ﾉ
-(　ﾟ∀ﾟ)ﾉ
-(^_^)ゞ
-(・ω・)b
+(￣ー￣)ｂ		smug okay, got it
+(ー_ー)ゞ		salute, yes sir
+( ˘ ᵕ˘)		content nod, yes
+(・ω・)ノ		raising hand, yes, me
+(｀・ω・´)ゞ	salute	salute, understood
+(ﾟ∀ﾟ)ﾉ		eager yes
+(　ﾟ∀ﾟ)ﾉ		enthusiastic yes
+(^_^)ゞ		salute, okay
+(・ω・)b		thumbs up, okay
 
 [no] no nope refuse deny nah stop
 (￣ヘ￣)
 (╯︵╰,)
 (ーー;)
-(×_×)
-( ´_ゝ`)
+(×_×)		dead, no
+( ´_ゝ`)		unimpressed no
 (；一_一)
-(；¬_¬)
-(￢_￢)ﾉ
-(╥_╥)ノ
-(ノ`Д)ノ
-✋(￣ヘ￣)	stop
-(っ´ω`)ﾉ
-(ﾉ´ー`)ﾉ
-ヽ(￣д￣;)ノ
-(・_・)ノ⌒☆	bye
+(；¬_¬)		no, side-eye
+(￢_￢)ﾉ		nope, waving off
+(╥_╥)ノ		crying no, please no
+(ノ`Д)ノ		angry no, stop
+✋(￣ヘ￣)	stop	stop right there, no
+(っ´ω`)ﾉ		no thanks
+(ﾉ´ー`)ﾉ		no, waving away
+ヽ(￣д￣;)ノ		no way, absolutely not
+(・_・)ノ⌒☆	bye	waving goodbye, I'm out
 
 [facepalm] facepalm ugh why disappointed cringe
-(－‸ლ)
-(ノ_<)
-(＿ ＿;)
+(－‸ლ)		facepalm
+(ノ_<)		facepalm, ugh
+(＿ ＿;)		head down, exhausted facepalm
 (ಠ_ಠ)
-(‐^▽^‐)
-(ლ ಠ益ಠ)ლ	why rage
-ლ(ಠ_ಠლ)	why
-ლ(╹◡╹ლ)
-(／。＼)
-(◞‸◟；)
-(；´Д`)
-(-_-)ゞ゛
+(‐^▽^‐)		cringing smile
+(ლ ಠ益ಠ)ლ	why rage	why, enraged facepalm
+ლ(ಠ_ಠლ)	why	why would you do that
+ლ(╹◡╹ლ)		why, smiling in disbelief
+(／。＼)		covering face, can't believe it
+(◞‸◟；)		disappointed sigh
+(；´Д`)		exasperated, ugh
+(-_-)ゞ゛		tired facepalm salute
 
 [disgust] disgust gross ew yuck eww
-(￣ ‘i ￣;)
+(￣ ‘i ￣;)		grossed out
 (；￣Д￣)
-(＞﹏＜)
+(＞﹏＜)		disgusted, eww
 (◞‸◟)
-(；¬д¬)
+(；¬д¬)		disgusted side-eye
 (ーー;)
-( ꒪Д꒪)ノ
-(￣ε(#￣)	punch
+( ꒪Д꒪)ノ		disgusted, waving it away, gross
+(￣ε(#￣)	punch	punching someone, disgusted
 (´-ι_-｀)
-(‘д‘⊂彡☆))Д´)	slap
-(￣□￣;)
+(‘д‘⊂彡☆))Д´)	slap	slapping someone, how dare you
+(￣□￣;)		shocked and disgusted
 
 [tired] tired sleepy sleep exhausted zzz bed night yawn
-(－_－) zzZ
-(︶｡︶✽)
-( ˘ω˘ )ｽﾔｧ…
-(∪｡∪)｡｡｡zzZ
-(｡-ω-)zzz
-(￣o￣) zzZZzzZZ
-(ᴗ˳ᴗ)
-(¦3[▓▓]	bed
-[(－－)]..zzZ
-(︶ω︶)
-( ˘ ³˘)♥ zz
-(´ぅω･｀)	yawn
-(_ _*)Zzz
-(=_=)
-(×﹏×)
-(-.-)Zzz
-(˘ω˘)ｽﾔｧ
-(¦3ꇤ[▓▓]	bed
-_(:3 」∠)_	lying lazy dead
-(* ᴗ ᴗ)⁾⁾	nod sleepy
+(－_－) zzZ		sleeping, zzz
+(︶｡︶✽)		fast asleep, peaceful
+( ˘ω˘ )ｽﾔｧ…		sleeping soundly, good night
+(∪｡∪)｡｡｡zzZ		dozing off, so sleepy
+(｡-ω-)zzz		sleepy, zzz
+(￣o￣) zzZZzzZZ		snoring loudly
+(ᴗ˳ᴗ)		sleeping peacefully
+(¦3[▓▓]	bed	in bed under the covers, sleeping
+[(－－)]..zzZ		sleeping in bed, zzz
+(︶ω︶)		sleepy, drowsy
+( ˘ ³˘)♥ zz		sleeping with a heart, sweet dreams
+(´ぅω･｀)	yawn	yawning, rubbing eyes, sleepy
+(_ _*)Zzz		asleep face down
+(=_=)		tired, drained
+(×﹏×)		exhausted, worn out
+(-.-)Zzz		sleeping, zzz
+(˘ω˘)ｽﾔｧ		sleeping peacefully, good night
+(¦3ꇤ[▓▓]	bed	tucked in bed, sleeping
+_(:3 」∠)_	lying lazy dead	lying on the floor, exhausted, lazy
+(* ᴗ ᴗ)⁾⁾	nod sleepy	nodding off, sleepy
 
 [dead] dead ded rip dying died x_x kms done
 (×_×)
-(x_x)
-(✖╭╮✖)
+(x_x)		dead, knocked out
+(✖╭╮✖)		dead, done for
 (×﹏×)
 _(:3 」∠)_
-(+_+)
-(˚Д˚)
+(+_+)		dizzy and dead
+(˚Д˚)		stunned, soul left the body
 (╥﹏╥)
-(-‸ლ)
-(✖_✖)
+(-‸ლ)		dead inside, facepalm
+(✖_✖)		dead, x eyes
 (︶︹︺)
-(×～×)
-⊙▂⊙	shock
-(ꈍ﹃ꈍ)
-_(¦3」∠)_
-(ﾟ∀ﾟ)ｹﾞﾗｹﾞﾗ	laugh dying
+(×～×)		passed out
+⊙▂⊙	shock	stunned in disbelief
+(ꈍ﹃ꈍ)		exhausted and drooling, brain dead
+_(¦3」∠)_		collapsed on the floor, dead
+(ﾟ∀ﾟ)ｹﾞﾗｹﾞﾗ	laugh dying	dying of laughter
 
 [run] run running escape gotta go fast zoom
-ε=ε=ε=┌(;*´Д`)ﾉ
-ε===(っ≧ω≦)っ
-ヽ(￣д￣;)ノ=3=3=3
-ε=ε=┌( >_<)┘
-=͟͟͞͞(｀ﾟдﾟ´)	angry
-ε=ε=ε=(ﾉ*~▽~)ﾉ
-ε≡≡ヘ( ´Д`)ノ
-三└(┐卍 ^o^)卍	dance
-ε=ε=ε=ε=┌(;￣▽￣)┘
-ᕕ( ᐛ )ᕗ	happy walk
-┌(=_=)┘	walk
+ε=ε=ε=┌(;*´Д`)ﾉ		running in a panic, gotta go
+ε===(っ≧ω≦)っ		running excitedly
+ヽ(￣д￣;)ノ=3=3=3		running away fast
+ε=ε=┌( >_<)┘		running in a hurry
+=͟͟͞͞(｀ﾟдﾟ´)	angry	charging angrily
+ε=ε=ε=(ﾉ*~▽~)ﾉ		running happily
+ε≡≡ヘ( ´Д`)ノ		running away tiredly
+三└(┐卍 ^o^)卍	dance	dancing run
+ε=ε=ε=ε=┌(;￣▽￣)┘		running away nervously
+ᕕ( ᐛ )ᕗ	happy walk	walking proudly, happy strut
+┌(=_=)┘	walk	walking, trudging along
 
 [dance] dance dancing party groove vibe music sing
-ヾ(⌐■_■)ノ♪	cool
-♪┏(・o･)┛♪┗ ( ･o･) ┓♪
-└(＾＾)┐
-┌(＾＾)┘
-(~˘▾˘)~
-~(˘▾˘~)
-ヽ(⌐■_■)ノ♪♬	cool
-(ノ^_^)ノ
-〜(꒪꒳꒪)〜
-ヘ(￣ー￣ヘ)
-(〜￣▽￣)〜
-〜(￣▽￣〜)
-♪～(￣ε￣；)	whistle
-ヽ(o´∀`)ﾉ♪♬
-ᕕ(⌐■_■)ᕗ ♪♬	cool
-♪ヽ( ⌒o⌒)人(⌒-⌒ )v ♪	friends
+ヾ(⌐■_■)ノ♪	cool	dancing with sunglasses, vibing
+♪┏(・o･)┛♪┗ ( ･o･) ┓♪		dancing to music
+└(＾＾)┐		dancing, groove
+┌(＾＾)┘		dancing, groove
+(~˘▾˘)~		swaying to music
+~(˘▾˘~)		swaying to music
+ヽ(⌐■_■)ノ♪♬	cool	cool dance with sunglasses
+(ノ^_^)ノ		dancing happily
+〜(꒪꒳꒪)〜		wiggling dance
+ヘ(￣ー￣ヘ)		smug dance
+(〜￣▽￣)〜		swaying happily
+〜(￣▽￣〜)		swaying happily
+♪～(￣ε￣；)	whistle	whistling innocently
+ヽ(o´∀`)ﾉ♪♬		singing and dancing happily
+ᕕ(⌐■_■)ᕗ ♪♬	cool	cool strut to music
+♪ヽ( ⌒o⌒)人(⌒-⌒ )v ♪	friends	dancing together with friends
 (ﾉ´▽｀)ﾉ♪
-ヽ(・∀・)ﾉ♪
-＼(ﾟｰﾟ＼)
-(／ﾟｰﾟ)／
-♬♫♪◖(●。●)◗♪♫♬	headphones
+ヽ(・∀・)ﾉ♪		dancing to a song
+＼(ﾟｰﾟ＼)		dance move
+(／ﾟｰﾟ)／		dance move
+♬♫♪◖(●。●)◗♪♫♬	headphones	listening to music with headphones
 
 [music] music song sing listen headphones
-ヾ(´〇`)ﾉ♪♪♪	sing
-♪(´ε｀ )	whistle
-(￣▽￣)/♫•*¨*•.¸¸♪
-♪～(´ε｀ )	whistle
-ヽ(o´∀`)ﾉ♪
-(　´ ▽ ` )ﾉ♪
+ヾ(´〇`)ﾉ♪♪♪	sing	singing loudly
+♪(´ε｀ )	whistle	whistling a tune
+(￣▽￣)/♫•*¨*•.¸¸♪		singing happily
+♪～(´ε｀ )	whistle	whistling, innocent
+ヽ(o´∀`)ﾉ♪		happy singing
+(　´ ▽ ` )ﾉ♪		humming a tune
 ♬♫♪◖(●。●)◗♪♫♬
-♪♪\(^ω^\)	sing
-(*´▽`*)♪
+♪♪\(^ω^\)	sing	singing along
+(*´▽`*)♪		happily humming
 
 [flex] flex strong muscle power gym determined
-ᕦ(ò_óˇ)ᕤ
-ᕙ(⇀‸↼‶)ᕗ
-ᕦ(⩾﹏⩽)ᕥ
+ᕦ(ò_óˇ)ᕤ		flexing muscles, strong
+ᕙ(⇀‸↼‶)ᕗ		flexing, determined
+ᕦ(⩾﹏⩽)ᕥ		straining, flexing hard
 (ง •̀_•́)ง	fight
-ᕙ( •̀ ᗜ •́ )ᕗ
-(•̀ᴗ•́)و	determined
-૮( ᵒ̌▱๋ᵒ̌ )ა	determined
-ᕦ( ͡° ͜ʖ ͡°)ᕤ	lenny
-ᕙ(`▿´)ᕗ
-(ᕑᗢᓫ∗)˒
+ᕙ( •̀ ᗜ •́ )ᕗ		flexing proudly
+(•̀ᴗ•́)و	determined	determined, I got this
+૮( ᵒ̌▱๋ᵒ̌ )ა	determined	determined, ready
+ᕦ( ͡° ͜ʖ ͡°)ᕤ	lenny	lenny flex
+ᕙ(`▿´)ᕗ		flexing confidently
+(ᕑᗢᓫ∗)˒		stretching
 
 [fight] fight punch hit attack beat
-(ง'̀-'́)ง
+(ง'̀-'́)ง		fists up, ready to fight
 (ง •̀_•́)ง
-(ﾒ` ﾛ ´)︻デ═一	gun
+(ﾒ` ﾛ ´)︻デ═一	gun	shooting with a gun
 (ノ°益°)ノ
-(｀Д´)ノ⌒☆	throw
-(ﾉ｀Д´)ﾉ⌒◯
-(　-_･) ︻デ═一 ▸	gun sniper
-(っ•﹏•)っ ✴==≡눈	pew
-(ง ͠° ͟ل͜ ͡°)ง	lenny
-(*｀0´)θ☆(メ°皿°)ﾉ	punch
-(ﾒ ﾟ皿ﾟ)ﾒ
-(╬￣皿￣)=○＃(￣#)３￣)	punch
-(o¬‿¬o )...☆ﾐ(*x_x)	punch
-(;-_-)ノ⌒⚔	sword
-o(｀ω´ )o
+(｀Д´)ノ⌒☆	throw	throwing something angrily
+(ﾉ｀Д´)ﾉ⌒◯		throwing something
+(　-_･) ︻デ═一 ▸	gun sniper	sniper aiming
+(っ•﹏•)っ ✴==≡눈	pew	shooting a laser
+(ง ͠° ͟ل͜ ͡°)ง	lenny	lenny ready to fight
+(*｀0´)θ☆(メ°皿°)ﾉ	punch	punching someone
+(ﾒ ﾟ皿ﾟ)ﾒ		angry fighting stance
+(╬￣皿￣)=○＃(￣#)３￣)	punch	punching in the face
+(o¬‿¬o )...☆ﾐ(*x_x)	punch	knocking someone out
+(;-_-)ノ⌒⚔	sword	swinging a sword
+o(｀ω´ )o		fighting, fists up
 (°ㅂ°╬)
 
 [gun] gun shoot pew bang
-(⌐■_■)︻╦╤─	cool
-︻デ═一
-(▀̿Ĺ̯▀̿ ̿)
-̿ ̿̿'̿'\̵͇̿̿\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/'̿̿ ̿	lenny
+(⌐■_■)︻╦╤─	cool	cool with a gun
+︻デ═一		rifle
+(▀̿Ĺ̯▀̿ ̿)		cool thug sunglasses
+̿ ̿̿'̿'\̵͇̿̿\з=( ͠° ͟ʖ ͡°)=ε/̵͇̿̿/'̿̿ ̿	lenny	lenny with two guns
 (ﾒ` ﾛ ´)︻デ═一
-(・_・)ノ︻デ═一
-(ﾟДﾟ)⊃︻╦╤─ - - -
-ʕ•ᴥ•ʔ︻デ═一	bear
+(・_・)ノ︻デ═一		aiming a gun
+(ﾟДﾟ)⊃︻╦╤─ - - -		shooting a gun
+ʕ•ᴥ•ʔ︻デ═一	bear	bear with a gun
 
 [magic] magic sparkle spell wizard witch star shiny
 (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
-(∩ᄑ_ᄑ)⊃━☆ﾟ.*･｡ﾟ
-(ノ˘_˘)ノ ζζζ
-(∩｀-´)⊃━☆ﾟ.*･｡ﾟ
-(っ・ω・)っ≡≡≡≡≡≡☆
-(*^▽^)/★*☆♪
-✧*｡٩(ˊᗜˋ*)و✧*｡
+(∩ᄑ_ᄑ)⊃━☆ﾟ.*･｡ﾟ		casting a magic spell
+(ノ˘_˘)ノ ζζζ		casting a spell
+(∩｀-´)⊃━☆ﾟ.*･｡ﾟ		casting a spell, determined
+(っ・ω・)っ≡≡≡≡≡≡☆		shooting a magic beam
+(*^▽^)/★*☆♪		magical celebration with stars
+✧*｡٩(ˊᗜˋ*)و✧*｡		sparkling happiness
 (ﾉ´ヮ`)ﾉ*: ･ﾟ
-╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ	lenny
-(⊃｡•́‿•̀｡)⊃━✿✿✿✿✿✿	flower
-✧･ﾟ: *✧･ﾟ:*	sparkle line
-.｡.:*☆	sparkle line
-☆ﾟ.*･｡ﾟ	sparkle line
-｡ﾟ✶ฺ.ヽ(*´∀`*)ﾉ.✶ﾟ
+╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ	lenny	lenny with a magic wand
+(⊃｡•́‿•̀｡)⊃━✿✿✿✿✿✿	flower	casting flowers, magic
+✧･ﾟ: *✧･ﾟ:*	sparkle line	sparkle divider
+.｡.:*☆	sparkle line	sparkle line
+☆ﾟ.*･｡ﾟ	sparkle line	sparkle line
+｡ﾟ✶ฺ.ヽ(*´∀`*)ﾉ.✶ﾟ		sparkling joy
 
 [give] give gift here present offer
-(っ´▽`)っ🎁
-(っ・ω・)っ🍪	cookie
-(っ˘ڡ˘ς)	yummy
-ヽ(・∀・)ﾉ✿	flower
+(っ´▽`)っ🎁		giving a gift, present
+(っ・ω・)っ🍪	cookie	giving a cookie
+(っ˘ڡ˘ς)	yummy	yummy, licking lips
+ヽ(・∀・)ﾉ✿	flower	giving a flower
 (｡･ω･｡)ﾉ♡	love
-(＾▽＾)っ✂
-(っ◔◡◔)っ ♥	love
-(っ＾▽＾)っ🍰	cake
-(づ｡◕‿‿◕｡)づ✿	flower
-(つ´∀`)つ☕	coffee tea
+(＾▽＾)っ✂		giving scissors
+(っ◔◡◔)っ ♥	love	giving a heart
+(っ＾▽＾)っ🍰	cake	giving cake
+(づ｡◕‿‿◕｡)づ✿	flower	giving flowers
+(つ´∀`)つ☕	coffee tea	giving coffee or tea
 
 [food] food eat eating hungry yummy delicious snack nom
 (っ˘ڡ˘ς)
 ( ˘▽˘)っ♨	tea hot
 (￣～￣)	chew
-( ˘ ³˘)♨
-(*´ч`*)
-(○´ー`)ノ🍙	rice
-ʕ ᵔᴥᵔ ʔっ🍯	honey bear
-(っ´ω`)っ🍰	cake
-(￣﹃￣)	drool hungry
-(っ´▽`)っ🍕	pizza
-( ´ ▽ ` ).｡ｏ♡
-(*^ρ^*)	drool
-ლ(´ڡ`ლ)	yummy
-( ・ω・)o-{{[〃]}}	burger
-(っ˘ڡ˘ς)🍜	ramen noodles
-(っ´ω`)⊃━☆ﾟ.*･｡ﾟ🍪	cookie magic
+( ˘ ³˘)♨		sipping a hot drink
+(*´ч`*)		eating happily, nom
+(○´ー`)ノ🍙	rice	eating a rice ball
+ʕ ᵔᴥᵔ ʔっ🍯	honey bear	bear eating honey
+(っ´ω`)っ🍰	cake	eating cake
+(￣﹃￣)	drool hungry	drooling, hungry
+(っ´▽`)っ🍕	pizza	eating pizza
+( ´ ▽ ` ).｡ｏ♡		dreaming of food
+(*^ρ^*)	drool	drooling, hungry
+ლ(´ڡ`ლ)	yummy	delicious, yummy
+( ・ω・)o-{{[〃]}}	burger	eating a burger
+(っ˘ڡ˘ς)🍜	ramen noodles	eating ramen noodles
+(っ´ω`)⊃━☆ﾟ.*･｡ﾟ🍪	cookie magic	magic cookie
 
 [drink] drink coffee tea cheers beer toast
 ( ˘▽˘)っ♨	tea
-(っ˘▽˘)っ☕	coffee
-(＾▽＾)っ🍵	tea
-( ^_^)／□☆□＼(^_^ )	cheers
-(￣▽￣)/♨
-(*^_^)/□	cheers
-(っ・ω・)っ☕
-c(ˊᗜˋ*c)	cup
-(*´д`)～♨
+(っ˘▽˘)っ☕	coffee	drinking coffee
+(＾▽＾)っ🍵	tea	drinking tea
+( ^_^)／□☆□＼(^_^ )	cheers	cheers, toasting drinks
+(￣▽￣)/♨		hot drink
+(*^_^)/□	cheers	cheers, raising a glass
+(っ・ω・)っ☕		sipping coffee
+c(ˊᗜˋ*c)	cup	holding a cup
+(*´д`)～♨		sighing over a hot drink, relaxing
 
 [cool] cool sunglasses deal chill
 (⌐■_■)
 (▀̿Ĺ̯▀̿ ̿)
 (•_•) ( •_•)>⌐■-■ (⌐■_■)
 ヾ(⌐■_■)ノ♪
-(⌐▀͡ ̯ʖ▀)
-( •_•)>⌐■-■
-(⌐■_■)ﾉ
-ᕕ(⌐■_■)ᕗ
-(⌐⊙_⊙)
+(⌐▀͡ ̯ʖ▀)		cool face
+( •_•)>⌐■-■		putting on sunglasses
+(⌐■_■)ﾉ		cool wave
+ᕕ(⌐■_■)ᕗ		cool strut
+(⌐⊙_⊙)		shocked behind sunglasses
 
 [crazy] crazy unhinged insane chaos feral manic
 (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
 ⊂(◉‿◉)つ
-(☉̃ₒ☉)
+(☉̃ₒ☉)		crazy face, unhinged
 ヽ(°〇°)ﾉ
-(⊙▂⊙✖ )
-(◕‿◕)🔪	knife
+(⊙▂⊙✖ )		going crazy, broken
+(◕‿◕)🔪	knife	smiling with a knife, yandere
 (ﾟ∀ﾟ)
 (☉_☉)
 ᕕ( ᐛ )ᕗ
-(✿◠‿◠)🔪	knife flower
-( ͡°ᴥ ͡° ʋ)
-◉‿◉
+(✿◠‿◠)🔪	knife flower	sweet smile with a knife, threatening
+( ͡°ᴥ ͡° ʋ)		dog lenny, weird
+◉‿◉		unhinged wide-eyed smile
 (ﾉ´ヮ`)ﾉ*: ･ﾟ
-ヽ༼ຈل͜ຈ༽ﾉ	riot raise
-༼ つ ◕_◕ ༽つ	give gimme
-(◉ω◉)
-╰(*°▽°*)╯	yay
-ヾ(｀ヘ´)ﾉﾞ
+ヽ༼ຈل͜ຈ༽ﾉ	riot raise	raise your arms, riot
+༼ つ ◕_◕ ༽つ	give gimme	gimme gimme, reaching
+(◉ω◉)		wide-eyed manic stare
+╰(*°▽°*)╯	yay	excited yay, arms up
+ヾ(｀ヘ´)ﾉﾞ		angry stomping
 
 [evil] evil devil villain mischief scheming plot muahaha
 (｀∀´)Ψ
-ψ(｀∇´)ψ
+ψ(｀∇´)ψ		evil devil grin
 (¬‿¬)
-(≖ᴗ≖๑)
-(￣ε￣＠)
-(ʘ‿ʘ)
-ψ(▼へ▼メ)～→
-(￣ー￣)ﾆﾔﾘ
-(°∀°)
-Ψ(｀▽´)Ψ
-(◣∀◢)ψ
-┌∩┐(◣_◢)┌∩┐	fuck
-( ¬‿¬)
-(ꈍᴗꈍ)ψ
-(｀▽´)ψ
+(≖ᴗ≖๑)		scheming smirk
+(￣ε￣＠)		sneaky evil smirk
+(ʘ‿ʘ)		creepy evil smile
+ψ(▼へ▼メ)～→		evil devil plotting
+(￣ー￣)ﾆﾔﾘ		evil grin, heh heh
+(°∀°)		evil smile
+Ψ(｀▽´)Ψ		devil grin
+(◣∀◢)ψ		evil laugh
+┌∩┐(◣_◢)┌∩┐	fuck	double middle finger, evil
+( ¬‿¬)		sly evil smirk
+(ꈍᴗꈍ)ψ		scheming, evil
+(｀▽´)ψ		mischievous devil
 
 [hide] hide peek shy lurk lurking hiding
 |･ω･)
 |д･)
-┬┴┬┴┤･ω･)ﾉ
-|ω･)
+┬┴┬┴┤･ω･)ﾉ		peeking and waving from behind a wall
+|ω･)		peeking shyly
 ┬┴┬┴┤(･_├┬┴┬┴
 (/ω＼)
-|ʘ‿ʘ)╯
-|∀ﾟ)
-|ω°•)
-(つ﹏⊂)
-(＿ ＿*)
-|･ω･｀)
-(ノωヽ)
-|(￣3￣)|
-┬┴┬┴┤ω･)ﾉ	wave
+|ʘ‿ʘ)╯		creepy peek
+|∀ﾟ)		peeking, heh
+|ω°•)		peeking curiously
+(つ﹏⊂)		hiding and crying
+(＿ ＿*)		hiding, face down
+|･ω･｀)		peeking sadly
+(ノωヽ)		hiding face
+|(￣3￣)|		hiding in a box
+┬┴┬┴┤ω･)ﾉ	wave	peeking and waving
 
 [write] writing write work study homework notes busy computer typing
 φ(．．)
-φ(゜▽゜*)♪
-_〆(。。)
-( ..)φ
-ヾ(＾∇＾)φ
-φ(◎◎ヘ)
-( ˘･з･)φ
-(ﾟ∀ﾟ)φ
-(　-_-)φ
-(￣^￣)φ
-[¬º-°]¬	robot
-_φ(°-°=)
-(⌐■_■)_φ
+φ(゜▽゜*)♪		writing happily
+_〆(。。)		writing notes
+( ..)φ		writing, studying
+ヾ(＾∇＾)φ		happily writing
+φ(◎◎ヘ)		studying hard
+( ˘･з･)φ		writing, thinking
+(ﾟ∀ﾟ)φ		writing excitedly
+(　-_-)φ		tired writing, homework
+(￣^￣)φ		proud writing
+[¬º-°]¬	robot	robot
+_φ(°-°=)		writing intently
+(⌐■_■)_φ		cool writing
 
 [robot] robot bot ai machine
 [¬º-°]¬
-╚═( ˘ ᗜ ˘ )═╝
-[o_o]
-d[-_-]b	headphones
-ヽ[ಠ_ಠ]ノ
-(☞ ͡° ͜ʖ ͡°)☞	lenny point
-\[T]/	praise
-(⊙_⊙)ノ
+╚═( ˘ ᗜ ˘ )═╝		robot dancing
+[o_o]		robot face
+d[-_-]b	headphones	listening to music with headphones
+ヽ[ಠ_ಠ]ノ		angry robot
+(☞ ͡° ͜ʖ ͡°)☞	lenny point	lenny pointing
+\[T]/	praise	praise the sun
+(⊙_⊙)ノ		robot waving
 
 [point] point you this look over there
 (☞ﾟヮﾟ)☞
 ☜(ﾟヮﾟ☜)
 (☞ ͡° ͜ʖ ͡°)☞	lenny
-(☞⌐■_■)☞	cool
-(σ^▽^)σ
-(☝ ՞ਊ ՞)☝
-(👉ﾟヮﾟ)👉
-☞(-‿-)☞
-(σ・∀・)σ
+(☞⌐■_■)☞	cool	cool pointing, you
+(σ^▽^)σ		pointing at you
+(☝ ՞ਊ ՞)☝		pointing up, actually
+(👉ﾟヮﾟ)👉		pointing excitedly
+☞(-‿-)☞		smug pointing
+(σ・∀・)σ		pointing at you, it's you
 
 [flower] flower nature bloom spring pretty
 (✿◠‿◠)
 (◕‿◕✿)
 ヽ(・∀・)ﾉ✿
-(✿ ♡‿♡)
-❀(*´▽`*)❀
-✿(◕‿◕)✿
-(*´▽`)ノ✿
-❀ ⊂(・ω・)⊃ ❀
-(　´ ▽ ` )ノ✿
-✿ڿڰۣ—
+(✿ ♡‿♡)		in love with a flower
+❀(*´▽`*)❀		surrounded by flowers, happy
+✿(◕‿◕)✿		flowers, happy
+(*´▽`)ノ✿		giving a flower
+❀ ⊂(・ω・)⊃ ❀		holding flowers
+(　´ ▽ ` )ノ✿		waving with a flower
+✿ڿڰۣ—		flower stem
 
 [star] star sparkle night shine wish
 ☆*:.｡.o(≧▽≦)o.｡.:*☆
 (☆▽☆)
 (★ω★)
-☆彡
-★~(◡‿◡✿)
-(ﾉ*ФωФ)ﾉ
+☆彡		shooting star
+★~(◡‿◡✿)		star wish
+(ﾉ*ФωФ)ﾉ		starry excitement
 (⌒▽⌒)☆
-☆ﾐ(o*･ω･)ﾉ
-ﾟ✧(•̀ᴗ•́)✧ﾟ
-✩°｡⋆⸜(*˙꒳˙*  )
+☆ﾐ(o*･ω･)ﾉ		shooting star wave
+ﾟ✧(•̀ᴗ•́)✧ﾟ		sparkling determination
+✩°｡⋆⸜(*˙꒳˙*  )		sparkling cute
 
 [gimme] gimme want give me grabby greedy
 ༼ つ ◕_◕ ༽つ
 (つ✧ω✧)つ
-(ﾉ*>∀<)ﾉ♡
-( ˘ ³˘)✧
-(っ ºДº)っ ︵ ⌨	keyboard throw
-(つ°ヮ°)つ
+(ﾉ*>∀<)ﾉ♡		gimme, excited reaching
+( ˘ ³˘)✧		wanting something sparkly
+(っ ºДº)っ ︵ ⌨	keyboard throw	throwing the keyboard, rage
+(つ°ヮ°)つ		reaching out, gimme
 (⊃｡•́‿•̀｡)⊃
 (っ◕‿◕)っ
 
 [sparkle] sparkle shiny glitter decoration divider
 ✧･ﾟ: *✧･ﾟ:*
-*:･ﾟ✧*:･ﾟ✧
-.･ﾟﾟ･(／ω＼)･ﾟﾟ･.	hide shy
+*:･ﾟ✧*:･ﾟ✧		sparkle divider
+.･ﾟﾟ･(／ω＼)･ﾟﾟ･.	hide shy	shy sparkles
 ☆ﾟ.*･｡ﾟ
-⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆	night moon
-˚₊‧꒰ა ☆ ໒꒱ ‧₊˚
-｡ﾟ･ (>﹏<) ･ﾟ｡	cry
+⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆	night moon	starry night sky, moon
+˚₊‧꒰ა ☆ ໒꒱ ‧₊˚		cute sparkle frame
+｡ﾟ･ (>﹏<) ･ﾟ｡	cry	crying with sparkles
 ⸜(｡˃ ᵕ ˂ )⸝♡
 
 [friends] friends together us besties pals duo couple
-(*^ω^)人(^ω^*)
-ヽ(・∀・)人(・∀・)ﾉ
-(＾▽＾)人(＾▽＾)
-(｡･ω･｡)人(｡･ω･｡)
+(*^ω^)人(^ω^*)		best friends together
+ヽ(・∀・)人(・∀・)ﾉ		friends high-five
+(＾▽＾)人(＾▽＾)		friends together, happy
+(｡･ω･｡)人(｡･ω･｡)		cute friends together
 ♪ヽ( ⌒o⌒)人(⌒-⌒ )v ♪
-(つ≧▽≦)つ⊂(・▽・⊂)	hug
-( ´ ∀ ` )人( ´ ∀ ` )
-ヾ(・ω・)メ(・ω・)ノ
+(つ≧▽≦)つ⊂(・▽・⊂)	hug	friends hugging
+( ´ ∀ ` )人( ´ ∀ ` )		friends together
+ヾ(・ω・)メ(・ω・)ノ		friends linked arm in arm
 (ɔˆ ³(ˆ⌣ˆc)	kiss
 
 [game] game gaming gamer controller play gg win
-(◕ᴗ◕✿)🎮
-( ⓛ ω ⓛ *)
-(￣▽￣)/🎮
-(⌐■_■)🎮	cool
-╰(▔∀▔)╯	win
-\(^ヮ^)/	win gg
+(◕ᴗ◕✿)🎮		cute gaming
+( ⓛ ω ⓛ *)		gaming focus
+(￣▽￣)/🎮		gaming happily
+(⌐■_■)🎮	cool	cool gamer
+╰(▔∀▔)╯	win	victory, I won
+\(^ヮ^)/	win gg	victory cheer, gg
 (ノಠ益ಠ)ノ彡┻━┻	rage lose
-(ノ°Д°）ノ︵ 🎮	rage throw controller
-(｀・ω・´)	determined
+(ノ°Д°）ノ︵ 🎮	rage throw controller	rage throwing the controller
+(｀・ω・´)	determined	determined, serious
 (ง ͠° ͟ل͜ ͡°)ง	fight
-(ﾉ>ω<)ﾉ	win
-GG (￣ー￣)ｂ	gg
+(ﾉ>ω<)ﾉ	win	winning, excited
+GG (￣ー￣)ｂ	gg	gg, good game
 
 [rain] rain weather cloud umbrella gloomy
-(￣ω￣;)☂
-ヽ(´ー｀)ﾉ☂
-(´-ω-`)☂
-｡ﾟﾟ･｡･ﾟﾟ｡ ﾟ。(っ´-ω-)っ☂	sad
-⛅(⌒▽⌒)	sun
+(￣ω￣;)☂		in the rain, umbrella
+ヽ(´ー｀)ﾉ☂		happy with an umbrella
+(´-ω-`)☂		gloomy rain
+｡ﾟﾟ･｡･ﾟﾟ｡ ﾟ。(っ´-ω-)っ☂	sad	sad in the rain
+⛅(⌒▽⌒)	sun	sunny happy weather
 
 [blade] sword knife blade stab
 (◕‿◕)🔪
-(　-_-)ノ⚔
-(ﾒ ﾟ皿ﾟ)ﾒ ⚔
-(¬_¬)ﾉ🗡
-╰(◣﹏◢)╯	angry
+(　-_-)ノ⚔		holding swords
+(ﾒ ﾟ皿ﾟ)ﾒ ⚔		angry with a sword
+(¬_¬)ﾉ🗡		threatening with a dagger
+╰(◣﹏◢)╯	angry	angry raging
 
 [lenny] lenny meme
 ( ͡° ͜ʖ ͡°)
 ( ͡~ ͜ʖ ͡°)
-( ͡ᵔ ͜ʖ ͡ᵔ )
-( ͡° ʖ̯ ͡°)	sad
-( ͡ಠ ʖ̯ ͡ಠ)	angry
-( ͡⚆ ͜ʖ ͡⚆)	crazy
-( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)	group
-ヽ( ͡° ͜ʖ ͡°)ﾉ	yay
-(つ ͡° ͜ʖ ͡°)つ	hug
+( ͡ᵔ ͜ʖ ͡ᵔ )		happy lenny
+( ͡° ʖ̯ ͡°)	sad	sad lenny
+( ͡ಠ ʖ̯ ͡ಠ)	angry	angry lenny
+( ͡⚆ ͜ʖ ͡⚆)	crazy	crazy lenny
+( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)	group	group of lenny faces
+ヽ( ͡° ͜ʖ ͡°)ﾉ	yay	lenny cheering
+(つ ͡° ͜ʖ ͡°)つ	hug	lenny hug
 ᕦ( ͡° ͜ʖ ͡°)ᕤ	flex
 (☞ ͡° ͜ʖ ͡°)☞	point
